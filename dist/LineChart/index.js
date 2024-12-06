@@ -35,15 +35,15 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { Fragment, useCallback, useEffect, useMemo, useRef } from 'react';
-import { View, Animated, Easing, Text, Dimensions, I18nManager, } from 'react-native';
-import { styles } from './styles';
-import { screenWidth, usePrevious } from '../utils';
-import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, Line, ClipPath, Use, } from 'react-native-svg';
-import { getSegmentedPathObjects, getRegionPathObjects, RANGE_ENTER, RANGE_EXIT, SEGMENT_END, SEGMENT_START, STOP, useLineChart, adjustToOffset, LineDefaults, pointsWithPaddedRepititions, } from 'gifted-charts-core';
-import BarAndLineChartsWrapper from '../Components/BarAndLineChartsWrapper';
-import { StripAndLabel } from '../Components/common/StripAndLabel';
-import { Pointer } from '../Components/common/Pointer';
+import { Fragment, useCallback, useEffect, useMemo, useRef } from "react";
+import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableOpacity, } from "react-native";
+import { styles } from "./styles";
+import { screenWidth, usePrevious } from "../utils";
+import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
+import { getSegmentedPathObjects, getRegionPathObjects, RANGE_ENTER, RANGE_EXIT, SEGMENT_END, SEGMENT_START, STOP, useLineChart, adjustToOffset, LineDefaults, pointsWithPaddedRepititions, } from "gifted-charts-core";
+import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
+import { StripAndLabel } from "../Components/common/StripAndLabel";
+import { Pointer } from "../Components/common/Pointer";
 var AnimatedPath = Animated.createAnimatedComponent(Path);
 export var LineChart = function (props) {
     var _a, _b;
@@ -67,7 +67,7 @@ export var LineChart = function (props) {
             inputRange: [0, 1],
             outputRange: pointsWithPaddedRepititions(oldPoints, points),
         })
-        : '';
+        : "";
     var animatedFillPath = animateOnDataChange &&
         fillPoints &&
         oldFillPoints &&
@@ -76,7 +76,7 @@ export var LineChart = function (props) {
             inputRange: [0, 1],
             outputRange: pointsWithPaddedRepititions(oldFillPoints, fillPoints),
         })
-        : '';
+        : "";
     useEffect(function () {
         if (animateOnDataChange) {
             Animated.timing(animatedPoints, {
@@ -198,7 +198,7 @@ export var LineChart = function (props) {
         labelsAppear,
     ]);
     var svgWrapperViewStyle = {
-        position: 'absolute',
+        position: "absolute",
         bottom: 62 + xAxisLabelsVerticalShift + labelsExtraHeight - xAxisThickness,
         left: 0,
         zIndex: 1,
@@ -208,7 +208,7 @@ export var LineChart = function (props) {
         var _a, _b;
         return (_jsx(View, { style: [
                 {
-                    position: 'absolute',
+                    position: "absolute",
                     bottom: top
                         ? containerHeight +
                             60 +
@@ -221,8 +221,8 @@ export var LineChart = function (props) {
                         : initialSpacing / 2 + spacing * index - spacing / 2 - 10,
                     height: (_b = props.xAxisLabelsHeight) !== null && _b !== void 0 ? _b : xAxisTextNumberOfLines * 18,
                 },
-                rotateLabel && { transform: [{ rotate: '60deg' }] },
-            ], children: labelComponent ? (labelComponent()) : (_jsx(Text, { style: [{ textAlign: 'center' }, labelTextStyle], numberOfLines: xAxisTextNumberOfLines, children: label })) }));
+                rotateLabel && { transform: [{ rotate: "60deg" }] },
+            ], children: labelComponent ? (labelComponent()) : (_jsx(Text, { style: [{ textAlign: "center" }, labelTextStyle], numberOfLines: xAxisTextNumberOfLines, children: label })) }));
     };
     var renderAnimatedLabel = function (top, index, label, labelTextStyle, labelComponent) {
         var _a, _b;
@@ -230,8 +230,8 @@ export var LineChart = function (props) {
                 {
                     height: rotateLabel
                         ? 40
-                        : ((_a = props.xAxisLabelsHeight) !== null && _a !== void 0 ? _a : xAxisTextNumberOfLines * 18),
-                    position: 'absolute',
+                        : (_a = props.xAxisLabelsHeight) !== null && _a !== void 0 ? _a : xAxisTextNumberOfLines * 18,
+                    position: "absolute",
                     bottom: top
                         ? containerHeight +
                             60 +
@@ -246,8 +246,8 @@ export var LineChart = function (props) {
                         : initialSpacing / 2 + spacing * index - spacing / 2 - 10,
                     opacity: appearingOpacity,
                 },
-                rotateLabel && { transform: [{ rotate: '60deg' }] },
-            ], children: labelComponent ? (labelComponent()) : (_jsx(Text, { style: [{ textAlign: 'center' }, labelTextStyle], numberOfLines: xAxisTextNumberOfLines, children: label })) }));
+                rotateLabel && { transform: [{ rotate: "60deg" }] },
+            ], children: labelComponent ? (labelComponent()) : (_jsx(Text, { style: [{ textAlign: "center" }, labelTextStyle], numberOfLines: xAxisTextNumberOfLines, children: label })) }));
     };
     var onStripPress = function (item, index) {
         if (props.focusedDataPointIndex === undefined || !props.onFocus) {
@@ -308,7 +308,7 @@ export var LineChart = function (props) {
                 dataPointsColor = item.dataPointColor || dataPtsColor;
                 dataPointsRadius = (_e = item.dataPointRadius) !== null && _e !== void 0 ? _e : dataPtsRadius;
                 if (showTextOnFocus) {
-                    text = '';
+                    text = "";
                 }
                 customDataPoint = item.customDataPoint || props.customDataPoint;
                 dataPointLabelComponent = item.dataPointLabelComponent;
@@ -316,11 +316,11 @@ export var LineChart = function (props) {
             if (showValuesAsDataPointsText) {
                 text = originalDataFromProps[index].value;
             }
-            var position = I18nManager.isRTL ? 'right' : 'left';
+            var position = I18nManager.isRTL ? "right" : "left";
             return (_jsxs(Fragment, { children: [focusEnabled ? (_jsx(_Fragment, { children: unFocusOnPressOut ? ( // remove strip on onFocus
-                        _jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
+                        _jsx(TouchableOpacity, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
                                 return setTimeout(function () { return setSelectedIndex(-1); }, delayBeforeUnFocus);
-                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: 'none' })) : (_jsx(Rect, { onPress: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: 'none' })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(View, { style: [
+                            }, children: _jsx(Rect, { x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" }) })) : (_jsx(TouchableOpacity, { onPress: function () { return onStripPress(item, index); }, children: _jsx(Rect, { x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" }) })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(View, { style: [
                                     styles.customDataPointContainer,
                                     (_a = {
                                             height: dataPointsHeight,
@@ -330,10 +330,10 @@ export var LineChart = function (props) {
                                         _a[position] = initialSpacing - dataPointsWidth + spacing * index,
                                         _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
                                         _a),
-                                ], children: customDataPoint(item, index) })) : null, dataPointsShape === 'rectangular' ? (_jsx(Fragment, { children: customDataPoint ? null : (_jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
+                                ], children: customDataPoint(item, index) })) : null, dataPointsShape === "rectangular" ? (_jsx(Fragment, { children: customDataPoint ? null : (_jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
                                         ? index === selectedIndex
                                             ? dataPointsColor
-                                            : 'none'
+                                            : "none"
                                         : dataPointsColor, onPress: function () {
                                         item.onPress
                                             ? item.onPress(item, index)
@@ -343,7 +343,7 @@ export var LineChart = function (props) {
                                     } })) }, index)) : (_jsx(Fragment, { children: customDataPoint ? null : (_jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
                                         ? index === selectedIndex
                                             ? dataPointsColor
-                                            : 'none'
+                                            : "none"
                                         : dataPointsColor, onPress: function () {
                                         item.onPress
                                             ? item.onPress(item, index)
@@ -391,7 +391,7 @@ export var LineChart = function (props) {
                 var x = getX(spacingArray, index);
                 return (_jsx(Line, { x1: x, y1: extendedContainerHeight, x2: x, y2: ((_a = item.verticalLineUptoDataPoint) !== null && _a !== void 0 ? _a : props.verticalLinesUptoDataPoint)
                         ? getY(item.value)
-                        : -xAxisThickness, stroke: item.verticalLineColor || props.verticalLinesColor || 'lightgray', strokeWidth: item.verticalLineThickness || props.verticalLinesThickness || 2, strokeDasharray: (_c = (_b = item.verticalLineStrokeDashArray) !== null && _b !== void 0 ? _b : props.verticalLinesStrokeDashArray) !== null && _c !== void 0 ? _c : '' }, index));
+                        : -xAxisThickness, stroke: item.verticalLineColor || props.verticalLinesColor || "lightgray", strokeWidth: item.verticalLineThickness || props.verticalLinesThickness || 2, strokeDasharray: (_c = (_b = item.verticalLineStrokeDashArray) !== null && _b !== void 0 ? _b : props.verticalLinesStrokeDashArray) !== null && _c !== void 0 ? _c : "" }, index));
             }
             return null;
         });
@@ -409,7 +409,7 @@ export var LineChart = function (props) {
                 if (set.hidePointers || (pointerItemLocal_1 === null || pointerItemLocal_1 === void 0 ? void 0 : pointerItemLocal_1.hidePointer))
                     return null;
                 if (hidePointerDataPointForMissingValues &&
-                    typeof pointerItemLocal_1.value !== 'number')
+                    typeof pointerItemLocal_1.value !== "number")
                     return null;
                 pointerYLocal_1 = pointerYsForDataSet[index];
                 pointerColorLocal_1 =
@@ -423,7 +423,7 @@ export var LineChart = function (props) {
                         pointerWidth: pointerWidth,
                         pointerItemLocal: pointerItemLocal_1,
                         pointerColorLocal: pointerColorLocal_1,
-                    }) }, 'dSetPts' + index));
+                    }) }, "dSetPts" + index));
             });
         }
         if (lineNumber === 1 && hidePointer1)
@@ -476,7 +476,7 @@ export var LineChart = function (props) {
         if (!pointerYLocal)
             return;
         if (hidePointerDataPointForMissingValues &&
-            typeof ((_b = (_a = props.data) === null || _a === void 0 ? void 0 : _a[pointerIndex]) === null || _b === void 0 ? void 0 : _b.value) !== 'number')
+            typeof ((_b = (_a = props.data) === null || _a === void 0 ? void 0 : _a[pointerIndex]) === null || _b === void 0 ? void 0 : _b.value) !== "number")
             return null;
         return Pointer({
             pointerX: pointerX,
@@ -514,7 +514,7 @@ export var LineChart = function (props) {
         }
         pointerYLocal = Math.min.apply(Math, __spreadArray([], __read(arr), false));
         if ((pointerConfig === null || pointerConfig === void 0 ? void 0 : pointerConfig.hidePointerForMissingValues) &&
-            typeof pointerItemLocal[0].value !== 'number')
+            typeof pointerItemLocal[0].value !== "number")
             return null;
         return StripAndLabel({
             autoAdjustPointerLabelPosition: autoAdjustPointerLabelPosition,
@@ -554,24 +554,24 @@ export var LineChart = function (props) {
         });
     };
     var getLineGradientComponent = function () {
-        return props.lineGradientComponent ? (props.lineGradientComponent()) : (_jsxs(LinearGradient, { id: "lineGradient", x1: "0", y1: "0", x2: lineGradientDirection === 'horizontal' ? '1' : '0', y2: lineGradientDirection === 'vertical' ? '1' : '0', children: [_jsx(Stop, { offset: "0", stopColor: lineGradientStartColor }), _jsx(Stop, { offset: "1", stopColor: lineGradientEndColor })] }));
+        return props.lineGradientComponent ? (props.lineGradientComponent()) : (_jsxs(LinearGradient, { id: "lineGradient", x1: "0", y1: "0", x2: lineGradientDirection === "horizontal" ? "1" : "0", y2: lineGradientDirection === "vertical" ? "1" : "0", children: [_jsx(Stop, { offset: "0", stopColor: lineGradientStartColor }), _jsx(Stop, { offset: "1", stopColor: lineGradientEndColor })] }));
     };
     var getAreaGradientComponent = function (startFillColor, endFillColor, startOpacity, endOpacity) {
-        return props.areaGradientComponent ? (props.areaGradientComponent()) : (_jsxs(LinearGradient, { id: "Gradient", x1: "0", y1: "0", x2: gradientDirection === 'horizontal' ? '1' : '0', y2: gradientDirection === 'vertical' ? '1' : '0', children: [_jsx(Stop, { offset: "0", stopColor: startFillColor, stopOpacity: startOpacity.toString() }), _jsx(Stop, { offset: "1", stopColor: endFillColor, stopOpacity: endOpacity.toString() })] }));
+        return props.areaGradientComponent ? (props.areaGradientComponent()) : (_jsxs(LinearGradient, { id: "Gradient", x1: "0", y1: "0", x2: gradientDirection === "horizontal" ? "1" : "0", y2: gradientDirection === "vertical" ? "1" : "0", children: [_jsx(Stop, { offset: "0", stopColor: startFillColor, stopOpacity: startOpacity.toString() }), _jsx(Stop, { offset: "1", stopColor: endFillColor, stopOpacity: endOpacity.toString() })] }));
     };
     var renderIntersection = function () {
         var _a;
-        return (_jsx(View, { style: [svgWrapperViewStyle, { width: totalWidth }], children: _jsxs(Svg, { children: [_jsx(Path, { id: "path1", d: fillPoints, fill: "none", stroke: 'none' }), _jsx(Path, { id: "path2", d: fillPoints2, fill: "none", stroke: 'none' }), _jsx(ClipPath, { id: "clip", children: _jsx(Use, { href: "#path1" }) }), _jsx(Path, { d: fillPoints2, clipPath: "url(#clip)", fill: (_a = intersectionAreaConfig === null || intersectionAreaConfig === void 0 ? void 0 : intersectionAreaConfig.fillColor) !== null && _a !== void 0 ? _a : 'white' }), _jsx(Path, { d: points, stroke: color1, strokeWidth: thickness1 !== null && thickness1 !== void 0 ? thickness1 : thickness, fill: 'none' })] }) }));
+        return (_jsx(View, { style: [svgWrapperViewStyle, { width: totalWidth }], children: _jsxs(Svg, { children: [_jsx(Path, { id: "path1", d: fillPoints, fill: "none", stroke: "none" }), _jsx(Path, { id: "path2", d: fillPoints2, fill: "none", stroke: "none" }), _jsx(ClipPath, { id: "clip", children: _jsx(Use, { href: "#path1" }) }), _jsx(Path, { d: fillPoints2, clipPath: "url(#clip)", fill: (_a = intersectionAreaConfig === null || intersectionAreaConfig === void 0 ? void 0 : intersectionAreaConfig.fillColor) !== null && _a !== void 0 ? _a : "white" }), _jsx(Path, { d: points, stroke: color1, strokeWidth: thickness1 !== null && thickness1 !== void 0 ? thickness1 : thickness, fill: "none" })] }) }));
     };
     var lineSvgComponent = function (points, currentLineThickness, color, fillPoints, startFillColor, endFillColor, startOpacity, endOpacity, strokeDashArray, showArrow, arrowPoints, arrowStrokeWidth, arrowStrokeColor, arrowFillColor, key, hideDataPoints, data, propsData, dataPointsShape, dataPointsWidth, dataPointsHeight, dataPointsColor, dataPointsRadius, textColor, textFontSize, startIndex, endIndex, isSecondary, showValuesAsDataPointsText, spacingArray) {
         var _a, _b, _c;
         if (!points)
             return null;
-        var isCurved = points.includes('C') || points.includes('Q');
+        var isCurved = points.includes("C") || points.includes("Q");
         var isNthAreaChart = !!dataSet
-            ? ((_a = dataSet[Number(key)].areaChart) !== null && _a !== void 0 ? _a : areaChart)
+            ? (_a = dataSet[Number(key)].areaChart) !== null && _a !== void 0 ? _a : areaChart
             : getIsNthAreaChart(key !== null && key !== void 0 ? key : 0);
-        var ar = [{ d: '', color: '', strokeWidth: 0 }];
+        var ar = [{ d: "", color: "", strokeWidth: 0 }];
         if (points.includes(RANGE_ENTER)) {
             ar = getRegionPathObjects(points, color, currentLineThickness !== null && currentLineThickness !== void 0 ? currentLineThickness : 0, thickness, strokeDashArray !== null && strokeDashArray !== void 0 ? strokeDashArray : [], isCurved, RANGE_ENTER, STOP, RANGE_EXIT, curveType);
         }
@@ -580,7 +580,7 @@ export var LineChart = function (props) {
         }
         var lineSvgPropsOuter = {
             d: animateOnDataChange && animatedPath ? animatedPath : points,
-            fill: 'none',
+            fill: "none",
             stroke: lineGradient
                 ? props.lineGradientId
                     ? "url(#".concat(props.lineGradientId, ")")
@@ -590,8 +590,8 @@ export var LineChart = function (props) {
         };
         if (strokeDashArray &&
             strokeDashArray.length === 2 &&
-            typeof strokeDashArray[0] === 'number' &&
-            typeof strokeDashArray[1] === 'number') {
+            typeof strokeDashArray[0] === "number" &&
+            typeof strokeDashArray[1] === "number") {
             lineSvgPropsOuter.strokeDasharray = strokeDashArray;
         }
         return (_jsxs(Svg, { height: containerHeightIncludingBelowXAxis +
@@ -600,7 +600,7 @@ export var LineChart = function (props) {
             onPress: props.onBackgroundPress, children: [lineGradient && getLineGradientComponent(), points.includes(SEGMENT_START) || points.includes(RANGE_ENTER) ? (ar.map(function (item, index) {
                     var lineSvgProps = {
                         d: item.d,
-                        fill: 'none',
+                        fill: "none",
                         stroke: lineGradient
                             ? props.lineGradientId
                                 ? "url(#".concat(props.lineGradientId, ")")
@@ -610,18 +610,19 @@ export var LineChart = function (props) {
                     };
                     if (item.strokeDashArray &&
                         item.strokeDashArray.length === 2 &&
-                        typeof item.strokeDashArray[0] === 'number' &&
-                        typeof item.strokeDashArray[1] === 'number') {
+                        typeof item.strokeDashArray[0] === "number" &&
+                        typeof item.strokeDashArray[1] === "number") {
                         lineSvgProps.strokeDasharray = item.strokeDashArray;
                     }
                     return _jsx(Path, __assign({}, lineSvgProps), index);
                 })) : animateOnDataChange && animatedPath ? (_jsx(AnimatedPath, __assign({}, lineSvgPropsOuter))) : (_jsx(Path, __assign({}, lineSvgPropsOuter))), isNthAreaChart &&
                     getAreaGradientComponent(startFillColor, endFillColor, startOpacity, endOpacity), isNthAreaChart ? (props.interpolateMissingValues === false &&
-                    propsData.some(function (item) { return isNaN(item.value); }) ? null : animateOnDataChange && animatedFillPath ? (_jsx(AnimatedPath, { onPress: props.onChartAreaPress, d: animatedFillPath, fill: props.areaGradientId
+                    propsData.some(function (item) { return isNaN(item.value); } // if we have a null/undefined value in data & interpolation is disabled, then don't render area
+                    ) ? null : animateOnDataChange && animatedFillPath ? (_jsx(AnimatedPath, { onPress: props.onChartAreaPress, d: animatedFillPath, fill: props.areaGradientId
                         ? "url(#".concat(props.areaGradientId, ")")
-                        : "url(#Gradient)", stroke: 'none', strokeWidth: currentLineThickness || thickness })) : (_jsx(Path, { onPress: props.onChartAreaPress, d: fillPoints, fill: props.areaGradientId
+                        : "url(#Gradient)", stroke: "none", strokeWidth: currentLineThickness || thickness })) : (_jsx(Path, { onPress: props.onChartAreaPress, d: fillPoints, fill: props.areaGradientId
                         ? "url(#".concat(props.areaGradientId, ")")
-                        : "url(#Gradient)", stroke: 'none', strokeWidth: currentLineThickness || thickness }))) : null, renderSpecificVerticalLines(data, cumulativeSpacing1), renderSpecificVerticalLines(data2, cumulativeSpacing2), renderSpecificVerticalLines(data3, cumulativeSpacing3), renderSpecificVerticalLines(data4, cumulativeSpacing4), renderSpecificVerticalLines(data5, cumulativeSpacing5), (_c = dataSet === null || dataSet === void 0 ? void 0 : dataSet.map(function (set, index) {
+                        : "url(#Gradient)", stroke: "none", strokeWidth: currentLineThickness || thickness }))) : null, renderSpecificVerticalLines(data, cumulativeSpacing1), renderSpecificVerticalLines(data2, cumulativeSpacing2), renderSpecificVerticalLines(data3, cumulativeSpacing3), renderSpecificVerticalLines(data4, cumulativeSpacing4), renderSpecificVerticalLines(data5, cumulativeSpacing5), (_c = dataSet === null || dataSet === void 0 ? void 0 : dataSet.map(function (set, index) {
                     return renderSpecificVerticalLines(set === null || set === void 0 ? void 0 : set.data, cumulativeSpacingForSet[index]);
                 })) !== null && _c !== void 0 ? _c : null, renderDataPoints(hideDataPoints, data, propsData, dataPointsShape, dataPointsWidth, dataPointsHeight, dataPointsColor, dataPointsRadius, textColor, textFontSize, startIndex, endIndex, isSecondary, showValuesAsDataPointsText, spacingArray, key), showArrow && (_jsx(Path, { d: arrowPoints, fill: arrowFillColor, stroke: arrowStrokeColor, strokeWidth: arrowStrokeWidth }))] }));
     };
@@ -763,7 +764,7 @@ export var LineChart = function (props) {
                 }
                 var x = evt.nativeEvent.locationX;
                 if (!activatePointersOnLongPress &&
-                    x > (props.width || Dimensions.get('window').width))
+                    x > (props.width || Dimensions.get("window").width))
                     return;
                 activatePointers(x);
             }, 
@@ -817,7 +818,7 @@ export var LineChart = function (props) {
                 }
                 var x = evt.nativeEvent.locationX;
                 if (!activatePointersOnLongPress &&
-                    x > (props.width || Dimensions.get('window').width))
+                    x > (props.width || Dimensions.get("window").width))
                     return;
                 activatePointers(x);
             }, 
@@ -866,7 +867,7 @@ export var LineChart = function (props) {
             var currentStripHeight = (_a = item.stripHeight) !== null && _a !== void 0 ? _a : stripHeight;
             var currentStripWidth = (_b = item.stripWidth) !== null && _b !== void 0 ? _b : stripWidth;
             var currentStripOpacity = (_c = item.stripOpacity) !== null && _c !== void 0 ? _c : stripOpacity;
-            var currentStripStrokeDashArray = (_e = (_d = item.stripStrokeDashArray) !== null && _d !== void 0 ? _d : stripStrokeDashArray) !== null && _e !== void 0 ? _e : '';
+            var currentStripStrokeDashArray = (_e = (_d = item.stripStrokeDashArray) !== null && _d !== void 0 ? _d : stripStrokeDashArray) !== null && _e !== void 0 ? _e : "";
             var currentStripColor = item.stripColor || stripColor;
             var y1 = currentStripHeight
                 ? containerHeight - currentStripHeight + 8
@@ -876,7 +877,7 @@ export var LineChart = function (props) {
                     (item.value * containerHeight) / maxValue;
             var actualStripHeight = currentStripHeight ||
                 (item.value * containerHeight) / maxValue - 2 + overflowTop;
-            return (_jsx(Line, { x1: initialSpacing + spacing * index, y1: y1, x2: initialSpacing + spacing * index, y2: y1 + actualStripHeight + 2, strokeWidth: currentStripWidth, stroke: currentStripColor, strokeDasharray: currentStripStrokeDashArray, opacity: currentStripOpacity }, 'strip' + (ind * 10000 + index)));
+            return (_jsx(Line, { x1: initialSpacing + spacing * index, y1: y1, x2: initialSpacing + spacing * index, y2: y1 + actualStripHeight + 2, strokeWidth: currentStripWidth, stroke: currentStripColor, strokeDasharray: currentStripStrokeDashArray, opacity: currentStripOpacity }, "strip" + (ind * 10000 + index)));
         }
         return null;
     };
@@ -954,8 +955,8 @@ export var LineChart = function (props) {
                     : null, intersectionAreaConfig &&
                     (props.areaChart || (props.areaChart1 && props.areaChart2))
                     ? renderIntersection()
-                    : null, pointerX > 0 ? (_jsxs(View, { pointerEvents: pointerEvents !== null && pointerEvents !== void 0 ? pointerEvents : 'none', style: {
-                        position: 'absolute',
+                    : null, pointerX > 0 ? (_jsxs(View, { pointerEvents: pointerEvents !== null && pointerEvents !== void 0 ? pointerEvents : "none", style: {
+                        position: "absolute",
                         height: extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
                         bottom: 58 + labelsExtraHeight + xAxisLabelsVerticalShift - overflowTop,
                         // width: totalWidth,
@@ -964,23 +965,23 @@ export var LineChart = function (props) {
                         // dataSet.map((set, index) => renderPointer(index))
                         _jsxs(_Fragment, { children: [renderPointer(1), points2 ? renderPointer(2) : null, points3 ? renderPointer(3) : null, points4 ? renderPointer(4) : null, points5 ? renderPointer(5) : null, secondaryPoints ? renderPointer(6) : null, stripOverPointer && renderStripAndLabel()] }))] })) : null, (data0 !== null && data0 !== void 0 ? data0 : data).map(function (item, index) {
                     var _a, _b, _c, _d, _e, _f;
-                    var secondaryLabel = (_c = (_a = item.secondaryLabel) !== null && _a !== void 0 ? _a : (_b = secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelTexts) === null || _b === void 0 ? void 0 : _b[index]) !== null && _c !== void 0 ? _c : '';
+                    var secondaryLabel = (_c = (_a = item.secondaryLabel) !== null && _a !== void 0 ? _a : (_b = secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelTexts) === null || _b === void 0 ? void 0 : _b[index]) !== null && _c !== void 0 ? _c : "";
                     var secondaryLabelTextStyle = (_f = (_e = (_d = item.secondaryLabelTextStyle) !== null && _d !== void 0 ? _d : secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelsTextStyle) !== null && _e !== void 0 ? _e : item.labelTextStyle) !== null && _f !== void 0 ? _f : props.xAxisLabelTextStyle;
                     return (_jsxs(View, { children: [isAnimated
                                 ? renderAnimatedLabel(false, index, item.label ||
                                     (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
                                         ? props.xAxisLabelTexts[index]
-                                        : ''), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent)
+                                        : ""), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent)
                                 : renderLabel(false, index, item.label ||
                                     (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
                                         ? props.xAxisLabelTexts[index]
-                                        : ''), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent), secondaryXAxis
+                                        : ""), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent), secondaryXAxis
                                 ? isAnimated
                                     ? renderAnimatedLabel(true, index, secondaryLabel, secondaryLabelTextStyle, item.secondaryLabelComponent)
                                     : renderLabel(true, index, secondaryLabel, secondaryLabelTextStyle, item.secondaryLabelComponent)
                                 : null] }, index));
                 }), (pointerConfig === null || pointerConfig === void 0 ? void 0 : pointerConfig.dynamicLegendComponent) && pointerX > 0 ? (_jsx(View, { style: [
-                        { position: 'absolute' },
+                        { position: "absolute" },
                         pointerConfig.dynamicLegendContainerStyle,
                     ], children: pointerConfig.dynamicLegendComponent(dataSet
                         ? pointerItemsForSet
