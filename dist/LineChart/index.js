@@ -36,7 +36,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment, useCallback, useEffect, useMemo, useRef } from "react";
-import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableOpacity, } from "react-native";
+import { View, Animated, Easing, Text, Dimensions, I18nManager, } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
 import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
@@ -318,9 +318,9 @@ export var LineChart = function (props) {
             }
             var position = I18nManager.isRTL ? "right" : "left";
             return (_jsxs(Fragment, { children: [focusEnabled ? (_jsx(_Fragment, { children: unFocusOnPressOut ? ( // remove strip on onFocus
-                        _jsx(TouchableOpacity, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
+                        _jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
                                 return setTimeout(function () { return setSelectedIndex(-1); }, delayBeforeUnFocus);
-                            }, children: _jsx(Rect, { x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" }) })) : (_jsx(TouchableOpacity, { onPress: function () { return onStripPress(item, index); }, children: _jsx(Rect, { x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" }) })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(View, { style: [
+                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(View, { style: [
                                     styles.customDataPointContainer,
                                     (_a = {
                                             height: dataPointsHeight,

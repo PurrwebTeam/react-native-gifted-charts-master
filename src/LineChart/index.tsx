@@ -8,7 +8,6 @@ import {
   ColorValue,
   I18nManager,
   ViewStyle,
-  TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
@@ -701,30 +700,26 @@ export const LineChart = (props: LineChartPropsType) => {
           {focusEnabled ? (
             <>
               {unFocusOnPressOut ? ( // remove strip on onFocus
-                <TouchableOpacity
+                <Rect
                   onPressIn={() => onStripPress(item, index)}
                   onPressOut={() =>
                     setTimeout(() => setSelectedIndex(-1), delayBeforeUnFocus)
                   }
-                >
-                  <Rect
-                    x={initialSpacing + (spacing * index - spacing / 2)}
-                    y={8}
-                    width={spacing}
-                    height={containerHeight - 0}
-                    fill={"none"}
-                  />
-                </TouchableOpacity>
+                  x={initialSpacing + (spacing * index - spacing / 2)}
+                  y={8}
+                  width={spacing}
+                  height={containerHeight - 0}
+                  fill={"none"}
+                />
               ) : (
-                <TouchableOpacity onPress={() => onStripPress(item, index)}>
-                  <Rect
-                    x={initialSpacing + (spacing * index - spacing / 2)}
-                    y={8}
-                    width={spacing}
-                    height={containerHeight}
-                    fill={"none"}
-                  />
-                </TouchableOpacity>
+                <Rect
+                  onPressIn={() => onStripPress(item, index)}
+                  x={initialSpacing + (spacing * index - spacing / 2)}
+                  y={8}
+                  width={spacing}
+                  height={containerHeight}
+                  fill={"none"}
+                />
               )}
             </>
           ) : null}
