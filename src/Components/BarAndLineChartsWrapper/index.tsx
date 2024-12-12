@@ -49,8 +49,6 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     pointerIndex,
     pointerX,
     pointerY,
-    overflow,
-    contentOverflow,
     onEndReached,
     onStartReached,
     onMomentumScrollEnd,
@@ -151,7 +149,6 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         ref={scrollRef}
         style={[
           {
-            overflow,
             marginLeft:
               horizontal && !yAxisAtTop
                 ? -yAxisThickness -
@@ -171,7 +168,6 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         ]}
         contentContainerStyle={[
           {
-            contentOverflow,
             height:
               containerHeightIncludingBelowXAxis +
               yAxisExtraHeight +
