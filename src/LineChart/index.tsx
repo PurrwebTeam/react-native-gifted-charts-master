@@ -329,7 +329,7 @@ export const LineChart = (props: LineChartPropsType) => {
     parentWidth: props.parentWidth ?? screenWidth,
   });
 
-  const { secondaryXAxis, intersectionAreaConfig } = props;
+  const { secondaryXAxis, intersectionAreaConfig, interval } = props;
 
   const widthValuesFromSet = useMemo(
     () => dataSet?.map((set) => new Animated.Value(0)),
@@ -520,6 +520,7 @@ export const LineChart = (props: LineChartPropsType) => {
     labelTextStyle: any,
     labelComponent: Function | undefined
   ) => {
+    if (interval !== undefined && index % interval !== 0) return null;
     return (
       <View
         style={[
@@ -562,6 +563,7 @@ export const LineChart = (props: LineChartPropsType) => {
     labelTextStyle: any,
     labelComponent: Function | undefined
   ) => {
+    if (interval !== undefined && index % interval !== 0) return null;
     return (
       <Animated.View
         style={[

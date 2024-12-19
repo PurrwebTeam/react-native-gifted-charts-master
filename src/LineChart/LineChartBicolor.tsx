@@ -1,6 +1,12 @@
-import React, {Fragment, useCallback, useEffect, useMemo, useRef} from 'react';
-import {View, Animated, Easing, Text} from 'react-native';
-import {styles} from './styles';
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
+import { View, Animated, Easing, Text } from "react-native";
+import { styles } from "./styles";
 import Svg, {
   Path,
   LinearGradient,
@@ -8,14 +14,14 @@ import Svg, {
   Circle,
   Rect,
   Text as CanvasText,
-} from 'react-native-svg';
-import BarAndLineChartsWrapper from '../Components/BarAndLineChartsWrapper';
+} from "react-native-svg";
+import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
 import {
   LineChartBicolorPropsType,
   bicolorLineDataItem,
   useLineChartBiColor,
-} from 'gifted-charts-core/src';
-import {screenWidth} from '../utils';
+} from "gifted-charts-core/src";
+import { screenWidth } from "../utils";
 
 export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
   const scrollRef = useRef();
@@ -211,7 +217,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
     textColor: any,
     textFontSize: any,
     startIndex: number,
-    endIndex: number,
+    endIndex: number
   ) => {
     return dataForRender.map((item: bicolorLineDataItem, index: number) => {
       if (index < startIndex || index > endIndex) return null;
@@ -243,7 +249,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
           item.dataPointHeight ||
           dataPtsHeight;
         dataPointsColor =
-          item.focusedDataPointColor || props.focusedDataPointColor || 'orange';
+          item.focusedDataPointColor || props.focusedDataPointColor || "orange";
         dataPointsRadius =
           item.focusedDataPointRadius ||
           props.focusedDataPointRadius ||
@@ -266,7 +272,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
         dataPointsColor = item.dataPointColor || dataPtsColor;
         dataPointsRadius = item.dataPointRadius || dataPtsRadius;
         if (showTextOnFocus) {
-          text = '';
+          text = "";
         }
         customDataPoint = item.customDataPoint || props.customDataPoint;
         dataPointLabelComponent = item.dataPointLabelComponent;
@@ -291,7 +297,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                   y={8}
                   width={spacing}
                   height={containerHeight}
-                  fill={'none'}
+                  fill={"none"}
                 />
               ) : (
                 <Rect
@@ -300,7 +306,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                   y={8}
                   width={spacing}
                   height={containerHeight}
-                  fill={'none'}
+                  fill={"none"}
                 />
               )}
             </>
@@ -337,11 +343,12 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                     containerHeight - (item.value * containerHeight) / maxValue,
                   left: getX(index) - dataPointsWidth,
                 },
-              ]}>
+              ]}
+            >
               {customDataPoint()}
             </View>
           ) : null}
-          {dataPointsShape === 'rectangular' ? (
+          {dataPointsShape === "rectangular" ? (
             <Fragment key={index}>
               {customDataPoint ? null : (
                 <Rect
@@ -357,15 +364,15 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                     showDataPointOnFocus
                       ? index === selectedIndex
                         ? dataPointsColor
-                        : 'none'
+                        : "none"
                       : dataPointsColor
                   }
                   onPress={() => {
                     item.onPress
                       ? item.onPress(item, index)
                       : props.onPress
-                        ? props.onPress(item, index)
-                        : null;
+                      ? props.onPress(item, index)
+                      : null;
                   }}
                 />
               )}
@@ -381,15 +388,15 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                     showDataPointOnFocus
                       ? index === selectedIndex
                         ? dataPointsColor
-                        : 'none'
+                        : "none"
                       : dataPointsColor
                   }
                   onPress={() => {
                     item.onPress
                       ? item.onPress(item, index)
                       : props.onPress
-                        ? props.onPress(item, index)
-                        : null;
+                      ? props.onPress(item, index)
+                      : null;
                   }}
                 />
               )}
@@ -415,12 +422,13 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                       (item.dataPointLabelWidth
                         ? item.dataPointLabelWidth + 20
                         : props.dataPointLabelWidth
-                          ? props.dataPointLabelWidth + 20
-                          : 50) /
+                        ? props.dataPointLabelWidth + 20
+                        : 50) /
                         2 +
                       spacing * index,
                   },
-                ]}>
+                ]}
+              >
                 {dataPointLabelComponent()}
               </View>
             ) : null
@@ -440,7 +448,8 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                   dataPointsHeight / 2 -
                   (item.value * containerHeight) / maxValue +
                   (item.textShiftY || props.textShiftY || 0)
-                }>
+                }
+              >
                 {!showTextOnFocus ? item.dataPointText : text}
               </CanvasText>
             ) : null
@@ -475,7 +484,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                 ? (item.value * containerHeight) / maxValue - xAxisThickness
                 : containerHeight + 10 - xAxisThickness
             }
-            fill={item.verticalLineColor || 'lightgray'}
+            fill={item.verticalLineColor || "lightgray"}
           />
         );
       }
@@ -491,20 +500,20 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
     endFillColor: string,
     startOpacity: number,
     endOpacity: number,
-    strokeDashArray: Array<number> | undefined | null,
+    strokeDashArray: Array<number> | undefined | null
   ) => {
     return (
       <Svg>
         {strokeDashArray &&
         strokeDashArray.length === 2 &&
-        typeof strokeDashArray[0] === 'number' &&
-        typeof strokeDashArray[1] === 'number'
+        typeof strokeDashArray[0] === "number" &&
+        typeof strokeDashArray[1] === "number"
           ? pointsArray.map((points: any, index: number) => (
               <Path
                 key={index}
                 d={points.points}
                 fill="none"
-                stroke={points.color === 'green' ? color : colorNegative}
+                stroke={points.color === "green" ? color : colorNegative}
                 strokeWidth={currentLineThickness || thickness}
                 strokeDasharray={strokeDashArray}
               />
@@ -515,7 +524,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                   key={index}
                   d={points.points}
                   fill="none"
-                  stroke={points.color === 'green' ? color : colorNegative}
+                  stroke={points.color === "green" ? color : colorNegative}
                   strokeWidth={currentLineThickness || thickness}
                 />
               );
@@ -529,8 +538,9 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
               id="Gradient"
               x1="0"
               y1="0"
-              x2={gradientDirection === 'horizontal' ? '1' : '0'}
-              y2={gradientDirection === 'vertical' ? '1' : '0'}>
+              x2={gradientDirection === "horizontal" ? "1" : "0"}
+              y2={gradientDirection === "vertical" ? "1" : "0"}
+            >
               <Stop
                 offset="0"
                 stopColor={startFillColor}
@@ -546,8 +556,9 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
               id="GradientNegative"
               x1="0"
               y1="0"
-              x2={gradientDirection === 'horizontal' ? '1' : '0'}
-              y2={gradientDirection === 'vertical' ? '1' : '0'}>
+              x2={gradientDirection === "horizontal" ? "1" : "0"}
+              y2={gradientDirection === "vertical" ? "1" : "0"}
+            >
               <Stop
                 offset="1"
                 stopColor={startFillColorNegative}
@@ -568,11 +579,11 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                   key={index}
                   d={item.points}
                   fill={
-                    item.color === 'green'
-                      ? 'url(#Gradient)'
-                      : 'url(#GradientNegative)'
+                    item.color === "green"
+                      ? "url(#Gradient)"
+                      : "url(#GradientNegative)"
                   }
-                  stroke={'none'}
+                  stroke={"none"}
                   strokeWidth={currentLineThickness || thickness}
                 />
               );
@@ -595,7 +606,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
               textColor1,
               textFontSize1,
               startIndex1,
-              endIndex1,
+              endIndex1
             )
           : null}
       </Svg>
@@ -611,17 +622,18 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
     endFillColor: string,
     startOpacity: number,
     endOpacity: number,
-    strokeDashArray: Array<number> | undefined | null,
+    strokeDashArray: Array<number> | undefined | null
   ) => {
     return (
       <View
         style={{
-          position: 'absolute',
+          position: "absolute",
           height: extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
           bottom: 60 + labelsExtraHeight,
           width: totalWidth,
           zIndex: zIndex,
-        }}>
+        }}
+      >
         {pointsArray.length
           ? lineSvgComponent(
               pointsArray,
@@ -631,7 +643,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
               endFillColor,
               startOpacity,
               endOpacity,
-              strokeDashArray,
+              strokeDashArray
             )
           : null}
       </View>
@@ -648,18 +660,19 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
     endFillColor: string,
     startOpacity: number,
     endOpacity: number,
-    strokeDashArray: Array<number> | undefined | null,
+    strokeDashArray: Array<number> | undefined | null
   ) => {
     return (
       <Animated.View
         style={{
-          position: 'absolute',
+          position: "absolute",
           height: extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
           bottom: 60, //stepHeight * -0.5 + xAxisThickness,
           width: animatedWidth,
           zIndex: zIndex,
           // backgroundColor: 'wheat',
-        }}>
+        }}
+      >
         {lineSvgComponent(
           points,
           currentLineThickness,
@@ -668,7 +681,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
           endFillColor,
           startOpacity,
           endOpacity,
-          strokeDashArray,
+          strokeDashArray
         )}
       </Animated.View>
     );
@@ -688,7 +701,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
               endFillColor,
               startOpacity,
               endOpacity,
-              strokeDashArray1,
+              strokeDashArray1
             )
           : renderLine(
               zIndex,
@@ -699,7 +712,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
               endFillColor,
               startOpacity,
               endOpacity,
-              strokeDashArray1,
+              strokeDashArray1
             )}
         {data.map((item: bicolorLineDataItem, index: number) => {
           return (
@@ -710,18 +723,18 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
                     item.label ||
                       (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
                         ? props.xAxisLabelTexts[index]
-                        : ''),
+                        : ""),
                     item.labelTextStyle || props.xAxisLabelTextStyle,
-                    item.labelComponent,
+                    item.labelComponent
                   )
                 : renderLabel(
                     index,
                     item.label ||
                       (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
                         ? props.xAxisLabelTexts[index]
-                        : ''),
+                        : ""),
                     item.labelTextStyle || props.xAxisLabelTextStyle,
-                    item.labelComponent,
+                    item.labelComponent
                   )}
               {/* {renderLabel(index, item.label, item.labelTextStyle)} */}
             </View>
@@ -737,7 +750,7 @@ export const LineChartBicolor = (props: LineChartBicolorPropsType) => {
       scrollRef={scrollRef}
       animatedWidth={animatedWidth}
       renderChartContent={renderChartContent}
-      remainingScrollViewProps={{onScroll: (ev: any) => props.onScroll?.(ev)}}
+      remainingScrollViewProps={{ onScroll: (ev: any) => props.onScroll?.(ev) }}
     />
   );
 };

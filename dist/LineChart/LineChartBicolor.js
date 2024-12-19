@@ -10,13 +10,13 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { Fragment, useCallback, useEffect, useMemo, useRef } from 'react';
-import { View, Animated, Easing, Text } from 'react-native';
-import { styles } from './styles';
-import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, } from 'react-native-svg';
-import BarAndLineChartsWrapper from '../Components/BarAndLineChartsWrapper';
-import { useLineChartBiColor, } from 'gifted-charts-core/src';
-import { screenWidth } from '../utils';
+import { Fragment, useCallback, useEffect, useMemo, useRef, } from "react";
+import { View, Animated, Easing, Text } from "react-native";
+import { styles } from "./styles";
+import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, } from "react-native-svg";
+import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
+import { useLineChartBiColor, } from "gifted-charts-core/src";
+import { screenWidth } from "../utils";
 export var LineChartBicolor = function (props) {
     var _a;
     var scrollRef = useRef();
@@ -118,7 +118,7 @@ export var LineChartBicolor = function (props) {
                         item.dataPointHeight ||
                         dataPtsHeight;
                 dataPointsColor =
-                    item.focusedDataPointColor || props.focusedDataPointColor || 'orange';
+                    item.focusedDataPointColor || props.focusedDataPointColor || "orange";
                 dataPointsRadius =
                     item.focusedDataPointRadius ||
                         props.focusedDataPointRadius ||
@@ -142,7 +142,7 @@ export var LineChartBicolor = function (props) {
                 dataPointsColor = item.dataPointColor || dataPtsColor;
                 dataPointsRadius = item.dataPointRadius || dataPtsRadius;
                 if (showTextOnFocus) {
-                    text = '';
+                    text = "";
                 }
                 customDataPoint = item.customDataPoint || props.customDataPoint;
                 dataPointLabelComponent = item.dataPointLabelComponent;
@@ -153,7 +153,7 @@ export var LineChartBicolor = function (props) {
             var currentStripColor = item.stripColor || stripColor;
             return (_jsxs(Fragment, { children: [focusEnabled ? (_jsx(_Fragment, { children: unFocusOnPressOut ? (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
                                 return setTimeout(function () { return setSelectedIndex(-1); }, delayBeforeUnFocus);
-                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: 'none' })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: 'none' })) })) : null, item.showStrip ||
+                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, item.showStrip ||
                         (focusEnabled && index === selectedIndex && showStripOnFocus) ? (_jsx(Rect, { x: initialSpacing + (spacing * index - dataPointsWidth / 2), y: currentStripHeight
                             ? containerHeight - currentStripHeight + 8
                             : containerHeight -
@@ -168,12 +168,12 @@ export var LineChartBicolor = function (props) {
                                 top: containerHeight - (item.value * containerHeight) / maxValue,
                                 left: getX(index) - dataPointsWidth,
                             },
-                        ], children: customDataPoint() })) : null, dataPointsShape === 'rectangular' ? (_jsx(Fragment, { children: customDataPoint ? null : (_jsx(Rect, { x: getX(index) - dataPointsWidth, y: extendedContainerHeight +
+                        ], children: customDataPoint() })) : null, dataPointsShape === "rectangular" ? (_jsx(Fragment, { children: customDataPoint ? null : (_jsx(Rect, { x: getX(index) - dataPointsWidth, y: extendedContainerHeight +
                                 dataPointsHeight / 2 -
                                 (item.value * containerHeight) / maxValue, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
                                 ? index === selectedIndex
                                     ? dataPointsColor
-                                    : 'none'
+                                    : "none"
                                 : dataPointsColor, onPress: function () {
                                 item.onPress
                                     ? item.onPress(item, index)
@@ -183,7 +183,7 @@ export var LineChartBicolor = function (props) {
                             } })) }, index)) : (_jsx(Fragment, { children: customDataPoint ? null : (_jsx(Circle, { cx: getX(index), cy: getY(index), r: dataPointsRadius, fill: showDataPointOnFocus
                                 ? index === selectedIndex
                                     ? dataPointsColor
-                                    : 'none'
+                                    : "none"
                                 : dataPointsColor, onPress: function () {
                                 item.onPress
                                     ? item.onPress(item, index)
@@ -231,7 +231,7 @@ export var LineChartBicolor = function (props) {
                             10
                         : -xAxisThickness, width: item.verticalLineThickness || 1, height: item.verticalLineUptoDataPoint
                         ? (item.value * containerHeight) / maxValue - xAxisThickness
-                        : containerHeight + 10 - xAxisThickness, fill: item.verticalLineColor || 'lightgray' }, index));
+                        : containerHeight + 10 - xAxisThickness, fill: item.verticalLineColor || "lightgray" }, index));
             }
             return null;
         });
@@ -239,16 +239,16 @@ export var LineChartBicolor = function (props) {
     var lineSvgComponent = function (pointsArray, currentLineThickness, color, startFillColor, endFillColor, startOpacity, endOpacity, strokeDashArray) {
         return (_jsxs(Svg, { children: [strokeDashArray &&
                     strokeDashArray.length === 2 &&
-                    typeof strokeDashArray[0] === 'number' &&
-                    typeof strokeDashArray[1] === 'number'
-                    ? pointsArray.map(function (points, index) { return (_jsx(Path, { d: points.points, fill: "none", stroke: points.color === 'green' ? color : colorNegative, strokeWidth: currentLineThickness || thickness, strokeDasharray: strokeDashArray }, index)); })
+                    typeof strokeDashArray[0] === "number" &&
+                    typeof strokeDashArray[1] === "number"
+                    ? pointsArray.map(function (points, index) { return (_jsx(Path, { d: points.points, fill: "none", stroke: points.color === "green" ? color : colorNegative, strokeWidth: currentLineThickness || thickness, strokeDasharray: strokeDashArray }, index)); })
                     : pointsArray.map(function (points, index) {
-                        return (_jsx(Path, { d: points.points, fill: "none", stroke: points.color === 'green' ? color : colorNegative, strokeWidth: currentLineThickness || thickness }, index));
-                    }), areaChart && (_jsxs(_Fragment, { children: [_jsxs(LinearGradient, { id: "Gradient", x1: "0", y1: "0", x2: gradientDirection === 'horizontal' ? '1' : '0', y2: gradientDirection === 'vertical' ? '1' : '0', children: [_jsx(Stop, { offset: "0", stopColor: startFillColor, stopOpacity: startOpacity.toString() }), _jsx(Stop, { offset: "1", stopColor: endFillColor, stopOpacity: endOpacity.toString() })] }), _jsxs(LinearGradient, { id: "GradientNegative", x1: "0", y1: "0", x2: gradientDirection === 'horizontal' ? '1' : '0', y2: gradientDirection === 'vertical' ? '1' : '0', children: [_jsx(Stop, { offset: "1", stopColor: startFillColorNegative, stopOpacity: startOpacityNegative.toString() }), _jsx(Stop, { offset: "0", stopColor: endFillColorNegative, stopOpacity: endOpacityNegative.toString() })] })] })), areaChart
+                        return (_jsx(Path, { d: points.points, fill: "none", stroke: points.color === "green" ? color : colorNegative, strokeWidth: currentLineThickness || thickness }, index));
+                    }), areaChart && (_jsxs(_Fragment, { children: [_jsxs(LinearGradient, { id: "Gradient", x1: "0", y1: "0", x2: gradientDirection === "horizontal" ? "1" : "0", y2: gradientDirection === "vertical" ? "1" : "0", children: [_jsx(Stop, { offset: "0", stopColor: startFillColor, stopOpacity: startOpacity.toString() }), _jsx(Stop, { offset: "1", stopColor: endFillColor, stopOpacity: endOpacity.toString() })] }), _jsxs(LinearGradient, { id: "GradientNegative", x1: "0", y1: "0", x2: gradientDirection === "horizontal" ? "1" : "0", y2: gradientDirection === "vertical" ? "1" : "0", children: [_jsx(Stop, { offset: "1", stopColor: startFillColorNegative, stopOpacity: startOpacityNegative.toString() }), _jsx(Stop, { offset: "0", stopColor: endFillColorNegative, stopOpacity: endOpacityNegative.toString() })] })] })), areaChart
                     ? fillPointsArray.map(function (item, index) {
-                        return (_jsx(Path, { d: item.points, fill: item.color === 'green'
-                                ? 'url(#Gradient)'
-                                : 'url(#GradientNegative)', stroke: 'none', strokeWidth: currentLineThickness || thickness }, index));
+                        return (_jsx(Path, { d: item.points, fill: item.color === "green"
+                                ? "url(#Gradient)"
+                                : "url(#GradientNegative)", stroke: "none", strokeWidth: currentLineThickness || thickness }, index));
                     })
                     : null, renderSpecificVerticalLines(data), !hideDataPoints1
                     ? renderDataPoints(data, dataPointsShape1, dataPointsWidth1, dataPointsHeight1, dataPointsColor1, dataPointsRadius1, textColor1, textFontSize1, startIndex1, endIndex1)
@@ -256,7 +256,7 @@ export var LineChartBicolor = function (props) {
     };
     var renderLine = function (zIndex, pointsArray, currentLineThickness, color, startFillColor, endFillColor, startOpacity, endOpacity, strokeDashArray) {
         return (_jsx(View, { style: {
-                position: 'absolute',
+                position: "absolute",
                 height: extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
                 bottom: 60 + labelsExtraHeight,
                 width: totalWidth,
@@ -267,7 +267,7 @@ export var LineChartBicolor = function (props) {
     };
     var renderAnimatedLine = function (zIndex, points, animatedWidth, currentLineThickness, color, startFillColor, endFillColor, startOpacity, endOpacity, strokeDashArray) {
         return (_jsx(Animated.View, { style: {
-                position: 'absolute',
+                position: "absolute",
                 height: extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
                 bottom: 60, //stepHeight * -0.5 + xAxisThickness,
                 width: animatedWidth,
@@ -283,11 +283,11 @@ export var LineChartBicolor = function (props) {
                             ? renderAnimatedLabel(index, item.label ||
                                 (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
                                     ? props.xAxisLabelTexts[index]
-                                    : ''), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent)
+                                    : ""), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent)
                             : renderLabel(index, item.label ||
                                 (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
                                     ? props.xAxisLabelTexts[index]
-                                    : ''), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent) }, index));
+                                    : ""), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent) }, index));
                 })] }));
     };
     return (_jsx(BarAndLineChartsWrapper, __assign({}, barAndLineChartsWrapperProps, { scrollRef: scrollRef, animatedWidth: animatedWidth, renderChartContent: renderChartContent, remainingScrollViewProps: { onScroll: function (ev) { var _a; return (_a = props.onScroll) === null || _a === void 0 ? void 0 : _a.call(props, ev); } } })));
