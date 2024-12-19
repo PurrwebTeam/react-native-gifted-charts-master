@@ -15,15 +15,15 @@ var __read = (this && this.__read) || function (o, n) {
     return ar;
 };
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import React, { useState } from 'react';
-import { TouchableWithoutFeedback, View, Text, } from 'react-native';
-import Svg, { Path, Circle, Text as SvgText, Defs, RadialGradient, Stop, G, Line, } from 'react-native-svg';
-import { getPieChartMainProps, pieColors, } from 'gifted-charts-core';
-import { rnVersion } from '../utils';
+import React, { useState } from "react";
+import { TouchableWithoutFeedback, View, Text, } from "react-native";
+import Svg, { Path, Circle, Text as SvgText, Defs, RadialGradient, Stop, G, Line, } from "react-native-svg";
+import { getPieChartMainProps, pieColors, } from "gifted-charts-core/src";
+import { rnVersion } from "../utils";
 export var PieChartMain = function (props) {
     var _a, _b;
     var _c = getPieChartMainProps(props), isThreeD = _c.isThreeD, isBiggerPie = _c.isBiggerPie, data = _c.data, showInnerComponent = _c.showInnerComponent, radius = _c.radius, canvasWidth = _c.canvasWidth, canvasHeight = _c.canvasHeight, shadowWidth = _c.shadowWidth, backgroundColor = _c.backgroundColor, shadowColor = _c.shadowColor, semiCircle = _c.semiCircle, pi = _c.pi, initialAngle = _c.initialAngle, shadow = _c.shadow, donut = _c.donut, strokeWidth = _c.strokeWidth, strokeColor = _c.strokeColor, innerRadius = _c.innerRadius, showTooltip = _c.showTooltip, tooltipWidth = _c.tooltipWidth, tooltipComponent = _c.tooltipComponent, tooltipVerticalShift = _c.tooltipVerticalShift, tooltipHorizontalShift = _c.tooltipHorizontalShift, tooltipTextNoOfLines = _c.tooltipTextNoOfLines, tooltipBackgroundColor = _c.tooltipBackgroundColor, tooltipBorderRadius = _c.tooltipBorderRadius, tooltipSelectedIndex = _c.tooltipSelectedIndex, getTooltipText = _c.getTooltipText, showText = _c.showText, textColor = _c.textColor, textSize = _c.textSize, tiltAngle = _c.tiltAngle, labelsPosition = _c.labelsPosition, showTextBackground = _c.showTextBackground, textBackgroundColor = _c.textBackgroundColor, showValuesAsLabels = _c.showValuesAsLabels, showGradient = _c.showGradient, gradientCenterColor = _c.gradientCenterColor, minShiftX = _c.minShiftX, minShiftY = _c.minShiftY, total = _c.total, horizAdjustment = _c.horizAdjustment, vertAdjustment = _c.vertAdjustment, cx = _c.cx, cy = _c.cy, mData = _c.mData, paddingHorizontal = _c.paddingHorizontal, paddingVertical = _c.paddingVertical, extraRadius = _c.extraRadius, showExternalLabels = _c.showExternalLabels, getExternaLabelProperties = _c.getExternaLabelProperties, coordinates = _c.coordinates, onPressed = _c.onPressed, font = _c.font, fontWeight = _c.fontWeight, fontStyle = _c.fontStyle;
-    var prevSide = 'right';
+    var prevSide = "right";
     var prevLabelComponentX = 0;
     var wasFirstItemOnPole = false;
     var _d = __read(useState(0), 2), touchX = _d[0], setTouchX = _d[1];
@@ -64,17 +64,17 @@ export var PieChartMain = function (props) {
                         ? (canvasHeight + paddingVertical) / 2 + extraRadius
                         : canvasHeight + paddingVertical + extraRadius * 2,
                     width: canvasWidth + paddingHorizontal + extraRadius * 2,
-                    overflow: 'hidden',
+                    overflow: "hidden",
                 },
                 isThreeD && { transform: [{ rotateX: tiltAngle }] },
-            ], children: [_jsxs(Svg, { pointerEvents: rnVersion >= 720000 ? 'box-none' : 'auto', viewBox: "".concat(strokeWidth / -2 + minShiftX - extraRadius - paddingHorizontal / 2, " ").concat(strokeWidth / -2 + minShiftY - extraRadius - paddingVertical / 2, " ").concat((radius + extraRadius + strokeWidth) * 2 +
+            ], children: [_jsxs(Svg, { pointerEvents: rnVersion >= 720000 ? "box-none" : "auto", viewBox: "".concat(strokeWidth / -2 + minShiftX - extraRadius - paddingHorizontal / 2, " ").concat(strokeWidth / -2 + minShiftY - extraRadius - paddingVertical / 2, " ").concat((radius + extraRadius + strokeWidth) * 2 +
                         paddingHorizontal +
                         horizAdjustment +
                         (horizAdjustment ? strokeWidth : 0), " ").concat((radius + extraRadius + strokeWidth) * 2 +
                         paddingVertical +
                         vertAdjustment +
                         (vertAdjustment ? strokeWidth : 0)), height: (radius + extraRadius) * 2 + strokeWidth + paddingVertical, width: (radius + extraRadius) * 2 + strokeWidth + paddingHorizontal, children: [_jsx(Defs, { children: data.map(function (item, index) {
-                                return (_jsxs(RadialGradient, { id: 'grad' + index, cx: "50%", cy: "50%", rx: "50%", ry: "50%", fx: "50%", fy: "50%", gradientUnits: "userSpaceOnUse", children: [_jsx(Stop, { offset: "0%", stopColor: item.gradientCenterColor || gradientCenterColor, stopOpacity: "1" }), _jsx(Stop, { offset: "100%", stopColor: item.color || pieColors[index % 9], stopOpacity: "1" })] }, index + ''));
+                                return (_jsxs(RadialGradient, { id: "grad" + index, cx: "50%", cy: "50%", rx: "50%", ry: "50%", fx: "50%", fy: "50%", gradientUnits: "userSpaceOnUse", children: [_jsx(Stop, { offset: "0%", stopColor: item.gradientCenterColor || gradientCenterColor, stopOpacity: "1" }), _jsx(Stop, { offset: "100%", stopColor: item.color || pieColors[index % 9], stopOpacity: "1" })] }, index + ""));
                             }) }), data.length === 1 ? (_jsx(_Fragment, { children: _jsx(Circle, { cx: cx, cy: cy, r: radius, fill: showGradient
                                     ? "url(#grad".concat(0, ")")
                                     : data[0].color || pieColors[0 % 9] }) })) : (data.map(function (item, index) {
@@ -86,10 +86,10 @@ export var PieChartMain = function (props) {
                                     : item.strokeWidth === 0
                                         ? 0
                                         : item.strokeWidth || strokeWidth, fill: props.selectedIndex === index || item.peripheral
-                                    ? 'none'
+                                    ? "none"
                                     : showGradient
                                         ? "url(#grad".concat(index, ")")
-                                        : item.color || pieColors[index % 9] }, index + 'a'));
+                                        : item.color || pieColors[index % 9] }, index + "a"));
                         })), (showText || showInnerComponent || showExternalLabels) &&
                             data.map(function (item, index) {
                                 var _a, _b, _c, _d, _e, _f, _g;
@@ -104,15 +104,15 @@ export var PieChartMain = function (props) {
                                 var midy = (my + cy) / 2;
                                 var x = midx, y = midy;
                                 var labelPosition = item.labelPosition || labelsPosition;
-                                if (labelPosition === 'onBorder') {
+                                if (labelPosition === "onBorder") {
                                     x = mx;
                                     y = my;
                                 }
-                                else if (labelPosition === 'outward') {
+                                else if (labelPosition === "outward") {
                                     x = (midx + mx) / 2;
                                     y = (midy + my) / 2;
                                 }
-                                else if (labelPosition === 'inward') {
+                                else if (labelPosition === "inward") {
                                     x = (midx + cx) / 2;
                                     y = (midy + cy) / 2;
                                 }
@@ -135,7 +135,7 @@ export var PieChartMain = function (props) {
                                 }
                                 var _h = getExternaLabelProperties(item, mx, my, cx, cy, prevSide, prevLabelComponentX, index === data.length - 1, // isLast
                                 wasFirstItemOnPole), labelLineColor = _h.labelLineColor, labelLineThickness = _h.labelLineThickness, labelComponentHeight = _h.labelComponentHeight, inX = _h.inX, inY = _h.inY, outX = _h.outX, outY = _h.outY, finalX = _h.finalX, labelComponentX = _h.labelComponentX, labelComponentY = _h.labelComponentY, localExternalLabelComponent = _h.localExternalLabelComponent, isRightHalf = _h.isRightHalf;
-                                prevSide = isRightHalf ? 'right' : 'left';
+                                prevSide = isRightHalf ? "right" : "left";
                                 prevLabelComponentX = labelComponentX;
                                 if (index === 0)
                                     wasFirstItemOnPole = labelComponentY !== outY;
@@ -146,20 +146,20 @@ export var PieChartMain = function (props) {
                                                 item.textSize ||
                                                 textSize, fill: item.textBackgroundColor || textBackgroundColor })) : null, showText && (_jsx(SvgText, { fill: item.textColor ||
                                                 textColor ||
-                                                pieColors[(index + 2) % 9], fontSize: item.textSize || textSize, fontFamily: item.font || font, fontWeight: item.fontWeight || fontWeight, fontStyle: item.fontStyle || fontStyle || 'normal', x: x +
+                                                pieColors[(index + 2) % 9], fontSize: item.textSize || textSize, fontFamily: item.font || font, fontWeight: item.fontWeight || fontWeight, fontStyle: item.fontStyle || fontStyle || "normal", x: x +
                                                 (item.shiftTextX || 0) -
-                                                (item.textSize || textSize) / 1.8, y: y + (item.shiftTextY || 0), children: item.text || (showValuesAsLabels ? item.value + '' : '') })), localPieInnerComponent ? (_jsx(G, { x: x, y: y, children: (_g = localPieInnerComponent === null || localPieInnerComponent === void 0 ? void 0 : localPieInnerComponent(item, index)) !== null && _g !== void 0 ? _g : null })) : null] }, index));
+                                                (item.textSize || textSize) / 1.8, y: y + (item.shiftTextY || 0), children: item.text || (showValuesAsLabels ? item.value + "" : "") })), localPieInnerComponent ? (_jsx(G, { x: x, y: y, children: (_g = localPieInnerComponent === null || localPieInnerComponent === void 0 ? void 0 : localPieInnerComponent(item, index)) !== null && _g !== void 0 ? _g : null })) : null] }, index));
                             })] }), isThreeD && shadow && !semiCircle ? (_jsx(View, { style: {
                         width: radius * 2,
                         height: radius * 2,
                         backgroundColor: shadowColor,
                         borderRadius: radius,
-                        position: 'absolute',
+                        position: "absolute",
                         top: shadowWidth + paddingVertical / 2,
                         left: paddingHorizontal / 2,
                         zIndex: -1,
                     } })) : null, showTooltip && tooltipSelectedIndex !== -1 ? (_jsx(View, { style: {
-                        position: 'absolute',
+                        position: "absolute",
                         left: touchX > (radius + extraRadius) * 1.5
                             ? props.tooltipHorizontalShift
                                 ? touchX - tooltipHorizontalShift
@@ -181,8 +181,8 @@ export var PieChartMain = function (props) {
                         }, children: _jsx(Text, { numberOfLines: tooltipTextNoOfLines, style: {
                                 color: data[tooltipSelectedIndex].textColor ||
                                     textColor ||
-                                    'white',
-                                textAlign: 'center',
+                                    "white",
+                                textAlign: "center",
                                 fontSize: textSize,
                                 fontFamily: font,
                                 fontWeight: fontWeight,

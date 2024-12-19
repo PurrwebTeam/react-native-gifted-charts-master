@@ -38,7 +38,7 @@ import {
   LineProperties,
   LineDefaults,
   pointsWithPaddedRepititions,
-} from "gifted-charts-core";
+} from "gifted-charts-core/src";
 import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
 import { StripAndLabel } from "../Components/common/StripAndLabel";
 import { Pointer } from "../Components/common/Pointer";

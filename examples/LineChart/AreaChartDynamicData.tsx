@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text} from 'react-native';
-import {LineChart} from '../../src/LineChart';
-import {ruleTypes,clone} from 'gifted-charts-core';
+import React, { useEffect, useState } from "react";
+import { View, Text } from "react-native";
+import { LineChart } from "../../src/LineChart";
+import { ruleTypes, clone } from "gifted-charts-core/src";
 
 const AreaChartDynamicData = () => {
-  const lcomp = v => (
-    <Text style={{width: 50, color: 'white', fontWeight: 'bold'}}>{v}</Text>
+  const lcomp = (v) => (
+    <Text style={{ width: 50, color: "white", fontWeight: "bold" }}>{v}</Text>
   );
   const dPoint = () => {
     return (
@@ -13,10 +13,10 @@ const AreaChartDynamicData = () => {
         style={{
           width: 14,
           height: 14,
-          backgroundColor: 'white',
+          backgroundColor: "white",
           borderWidth: 3,
           borderRadius: 7,
-          borderColor: '#07BAD1',
+          borderColor: "#07BAD1",
         }}
       />
     );
@@ -24,7 +24,7 @@ const AreaChartDynamicData = () => {
   const latestData = [
     {
       value: 350,
-      labelComponent: () => lcomp('22 Nov'),
+      labelComponent: () => lcomp("22 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -41,7 +41,7 @@ const AreaChartDynamicData = () => {
     },
     {
       value: 570,
-      labelComponent: () => lcomp('24 Nov'),
+      labelComponent: () => lcomp("24 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -58,7 +58,7 @@ const AreaChartDynamicData = () => {
     },
     {
       value: 280,
-      labelComponent: () => lcomp('26 Nov'),
+      labelComponent: () => lcomp("26 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -75,7 +75,7 @@ const AreaChartDynamicData = () => {
     },
     {
       value: 520,
-      labelComponent: () => lcomp('28 Nov'),
+      labelComponent: () => lcomp("28 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -92,7 +92,7 @@ const AreaChartDynamicData = () => {
     },
     {
       value: 460,
-      labelComponent: () => lcomp('28 Nov'),
+      labelComponent: () => lcomp("28 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -107,7 +107,7 @@ const AreaChartDynamicData = () => {
   const [currentData, setCurrentData] = useState(clone(latestData));
   useEffect(() => {
     setTimeout(() => {
-      const newData = latestData.map(item => {
+      const newData = latestData.map((item) => {
         return {
           ...item,
           value: 250,
@@ -117,7 +117,7 @@ const AreaChartDynamicData = () => {
     }, 1500);
 
     setTimeout(() => {
-      const newData = latestData.map(item => {
+      const newData = latestData.map((item) => {
         return {
           ...item,
           value: item.value - 50,
@@ -127,7 +127,7 @@ const AreaChartDynamicData = () => {
     }, 2500);
 
     setTimeout(() => {
-      const newData = latestData.map(item => {
+      const newData = latestData.map((item) => {
         return {
           ...item,
           value: 500 - item.value,
@@ -142,8 +142,9 @@ const AreaChartDynamicData = () => {
       <View
         style={{
           paddingVertical: 50,
-          backgroundColor: '#414141',
-        }}>
+          backgroundColor: "#414141",
+        }}
+      >
         <LineChart
           isAnimated
           thickness={3}
@@ -154,11 +155,11 @@ const AreaChartDynamicData = () => {
           animationDuration={1000}
           onDataChangeAnimationDuration={300}
           areaChart
-          yAxisTextStyle={{color: 'lightgray'}}
+          yAxisTextStyle={{ color: "lightgray" }}
           data={currentData}
           hideDataPoints
-          startFillColor={'rgb(84,219,234)'}
-          endFillColor={'rgb(84,219,234)'}
+          startFillColor={"rgb(84,219,234)"}
+          endFillColor={"rgb(84,219,234)"}
           startOpacity={0.4}
           endOpacity={0.1}
           spacing={22}

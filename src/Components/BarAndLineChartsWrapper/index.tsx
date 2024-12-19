@@ -1,14 +1,14 @@
-import React, {Fragment, useEffect} from 'react';
-import {View, ScrollView, StyleSheet, I18nManager} from 'react-native';
-import {renderHorizSections} from './renderHorizSections';
-import RenderLineInBarChart from './renderLineInBarChart';
-import RenderVerticalLines from './renderVerticalLines';
+import React, { Fragment, useEffect } from "react";
+import { View, ScrollView, StyleSheet, I18nManager } from "react-native";
+import { renderHorizSections } from "./renderHorizSections";
+import RenderLineInBarChart from "./renderLineInBarChart";
+import RenderVerticalLines from "./renderVerticalLines";
 import {
   chartTypes,
   yAxisSides,
   BarAndLineChartsWrapperTypes,
   useBarAndLineChartsWrapper,
-} from 'gifted-charts-core';
+} from "gifted-charts-core/src";
 
 const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
   const {
@@ -79,11 +79,11 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     verticalLinesProps,
     lineInBarChartProps,
     lineInBarChartProps2,
-  } = useBarAndLineChartsWrapper({...props, isRTL: I18nManager.isRTL});
+  } = useBarAndLineChartsWrapper({ ...props, isRTL: I18nManager.isRTL });
 
   useEffect(() => {
     if (pointerConfig && getPointerProps) {
-      getPointerProps({pointerIndex, pointerX, pointerY});
+      getPointerProps({ pointerIndex, pointerX, pointerY });
     }
   }, [pointerIndex, pointerX, pointerY]);
 
@@ -92,7 +92,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
 
   const styles = StyleSheet.create({
     container: {
-      width: '100%',
+      width: "100%",
       height:
         containerHeightIncludingBelowXAxis +
         labelsExtraHeight +
@@ -116,7 +116,8 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
           width: actualContainerWidth,
           transform: transformForHorizontal,
         },
-      ]}>
+      ]}
+    >
       {hideAxesAndRules !== true
         ? renderHorizSections({
             ...horizSectionProps,
@@ -129,7 +130,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
           setCanMomentum(true);
         }}
         nestedScrollEnabled={nestedScrollEnabled}
-        onMomentumScrollEnd={({nativeEvent}) => {
+        onMomentumScrollEnd={({ nativeEvent }) => {
           if (onMomentumScrollEnd) {
             onMomentumScrollEnd();
           }
@@ -155,12 +156,12 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
                   (props.width ? 20 : 0) -
                   (data[data.length - 1]?.barWidth ?? barWidth ?? 0) / 2
                 : yAxisSide === yAxisSides.RIGHT
-                  ? 0
-                  : yAxisLabelWidth + yAxisThickness,
-            position: 'absolute',
+                ? 0
+                : yAxisLabelWidth + yAxisThickness,
+            position: "absolute",
             bottom: chartType === chartTypes.LINE_BI_COLOR ? 0 : xAxisThickness,
           },
-          !!props.width && {width: props.width + extraWidthDueToDataPoint},
+          !!props.width && { width: props.width + extraWidthDueToDataPoint },
           horizontal && {
             width:
               (props.width ?? totalWidth) + (props.width ? endSpacing : -20),
@@ -179,16 +180,16 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
             paddingLeft: initialSpacing,
             paddingBottom:
               noOfSectionsBelowXAxis * stepHeight + labelsExtraHeight,
-            alignItems: 'flex-end',
+            alignItems: "flex-end",
           },
-          !props.width && {width: totalWidth},
+          !props.width && { width: totalWidth },
         ]}
         scrollEnabled={!disableScroll}
         showsHorizontalScrollIndicator={showScrollIndicator}
         indicatorStyle={indicatorColor}
         onContentSizeChange={() => {
           if (scrollRef.current && scrollToEnd) {
-            scrollRef.current.scrollToEnd({animated: scrollAnimation});
+            scrollRef.current.scrollToEnd({ animated: scrollAnimation });
           } else if (scrollRef.current && scrollToIndex) {
             scrollRef.current.scrollTo({
               x:
@@ -199,7 +200,8 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
             });
           }
         }}
-        {...remainingScrollViewProps}>
+        {...remainingScrollViewProps}
+      >
         <Fragment>
           {showVerticalLines ? (
             <RenderVerticalLines {...verticalLinesProps} />
@@ -220,9 +222,9 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
               data.map((item: any, index: number) => {
                 return showXAxisIndices || item.showXAxisIndex ? (
                   <View
-                    key={index + '' + item.value}
+                    key={index + "" + item.value}
                     style={{
-                      position: 'absolute',
+                      position: "absolute",
                       height: xAxisIndicesHeight,
                       width: xAxisIndicesWidth,
                       backgroundColor: xAxisIndicesColor,
@@ -240,7 +242,10 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         </Fragment>
       </ScrollView>
       {referenceLinesOverChartContent
-        ? renderHorizSections({...horizSectionProps, onlyReferenceLines: true})
+        ? renderHorizSections({
+            ...horizSectionProps,
+            onlyReferenceLines: true,
+          })
         : null}
     </View>
   );

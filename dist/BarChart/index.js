@@ -10,15 +10,15 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { Animated, Easing, View } from 'react-native';
-import RenderBars from './RenderBars';
-import RenderStackBars from './RenderStackBars';
-import BarAndLineChartsWrapper from '../Components/BarAndLineChartsWrapper';
-import { useBarChart } from 'gifted-charts-core';
-import { StripAndLabel } from '../Components/common/StripAndLabel';
-import { Pointer } from '../Components/common/Pointer';
-import { screenWidth } from '../utils';
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { Animated, Easing, View } from "react-native";
+import RenderBars from "./RenderBars";
+import RenderStackBars from "./RenderStackBars";
+import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
+import { useBarChart } from "gifted-charts-core/src";
+import { StripAndLabel } from "../Components/common/StripAndLabel";
+import { Pointer } from "../Components/common/Pointer";
+import { screenWidth } from "../utils";
 export var BarChart = function (props) {
     var _a, _b;
     var heightValue = useMemo(function () { return new Animated.Value(0); }, []);
@@ -111,12 +111,12 @@ export var BarChart = function (props) {
         });
     };
     var contentContainerStyle = {
-        position: 'absolute',
+        position: "absolute",
         height: containerHeightIncludingBelowXAxis,
         bottom: 60 + labelsExtraHeight,
         paddingLeft: initialSpacing,
         width: totalWidth,
-        flexDirection: 'row',
+        flexDirection: "row",
     };
     var renderChartContent = function () {
         if (pointerConfig) {
@@ -144,7 +144,7 @@ export var BarChart = function (props) {
                     var item, y;
                     item = (stackData !== null && stackData !== void 0 ? stackData : data)[factor];
                     var stackSum = 0;
-                    if ('stacks' in item) {
+                    if ("stacks" in item) {
                         stackSum = item.stacks.reduce(function (acc, stack) { var _a; return acc + ((_a = stack.value) !== null && _a !== void 0 ? _a : 0); }, 0);
                     }
                     y =
@@ -182,7 +182,7 @@ export var BarChart = function (props) {
                     setPointerIndex(factor);
                     item = (stackData !== null && stackData !== void 0 ? stackData : data)[factor];
                     var stackSum = 0;
-                    if ('stacks' in item) {
+                    if ("stacks" in item) {
                         (_a = item.stacks) === null || _a === void 0 ? void 0 : _a.reduce(function (acc, stack) { var _a; return acc + ((_a = stack.value) !== null && _a !== void 0 ? _a : 0); }, 0);
                     }
                     y =
@@ -198,13 +198,13 @@ export var BarChart = function (props) {
                     setResponderActive(false);
                     if (!persistPointer)
                         setTimeout(function () { return setPointerX(0); }, pointerVanishDelay);
-                }, onResponderTerminationRequest: function (evt) { return false; }, style: contentContainerStyle, children: [pointerX > 0 && stripBehindBars ? (_jsx(View, { pointerEvents: pointerEvents !== null && pointerEvents !== void 0 ? pointerEvents : 'none', style: {
-                            position: 'absolute',
+                }, onResponderTerminationRequest: function (evt) { return false; }, style: contentContainerStyle, children: [pointerX > 0 && stripBehindBars ? (_jsx(View, { pointerEvents: pointerEvents !== null && pointerEvents !== void 0 ? pointerEvents : "none", style: {
+                            position: "absolute",
                             height: extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
                             bottom: xAxisLabelsVerticalShift,
                             width: totalWidth,
-                        }, children: renderStripAndLabel(null) })) : null, renderChart(), pointerX > 0 ? (_jsxs(View, { pointerEvents: pointerEvents !== null && pointerEvents !== void 0 ? pointerEvents : 'none', style: {
-                            position: 'absolute',
+                        }, children: renderStripAndLabel(null) })) : null, renderChart(), pointerX > 0 ? (_jsxs(View, { pointerEvents: pointerEvents !== null && pointerEvents !== void 0 ? pointerEvents : "none", style: {
+                            position: "absolute",
                             height: extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
                             bottom: xAxisLabelsVerticalShift,
                             width: totalWidth,

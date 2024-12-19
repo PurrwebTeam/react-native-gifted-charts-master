@@ -1,6 +1,10 @@
-import {Platform, View} from 'react-native';
-import {PieChartMain} from './main';
-import {PieChartPropsType, pieColors, usePieChart} from 'gifted-charts-core';
+import { Platform, View } from "react-native";
+import { PieChartMain } from "./main";
+import {
+  PieChartPropsType,
+  pieColors,
+  usePieChart,
+} from "gifted-charts-core/src";
 
 export const PieChart = (props: PieChartPropsType) => {
   const {
@@ -30,7 +34,7 @@ export const PieChart = (props: PieChartPropsType) => {
 
   const renderInnerCircle = (
     innerRadius: number,
-    innerCircleBorderWidth: number,
+    innerCircleBorderWidth: number
   ) => {
     if (props.centerLabelComponent || (donut && !isDataShifted)) {
       return (
@@ -40,9 +44,9 @@ export const PieChart = (props: PieChartPropsType) => {
               height: innerRadius * 2,
               width: innerRadius * 2,
               borderRadius: innerRadius,
-              position: 'absolute',
+              position: "absolute",
               // zIndex: 100,
-              alignSelf: 'center',
+              alignSelf: "center",
               backgroundColor: innerCircleColor,
               left:
                 canvasWidth / 2 -
@@ -58,15 +62,15 @@ export const PieChart = (props: PieChartPropsType) => {
                 paddingVertical / 2,
               borderWidth: innerCircleBorderWidth,
               borderColor: innerCircleBorderColor,
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: "center",
+              alignItems: "center",
             },
             isThreeD && {
               borderTopWidth: innerCircleBorderWidth * 5,
               borderLeftWidth: shiftInnerCenterX
                 ? innerCircleBorderWidth * 2
                 : innerCircleBorderWidth,
-              transform: [{rotateX: tiltAngle}],
+              transform: [{ rotateX: tiltAngle }],
             },
             semiCircle &&
               isThreeD && {
@@ -79,8 +83,9 @@ export const PieChart = (props: PieChartPropsType) => {
                 borderRightWidth: 0.5,
                 borderRightColor: innerCircleColor,
               },
-          ]}>
-          <View style={{marginTop: semiCircle ? -0.5 * innerRadius : 0}}>
+          ]}
+        >
+          <View style={{ marginTop: semiCircle ? -0.5 * innerRadius : 0 }}>
             {props.centerLabelComponent ? props.centerLabelComponent() : null}
           </View>
         </View>
@@ -98,9 +103,10 @@ export const PieChart = (props: PieChartPropsType) => {
           (radius + extraRadius + paddingVertical / 2) *
           (props.semiCircle ? 1 : 2),
         width: (radius + extraRadius + paddingHorizontal / 2) * 2,
-        overflow: 'hidden',
-      }}>
-      <View style={{position: 'absolute'}}>
+        overflow: "hidden",
+      }}
+    >
+      <View style={{ position: "absolute" }}>
         <PieChartMain
           {...props}
           selectedIndex={selectedIndex}
@@ -118,11 +124,12 @@ export const PieChart = (props: PieChartPropsType) => {
           <View
             pointerEvents="box-none"
             style={{
-              position: 'absolute',
+              position: "absolute",
               top: -extraRadius,
               left: -extraRadius,
-              zIndex: Platform.OS === 'web' ? -1 : 0, // was not getting displayed in web (using Expo)
-            }}>
+              zIndex: Platform.OS === "web" ? -1 : 0, // was not getting displayed in web (using Expo)
+            }}
+          >
             <PieChartMain
               {...props}
               data={[
@@ -161,7 +168,7 @@ export const PieChart = (props: PieChartPropsType) => {
         )}
       {renderInnerCircle(
         innerRadius - inwardExtraLengthForFocused,
-        inwardExtraLengthForFocused ? 0 : innerCircleBorderWidth,
+        inwardExtraLengthForFocused ? 0 : innerCircleBorderWidth
       )}
     </View>
   );

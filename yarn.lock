@@ -3345,10 +3345,9 @@ get-symbol-description@^1.0.2:
     es-errors "^1.3.0"
     get-intrinsic "^1.2.4"
 
-gifted-charts-core@0.1.47:
-  version "0.1.47"
-  resolved "https://registry.yarnpkg.com/gifted-charts-core/-/gifted-charts-core-0.1.47.tgz#a47b844d52726fa546573b40baff93599bb13c51"
-  integrity sha512-mVwJKwje7O3zjNatNEb6cPr+Cs8G+2l7oWcyL6BuqUz1NDDavWf6dYivDTfV4Q5oPPJS7FrlCALr43kCIvQFNg==
+"gifted-charts-core@https://github.com/Danila-Sadykov/my-gifted-charts-core.git":
+  version "0.1.48"
+  resolved "https://github.com/Danila-Sadykov/my-gifted-charts-core.git#a4067cb3c8fd5012db8b7c6c4e5ff33182e268df"
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"

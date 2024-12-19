@@ -1,9 +1,9 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Fragment } from 'react';
-import { styles } from '../../../BarChart/styles';
-import { View } from 'react-native';
-import { getXForLineInBar, getYForLineInBar } from 'gifted-charts-core';
-import { Rect, Text as CanvasText, Circle } from 'react-native-svg';
+import { Fragment } from "react";
+import { styles } from "../../../BarChart/styles";
+import { View } from "react-native";
+import { getXForLineInBar, getYForLineInBar } from "gifted-charts-core/src";
+import { Rect, Text as CanvasText, Circle } from "react-native-svg";
 export var renderDataPoints = function (props) {
     var data = props.data, lineConfig = props.lineConfig, barWidth = props.barWidth, containerHeight = props.containerHeight, maxValue = props.maxValue, firstBarWidth = props.firstBarWidth, yAxisLabelWidth = props.yAxisLabelWidth, spacing = props.spacing, selectedIndex = props.selectedIndex, yAxisOffset = props.yAxisOffset;
     return data.map(function (item, index) {
@@ -37,7 +37,7 @@ export var renderDataPoints = function (props) {
                     },
                 ], children: customDataPoint(item, index) }));
         }
-        if (lineConfig.dataPointsShape === 'rectangular') {
+        if (lineConfig.dataPointsShape === "rectangular") {
             return (_jsxs(Fragment, { children: [_jsx(Rect, { x: getXForLineInBar(index, firstBarWidth, currentBarWidth, yAxisLabelWidth, lineConfig, spacing), y: getYForLineInBar(value, lineConfig.shiftY, containerHeight, maxValue, yAxisOffset) -
                             lineConfig.dataPointsHeight / 2, width: lineConfig.dataPointsWidth, height: lineConfig.dataPointsHeight, fill: dataPointColor }), item.dataPointText && (_jsx(CanvasText, { fill: item.textColor || lineConfig.textColor, fontSize: item.textFontSize || lineConfig.textFontSize, x: getXForLineInBar(index, firstBarWidth, currentBarWidth, yAxisLabelWidth, lineConfig, spacing) + (item.textShiftX || lineConfig.textShiftX || 0), y: getYForLineInBar(value, lineConfig.shiftY, containerHeight, maxValue, yAxisOffset) -
                             lineConfig.dataPointsHeight / 2 +

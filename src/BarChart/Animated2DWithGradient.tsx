@@ -1,11 +1,11 @@
-import {useEffect, useState} from 'react';
-import {View, LayoutAnimation, Platform, UIManager, Text} from 'react-native';
-import Svg, {Defs, Rect} from 'react-native-svg';
-import Cap from '../Components/BarSpecificComponents/cap';
-import LinearGradient from '../Components/common/LinearGradient';
-import {Animated2DWithGradientPropsType} from 'gifted-charts-core';
+import { useEffect, useState } from "react";
+import { View, LayoutAnimation, Platform, UIManager, Text } from "react-native";
+import Svg, { Defs, Rect } from "react-native-svg";
+import Cap from "../Components/BarSpecificComponents/cap";
+import LinearGradient from "../Components/common/LinearGradient";
+import { Animated2DWithGradientPropsType } from "gifted-charts-core/src";
 
-if (Platform.OS === 'android') {
+if (Platform.OS === "android") {
   UIManager.setLayoutAnimationEnabledExperimental &&
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
@@ -52,7 +52,7 @@ const Animated2DWithGradient = (props: Animated2DWithGradientPropsType) => {
   const elevate = () => {
     LayoutAnimation.configureNext({
       duration: animationDuration,
-      update: {type: 'linear', property: 'scaleXY'},
+      update: { type: "linear", property: "scaleXY" },
     });
     setHeight(props.height);
     setBarWidth(item.barWidth ?? bWidth);
@@ -60,12 +60,12 @@ const Animated2DWithGradient = (props: Animated2DWithGradientPropsType) => {
 
   const layoutAppear = () => {
     LayoutAnimation.configureNext({
-      duration: Platform.OS == 'ios' ? animationDuration : 20,
-      create: {type: 'linear', property: 'opacity'},
-      update: {type: 'linear', property: 'scaleXY'},
+      duration: Platform.OS == "ios" ? animationDuration : 20,
+      create: { type: "linear", property: "opacity" },
+      update: { type: "linear", property: "scaleXY" },
     });
     setInitialRender(false);
-    setTimeout(() => elevate(), Platform.OS == 'ios' ? 10 : 100);
+    setTimeout(() => elevate(), Platform.OS == "ios" ? 10 : 100);
   };
 
   return (
@@ -73,26 +73,28 @@ const Animated2DWithGradient = (props: Animated2DWithGradientPropsType) => {
       {!initialRender && (
         <View
           style={{
-            position: 'absolute',
+            position: "absolute",
             bottom: 0,
             width: barWidth,
-            overflow: 'hidden',
+            overflow: "hidden",
             height:
               (noAnimation
                 ? Math.max(props.minHeight, Math.abs(height))
                 : height) - (barMarginBottom || 0),
-          }}>
+          }}
+        >
           <View
             style={[
               {
-                width: '100%',
+                width: "100%",
                 height:
                   (noAnimation
                     ? Math.max(props.minHeight, Math.abs(height))
                     : height) - (barMarginBottom || 0),
               },
               item.barStyle || barStyle,
-            ]}>
+            ]}
+          >
             {noGradient ? (
               <View style={barStyleWithBackground}>
                 {props.cappedBars && item.value ? (
@@ -109,23 +111,24 @@ const Animated2DWithGradient = (props: Animated2DWithGradientPropsType) => {
             ) : (
               <LinearGradient
                 style={commonStyleForBar}
-                start={{x: 0, y: 0}}
-                end={{x: 1, y: 1}}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
                 colors={[
-                  item.gradientColor || props.gradientColor || 'white',
-                  item.frontColor || props.frontColor || 'black',
-                ]}>
+                  item.gradientColor || props.gradientColor || "white",
+                  item.frontColor || props.frontColor || "black",
+                ]}
+              >
                 {props.cappedBars && (
                   <View
                     style={{
-                      position: 'absolute',
-                      width: '100%',
+                      position: "absolute",
+                      width: "100%",
                       height:
                         item.capThickness === 0
                           ? 0
                           : item.capThickness || props.capThickness || 6,
                       backgroundColor:
-                        item.capColor || props.capColor || 'black',
+                        item.capColor || props.capColor || "black",
                       borderTopLeftRadius:
                         item.capRadius === 0
                           ? 0
@@ -157,7 +160,7 @@ const Animated2DWithGradient = (props: Animated2DWithGradientPropsType) => {
               </Svg>
             )}
             {barInnerComponent ? (
-              <View style={{height: '100%', width: '100%'}}>
+              <View style={{ height: "100%", width: "100%" }}>
                 {barInnerComponent(item, index)}
               </View>
             ) : null}
@@ -168,22 +171,23 @@ const Animated2DWithGradient = (props: Animated2DWithGradientPropsType) => {
         <View
           style={[
             {
-              position: 'absolute',
+              position: "absolute",
               top: (item.barWidth || barWidth || 30) * -1,
               height: item.barWidth || barWidth || 30,
               width: item.barWidth || barWidth || 30,
               justifyContent:
                 (props.horizontal && !intactTopLabel) || item.value < 0
-                  ? 'center'
-                  : 'flex-end',
-              alignItems: 'center',
+                  ? "center"
+                  : "flex-end",
+              alignItems: "center",
               opacity: opacity,
             },
-            item.value < 0 && {transform: [{rotate: '180deg'}]},
+            item.value < 0 && { transform: [{ rotate: "180deg" }] },
             props.horizontal &&
-              !intactTopLabel && {transform: [{rotate: '270deg'}]},
+              !intactTopLabel && { transform: [{ rotate: "270deg" }] },
             topLabelContainerStyle ?? item.topLabelContainerStyle,
-          ]}>
+          ]}
+        >
           {showValuesAsTopLabel ? (
             <Text style={topLabelTextStyle}>{item.value + yAxisOffset}</Text>
           ) : (

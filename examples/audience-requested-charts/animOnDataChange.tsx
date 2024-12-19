@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
-import {LineChart} from '../../src/LineChart';
-import {ruleTypes, clone} from 'gifted-charts-core';
+import React, { useEffect, useState } from "react";
+import { Text, View } from "react-native";
+import { LineChart } from "../../src/LineChart";
+import { ruleTypes, clone } from "gifted-charts-core/src";
 
 // Fördefinierade sökvägar för moduler
 
 const AnimOnDataChange = () => {
-  const lcomp = v => (
-    <Text style={{width: 50, color: 'white', fontWeight: 'bold'}}>{v}</Text>
+  const lcomp = (v) => (
+    <Text style={{ width: 50, color: "white", fontWeight: "bold" }}>{v}</Text>
   );
   const dPoint = () => {
     return (
@@ -15,10 +15,10 @@ const AnimOnDataChange = () => {
         style={{
           width: 14,
           height: 14,
-          backgroundColor: 'white',
+          backgroundColor: "white",
           borderWidth: 3,
           borderRadius: 7,
-          borderColor: '#07BAD1',
+          borderColor: "#07BAD1",
         }}
       />
     );
@@ -26,7 +26,7 @@ const AnimOnDataChange = () => {
   const latestData = [
     {
       value: 350,
-      labelComponent: () => lcomp('22 Nov'),
+      labelComponent: () => lcomp("22 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -43,7 +43,7 @@ const AnimOnDataChange = () => {
     },
     {
       value: 570,
-      labelComponent: () => lcomp('24 Nov'),
+      labelComponent: () => lcomp("24 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -60,7 +60,7 @@ const AnimOnDataChange = () => {
     },
     {
       value: 280,
-      labelComponent: () => lcomp('26 Nov'),
+      labelComponent: () => lcomp("26 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -77,7 +77,7 @@ const AnimOnDataChange = () => {
     },
     {
       value: 520,
-      labelComponent: () => lcomp('28 Nov'),
+      labelComponent: () => lcomp("28 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -94,7 +94,7 @@ const AnimOnDataChange = () => {
     },
     {
       value: 460,
-      labelComponent: () => lcomp('28 Nov'),
+      labelComponent: () => lcomp("28 Nov"),
       customDataPoint: dPoint,
     },
     {
@@ -109,7 +109,7 @@ const AnimOnDataChange = () => {
   const [currentData, setCurrentData] = useState(clone(latestData));
   useEffect(() => {
     setTimeout(() => {
-      const newData = latestData.map(item => {
+      const newData = latestData.map((item) => {
         return {
           ...item,
           value: 250,
@@ -119,7 +119,7 @@ const AnimOnDataChange = () => {
     }, 1500);
 
     setTimeout(() => {
-      const newData = latestData.map(item => {
+      const newData = latestData.map((item) => {
         return {
           ...item,
           value: item.value - 50,
@@ -129,7 +129,7 @@ const AnimOnDataChange = () => {
     }, 2500);
 
     setTimeout(() => {
-      const newData = latestData.map(item => {
+      const newData = latestData.map((item) => {
         return {
           ...item,
           value: 500 - item.value,
@@ -144,8 +144,9 @@ const AnimOnDataChange = () => {
       <View
         style={{
           paddingVertical: 50,
-          backgroundColor: '#414141',
-        }}>
+          backgroundColor: "#414141",
+        }}
+      >
         <LineChart
           isAnimated
           thickness={3}
@@ -156,11 +157,11 @@ const AnimOnDataChange = () => {
           animationDuration={1000}
           onDataChangeAnimationDuration={500}
           areaChart
-          yAxisTextStyle={{color: 'lightgray'}}
+          yAxisTextStyle={{ color: "lightgray" }}
           data={currentData}
           hideDataPoints
-          startFillColor={'rgb(84,219,234)'}
-          endFillColor={'rgb(84,219,234)'}
+          startFillColor={"rgb(84,219,234)"}
+          endFillColor={"rgb(84,219,234)"}
           startOpacity={0.4}
           endOpacity={0.1}
           spacing={22}

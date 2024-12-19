@@ -15,7 +15,7 @@ import { View, Animated, Easing, Text } from 'react-native';
 import { styles } from './styles';
 import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, } from 'react-native-svg';
 import BarAndLineChartsWrapper from '../Components/BarAndLineChartsWrapper';
-import { useLineChartBiColor, } from 'gifted-charts-core';
+import { useLineChartBiColor, } from 'gifted-charts-core/src';
 import { screenWidth } from '../utils';
 export var LineChartBicolor = function (props) {
     var _a;

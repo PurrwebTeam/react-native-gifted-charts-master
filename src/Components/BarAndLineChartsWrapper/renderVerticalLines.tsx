@@ -1,7 +1,7 @@
-import React from 'react';
-import {View} from 'react-native';
-import {chartTypes} from 'gifted-charts-core';
-import {Line, Svg} from 'react-native-svg';
+import React from "react";
+import { View } from "react-native";
+import { chartTypes } from "gifted-charts-core/src";
+import { Line, Svg } from "react-native-svg";
 
 const RenderVerticalLines = (props: any) => {
   const {
@@ -50,21 +50,22 @@ const RenderVerticalLines = (props: any) => {
   const extendedContainerHeight = containerHeight + 10 + labelsExtraHeight;
   const thickness = verticalLinesThickness || 2;
   const heightAdjustmentDueToStrokeLinecap =
-    verticalLinesStrokeLinecap === 'round' ||
-    verticalLinesStrokeLinecap === 'square'
+    verticalLinesStrokeLinecap === "round" ||
+    verticalLinesStrokeLinecap === "square"
       ? thickness / 2
       : 0;
 
   return (
     <View
       style={{
-        position: 'absolute',
+        position: "absolute",
         height: extendedContainerHeight,
         bottom: 60 + xAxisLabelsVerticalShift, //stepHeight * -0.5 + xAxisThickness,
         left: 0,
         width: totalWidth,
         zIndex: verticalLinesZIndex || -1,
-      }}>
+      }}
+    >
       <Svg height={containerHeightIncludingBelowXAxis} width={totalWidth}>
         {verticalLinesAr.map((item: any, index: number) => {
           let totalSpacing = initialSpacing;
@@ -115,8 +116,8 @@ const RenderVerticalLines = (props: any) => {
             (chartType === chartTypes.BAR
               ? totalSpacing - 1
               : verticalLinesSpacing
-                ? verticalLinesSpacing * (index + 1)
-                : index * spacing + (initialSpacing - 2));
+              ? verticalLinesSpacing * (index + 1)
+              : index * spacing + (initialSpacing - 2));
 
           return (
             <Line
@@ -129,9 +130,9 @@ const RenderVerticalLines = (props: any) => {
               }
               x2={x}
               y2={extendedContainerHeight - heightAdjustmentDueToStrokeLinecap}
-              stroke={verticalLinesColor || 'lightgray'}
+              stroke={verticalLinesColor || "lightgray"}
               strokeWidth={verticalLinesThickness || 2}
-              strokeDasharray={verticalLinesStrokeDashArray ?? ''}
+              strokeDasharray={verticalLinesStrokeDashArray ?? ""}
               strokeLinecap={verticalLinesStrokeLinecap}
             />
           );

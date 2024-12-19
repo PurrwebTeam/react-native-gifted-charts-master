@@ -1,17 +1,17 @@
-import React from 'react';
-import {View} from 'react-native';
-import {BarChart} from '../../src/BarChart';
-import { ruleTypes } from 'gifted-charts-core';
+import React from "react";
+import { View } from "react-native";
+import { BarChart } from "../../src/BarChart";
+import { ruleTypes } from "gifted-charts-core/src";
 
 const BarChartWithGivenNumberOfVerticalLines = () => {
   const data = [
-    {value: 15, label: 'Jan'},
-    {value: 40, label: 'Feb'},
-    {value: 10, label: 'Mar'},
-    {value: 30, label: 'Apr'},
+    { value: 15, label: "Jan" },
+    { value: 40, label: "Feb" },
+    { value: 10, label: "Mar" },
+    { value: 30, label: "Apr" },
   ];
   return (
-    <View style={{borderWidth:1}}>
+    <View style={{ borderWidth: 1 }}>
       <BarChart
         data={data}
         width={300}

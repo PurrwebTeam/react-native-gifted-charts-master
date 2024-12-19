@@ -1,9 +1,9 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { View, Animated } from 'react-native';
-import Svg, { Path } from 'react-native-svg';
-import { renderSpecificVerticalLines } from './renderSpecificVerticalLines';
-import { renderDataPoints } from './renderDataPoints';
-import { renderSpecificDataPoints } from './renderSpecificDataPoints';
+import { View, Animated } from "react-native";
+import Svg, { Path } from "react-native-svg";
+import { renderSpecificVerticalLines } from "./renderSpecificVerticalLines";
+import { renderDataPoints } from "./renderDataPoints";
+import { renderSpecificDataPoints } from "./renderSpecificDataPoints";
 var RenderLineInBarChart = function (props) {
     var _a;
     var yAxisLabelWidth = props.yAxisLabelWidth, initialSpacing = props.initialSpacing, spacing = props.spacing, containerHeight = props.containerHeight, lineConfig = props.lineConfig, maxValue = props.maxValue, animatedWidth = props.animatedWidth, lineBehindBars = props.lineBehindBars, points = props.points, arrowPoints = props.arrowPoints, data = props.data, totalWidth = props.totalWidth, barWidth = props.barWidth, labelsExtraHeight = props.labelsExtraHeight, xAxisLabelsVerticalShift = props.xAxisLabelsVerticalShift, selectedIndex = props.selectedIndex, containerHeightIncludingBelowXAxis = props.containerHeightIncludingBelowXAxis, yAxisOffset = props.yAxisOffset;
@@ -44,7 +44,7 @@ var RenderLineInBarChart = function (props) {
     var renderAnimatedLine = function () {
         var _a, _b, _c;
         return (_jsx(Animated.View, { pointerEvents: "none", style: {
-                position: 'absolute',
+                position: "absolute",
                 height: containerHeightIncludingBelowXAxis + labelsExtraHeight,
                 left: 6 - yAxisLabelWidth,
                 bottom: 50 + xAxisLabelsVerticalShift, //stepHeight * -0.5 + xAxisThickness,
@@ -58,7 +58,7 @@ var RenderLineInBarChart = function (props) {
     var renderLine = function () {
         var _a, _b, _c;
         return (_jsx(View, { pointerEvents: "none", style: {
-                position: 'absolute',
+                position: "absolute",
                 height: containerHeightIncludingBelowXAxis + labelsExtraHeight,
                 left: 6 - yAxisLabelWidth,
                 bottom: 50 + xAxisLabelsVerticalShift, //stepHeight * -0.5 + xAxisThickness,

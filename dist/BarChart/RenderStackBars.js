@@ -10,13 +10,13 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import { useEffect } from 'react';
-import { View, TouchableOpacity, Text, LayoutAnimation, Platform, UIManager, } from 'react-native';
-import Svg, { Defs, Rect } from 'react-native-svg';
-import LinearGradient from '../Components/common/LinearGradient';
-import { useRenderStackBars, BarDefaults, } from 'gifted-charts-core';
-import Tooltip from '../Components/BarSpecificComponents/tooltip';
-if (Platform.OS === 'android') {
+import { useEffect } from "react";
+import { View, TouchableOpacity, Text, LayoutAnimation, Platform, UIManager, } from "react-native";
+import Svg, { Defs, Rect } from "react-native-svg";
+import LinearGradient from "../Components/common/LinearGradient";
+import { useRenderStackBars, BarDefaults, } from "gifted-charts-core/src";
+import Tooltip from "../Components/BarSpecificComponents/tooltip";
+if (Platform.OS === "android") {
     UIManager.setLayoutAnimationEnabledExperimental &&
         UIManager.setLayoutAnimationEnabledExperimental(true);
 }
@@ -33,19 +33,19 @@ var RenderStackBars = function (props) {
                         props.barWidth ||
                         30) +
                         spacing / 2,
-                    position: 'absolute',
+                    position: "absolute",
                     bottom: autoShiftLabelsForNegativeStacks
                         ? -6 - xAxisTextNumberOfLines * 18 + lowestBarPosition
                         : -labelsDistanceFromXaxis,
                 },
                 rotateLabel
                     ? horizontal
-                        ? { transform: [{ rotate: '330deg' }] }
-                        : { transform: [{ rotate: '60deg' }] }
+                        ? { transform: [{ rotate: "330deg" }] }
+                        : { transform: [{ rotate: "60deg" }] }
                     : horizontal
-                        ? { transform: [{ rotate: '-90deg' }] }
+                        ? { transform: [{ rotate: "-90deg" }] }
                         : {},
-            ], children: item.labelComponent ? (item.labelComponent()) : (_jsx(Text, { style: [labelTextStyle], numberOfLines: xAxisTextNumberOfLines, children: label || '' })) }));
+            ], children: item.labelComponent ? (item.labelComponent()) : (_jsx(Text, { style: [labelTextStyle], numberOfLines: xAxisTextNumberOfLines, children: label || "" })) }));
     };
     useEffect(function () {
         if (!noAnimation) {
@@ -55,17 +55,17 @@ var RenderStackBars = function (props) {
     var elevate = function () {
         LayoutAnimation.configureNext({
             duration: animationDuration,
-            update: { type: 'linear', property: 'scaleXY' },
+            update: { type: "linear", property: "scaleXY" },
         });
         setHeight(totalHeight);
     };
     var layoutAppear = function () {
         LayoutAnimation.configureNext({
-            duration: Platform.OS == 'ios' ? animationDuration : 20,
-            create: { type: 'linear', property: 'opacity' },
-            update: { type: 'linear', property: 'scaleXY' },
+            duration: Platform.OS == "ios" ? animationDuration : 20,
+            create: { type: "linear", property: "opacity" },
+            update: { type: "linear", property: "scaleXY" },
         });
-        setTimeout(function () { return elevate(); }, Platform.OS == 'ios' ? 10 : 100);
+        setTimeout(function () { return elevate(); }, Platform.OS == "ios" ? 10 : 100);
     };
     var static2DSimple = function () {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
@@ -93,59 +93,59 @@ var RenderStackBars = function (props) {
                         }
                     }, style: [
                         {
-                            position: 'absolute',
+                            position: "absolute",
                             width: item.stacks[0].barWidth || props.barWidth || 30,
-                            height: '100%',
+                            height: "100%",
                             borderTopLeftRadius: (_b = (_a = borderTopLeftRadius !== null && borderTopLeftRadius !== void 0 ? borderTopLeftRadius : borderRadius) !== null && _a !== void 0 ? _a : stackBorderTopLeftRadius) !== null && _b !== void 0 ? _b : stackBorderRadius,
                             borderTopRightRadius: (_d = (_c = borderTopRightRadius !== null && borderTopRightRadius !== void 0 ? borderTopRightRadius : borderRadius) !== null && _c !== void 0 ? _c : stackBorderTopRightRadius) !== null && _d !== void 0 ? _d : stackBorderRadius,
                             borderBottomLeftRadius: (_f = (_e = borderBottomLeftRadius !== null && borderBottomLeftRadius !== void 0 ? borderBottomLeftRadius : borderRadius) !== null && _e !== void 0 ? _e : stackBorderBottomLeftRadius) !== null && _f !== void 0 ? _f : stackBorderRadius,
                             borderBottomRightRadius: (_h = (_g = borderBottomRightRadius !== null && borderBottomRightRadius !== void 0 ? borderBottomRightRadius : borderRadius) !== null && _g !== void 0 ? _g : stackBorderBottomRightRadius) !== null && _h !== void 0 ? _h : stackBorderRadius,
-                            overflow: lowestBarPosition ? 'visible' : 'hidden',
+                            overflow: lowestBarPosition ? "visible" : "hidden",
                         },
                     ], children: [item.stacks.map(function (stackItem, index) {
                             var borderRadii = getStackBorderRadii(item, index);
                             var barHeight = getBarHeight(stackItem.value, stackItem.marginBottom);
-                            return (_jsxs(TouchableOpacity, { onPress: stackItem.onPress, activeOpacity: activeOpacity, disabled: disablePress || !stackItem.onPress, style: __assign({ position: 'absolute', bottom: getPosition(index) + (stackItem.marginBottom || 0), width: '100%', height: barHeight, backgroundColor: stackItem.color || item.color || props.color || 'black', borderWidth: barBorderWidth !== null && barBorderWidth !== void 0 ? barBorderWidth : 0, borderColor: barBorderColor }, borderRadii), children: [stackItem.showGradient ||
+                            return (_jsxs(TouchableOpacity, { onPress: stackItem.onPress, activeOpacity: activeOpacity, disabled: disablePress || !stackItem.onPress, style: __assign({ position: "absolute", bottom: getPosition(index) + (stackItem.marginBottom || 0), width: "100%", height: barHeight, backgroundColor: stackItem.color || item.color || props.color || "black", borderWidth: barBorderWidth !== null && barBorderWidth !== void 0 ? barBorderWidth : 0, borderColor: barBorderColor }, borderRadii), children: [stackItem.showGradient ||
                                         item.showGradient ||
-                                        props.showGradient ? (_jsx(LinearGradient, { style: __assign({ position: 'absolute', width: '100%', height: '100%' }, borderRadii), start: { x: 0, y: 0 }, end: { x: 0, y: 1 }, colors: [
+                                        props.showGradient ? (_jsx(LinearGradient, { style: __assign({ position: "absolute", width: "100%", height: "100%" }, borderRadii), start: { x: 0, y: 0 }, end: { x: 0, y: 1 }, colors: [
                                             stackItem.gradientColor ||
                                                 item.gradientColor ||
                                                 props.gradientColor ||
-                                                'white',
-                                            stackItem.color || item.color || props.color || 'black',
+                                                "white",
+                                            stackItem.color || item.color || props.color || "black",
                                         ] })) : null, stackItem.innerBarComponent && stackItem.innerBarComponent()] }, index));
                         }), (item.barBackgroundPattern || barBackgroundPattern) && (_jsxs(Svg, { children: [_jsx(Defs, { children: item.barBackgroundPattern
                                         ? item.barBackgroundPattern()
-                                        : barBackgroundPattern === null || barBackgroundPattern === void 0 ? void 0 : barBackgroundPattern() }), _jsx(Rect, { stroke: "none", x: "1", y: "1", width: "100%", height: totalHeight, fill: "url(#".concat(item.patternId || patternId, ")") })] }))] }), localBarInnerComponent ? (_jsx(View, { style: { height: '100%', width: '100%' }, children: localBarInnerComponent(item, index) })) : null, (item.topLabelComponent || showValuesAsTopLabel) && (_jsx(View, { style: [
+                                        : barBackgroundPattern === null || barBackgroundPattern === void 0 ? void 0 : barBackgroundPattern() }), _jsx(Rect, { stroke: "none", x: "1", y: "1", width: "100%", height: totalHeight, fill: "url(#".concat(item.patternId || patternId, ")") })] }))] }), localBarInnerComponent ? (_jsx(View, { style: { height: "100%", width: "100%" }, children: localBarInnerComponent(item, index) })) : null, (item.topLabelComponent || showValuesAsTopLabel) && (_jsx(View, { style: [
                         {
-                            position: 'absolute',
+                            position: "absolute",
                             top: containsNegativeValue
                                 ? 0
                                 : (item.barWidth || props.barWidth || 30) * -1,
                             height: item.barWidth || props.barWidth || 30,
                             width: item.barWidth || props.barWidth || 30,
-                            justifyContent: 'center',
-                            alignItems: 'center',
+                            justifyContent: "center",
+                            alignItems: "center",
                         },
                         containsNegativeValue && {
                             transform: [{ translateY: totalHeight * 2 }],
                         },
                         horizontal &&
-                            !props.intactTopLabel && { transform: [{ rotate: '270deg' }] },
+                            !props.intactTopLabel && { transform: [{ rotate: "270deg" }] },
                         item.topLabelContainerStyle,
                     ], children: showValuesAsTopLabel ? (_jsx(Text, { style: (_j = item.topLabelTextStyle) !== null && _j !== void 0 ? _j : props.topLabelTextStyle, children: stackData[index].stacks.reduce(function (acc, stack) { return acc + stack.value; }, 0) })) : ((_k = item.topLabelComponent) === null || _k === void 0 ? void 0 : _k.call(item)) }))] }));
     };
     var barWrapper = function () {
         return noAnimation ? (static2DSimple()) : (_jsx(View, { style: {
-                position: 'absolute',
+                position: "absolute",
                 bottom: 0,
                 height: height,
-                width: '100%',
+                width: "100%",
             }, children: static2DSimple() }));
     };
     return (_jsxs(_Fragment, { children: [_jsxs(View, { pointerEvents: props.pointerConfig
-                    ? ((_a = props.pointerConfig.pointerEvents) !== null && _a !== void 0 ? _a : 'none')
-                    : 'auto', style: [
+                    ? (_a = props.pointerConfig.pointerEvents) !== null && _a !== void 0 ? _a : "none"
+                    : "auto", style: [
                     {
                         // overflow: 'visible',
                         marginBottom: 60 + xAxisLabelsVerticalShift,
@@ -161,7 +161,7 @@ var RenderStackBars = function (props) {
                     },
                 ], children: [(props.showXAxisIndices || item.showXAxisIndex) && (_jsx(View, { style: {
                             zIndex: 2,
-                            position: 'absolute',
+                            position: "absolute",
                             height: props.xAxisIndicesHeight,
                             width: props.xAxisIndicesWidth,
                             bottom: props.xAxisIndicesHeight / -2,
@@ -169,6 +169,6 @@ var RenderStackBars = function (props) {
                                 props.xAxisIndicesWidth) /
                                 2,
                             backgroundColor: props.xAxisIndicesColor,
-                        } })), barWrapper(), renderLabel(label || '', labelTextStyle)] }), renderTooltip && selectedIndex === index && (_jsx(Tooltip, __assign({}, tooltipProps)))] }));
+                        } })), barWrapper(), renderLabel(label || "", labelTextStyle)] }), renderTooltip && selectedIndex === index && (_jsx(Tooltip, __assign({}, tooltipProps)))] }));
 };
 export default RenderStackBars;

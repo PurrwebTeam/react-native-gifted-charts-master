@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -6,17 +6,17 @@ import {
   Platform,
   UIManager,
   Text,
-} from 'react-native';
-import Svg, {Defs, Rect} from 'react-native-svg';
-import {styles} from './styles';
+} from "react-native";
+import Svg, { Defs, Rect } from "react-native-svg";
+import { styles } from "./styles";
 import LinearGradient from "../common/LinearGradient";
 import {
   useAnimatedThreeDBar,
   animatedBarPropTypes,
   trianglePropTypes,
-} from 'gifted-charts-core';
+} from "gifted-charts-core/src";
 
-if (Platform.OS === 'android') {
+if (Platform.OS === "android") {
   UIManager.setLayoutAnimationEnabledExperimental &&
     UIManager.setLayoutAnimationEnabledExperimental(true);
 }
@@ -41,17 +41,17 @@ const triangleStyles = StyleSheet.create({
   triangleCorner: {
     width: 0,
     height: 0,
-    backgroundColor: 'transparent',
-    borderStyle: 'solid',
-    borderRightColor: 'transparent',
-    transform: [{rotate: '90deg'}],
+    backgroundColor: "transparent",
+    borderStyle: "solid",
+    borderRightColor: "transparent",
+    transform: [{ rotate: "90deg" }],
   },
 });
 
 const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
   const heightCopy = props.height;
   const [height, setHeight] = useState(
-    props.isAnimated ? (Platform.OS === 'ios' ? 0 : 20) : heightCopy,
+    props.isAnimated ? (Platform.OS === "ios" ? 0 : 20) : heightCopy
   );
 
   const {
@@ -97,19 +97,19 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
   const elevate = () => {
     LayoutAnimation.configureNext({
       duration: animationDuration,
-      update: {type: 'linear', property: 'scaleY'},
+      update: { type: "linear", property: "scaleY" },
     });
     setHeight(props.height);
   };
 
   const layoutAppear = () => {
     LayoutAnimation.configureNext({
-      duration: Platform.OS == 'ios' ? animationDuration : 20,
-      create: {type: 'linear', property: 'scaleY'},
+      duration: Platform.OS == "ios" ? animationDuration : 20,
+      create: { type: "linear", property: "scaleY" },
       // update: { type: 'linear' }
     });
     setInitialRender(false);
-    setTimeout(() => elevate(), Platform.OS == 'ios' ? 10 : 100);
+    setTimeout(() => elevate(), Platform.OS == "ios" ? 10 : 100);
   };
 
   return (
@@ -118,20 +118,21 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
         <View
           style={[
             styles.row,
-            {opacity: opacity, position: 'absolute', bottom: 0},
-            props.side === 'right' && {transform: [{rotateY: '180deg'}]},
-          ]}>
+            { opacity: opacity, position: "absolute", bottom: 0 },
+            props.side === "right" && { transform: [{ rotateY: "180deg" }] },
+          ]}
+        >
           {/*******************          Top View             *****************/}
           {props.height ? (
             <>
-              <View style={{position: 'absolute', top: sideWidth / -2}}>
+              <View style={{ position: "absolute", top: sideWidth / -2 }}>
                 <TriangleCorner
                   color={topColor}
                   width={sideWidth}
-                  style={{transform: [{rotate: '90deg'}], opacity: opacity}}
+                  style={{ transform: [{ rotate: "90deg" }], opacity: opacity }}
                 />
               </View>
-              <View style={{position: 'absolute', top: sideWidth / -2}}>
+              <View style={{ position: "absolute", top: sideWidth / -2 }}>
                 <View
                   style={{
                     width: barWidth,
@@ -144,14 +145,18 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
               </View>
               <View
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: sideWidth / -2,
                   left: barWidth - 1,
-                }}>
+                }}
+              >
                 <TriangleCorner
                   color={topColor}
                   width={sideWidth}
-                  style={{transform: [{rotate: '-90deg'}], opacity: opacity}}
+                  style={{
+                    transform: [{ rotate: "-90deg" }],
+                    opacity: opacity,
+                  }}
                 />
               </View>
             </>
@@ -159,11 +164,11 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
 
           {/*******************************************************************/}
 
-          <View style={{marginTop: sideWidth / -2 - 1}}>
+          <View style={{ marginTop: sideWidth / -2 - 1 }}>
             <TriangleCorner
-              color={height ? sideColor : 'transparent'}
+              color={height ? sideColor : "transparent"}
               width={sideWidth}
-              style={{transform: [{rotate: '-90deg'}], opacity: opacity}}
+              style={{ transform: [{ rotate: "-90deg" }], opacity: opacity }}
             />
             <View
               style={{
@@ -174,9 +179,9 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
               }}
             />
             <TriangleCorner
-              color={height ? sideColor : 'transparent'}
+              color={height ? sideColor : "transparent"}
               width={sideWidth + 1}
-              style={{transform: [{rotate: '90deg'}], opacity: opacity}}
+              style={{ transform: [{ rotate: "90deg" }], opacity: opacity }}
             />
           </View>
 
@@ -188,16 +193,17 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
                 backgroundColor: frontColor,
                 borderLeftWidth: StyleSheet.hairlineWidth,
                 borderTopWidth: StyleSheet.hairlineWidth,
-                borderColor: 'white',
+                borderColor: "white",
                 opacity: opacity,
               },
               item.barStyle || barStyle,
-            ]}>
+            ]}
+          >
             {showGradient && (
               <LinearGradient
-                style={{position: 'absolute', width: '100%', height: '100%'}}
-                start={{x: 0, y: 0}}
-                end={{x: 1, y: 1}}
+                style={{ position: "absolute", width: "100%", height: "100%" }}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
                 colors={[gradientColor, frontColor]}
               />
             )}
@@ -215,7 +221,7 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
               </Svg>
             )}
             {barInnerComponent ? (
-              <View style={{height: '100%', width: '100%'}}>
+              <View style={{ height: "100%", width: "100%" }}>
                 {barInnerComponent(item, index)}
               </View>
             ) : null}
@@ -227,19 +233,22 @@ const AnimatedThreeDBar = (props: animatedBarPropTypes) => {
             <View
               style={[
                 {
-                  position: 'absolute',
+                  position: "absolute",
                   top: barWidth * -2,
                   height: (barWidth * 3) / 2,
                   width: (barWidth * 3) / 2,
-                  justifyContent: 'flex-end',
-                  alignItems: 'center',
+                  justifyContent: "flex-end",
+                  alignItems: "center",
                   opacity: opacity,
                 },
                 props.horizontal &&
-                  !intactTopLabel && {transform: [{rotate: '270deg'}]},
-                props.side === 'right' && {transform: [{rotateY: '180deg'}]},
+                  !intactTopLabel && { transform: [{ rotate: "270deg" }] },
+                props.side === "right" && {
+                  transform: [{ rotateY: "180deg" }],
+                },
                 topLabelContainerStyle ?? item.topLabelContainerStyle,
-              ]}>
+              ]}
+            >
               {showValuesAsTopLabel ? (
                 <Text style={topLabelTextStyle}>{item.value}</Text>
               ) : (

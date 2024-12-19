@@ -1,11 +1,11 @@
-import React from 'react';
-import {View, Animated} from 'react-native';
-import Svg, {Path} from 'react-native-svg';
-import {renderSpecificVerticalLines} from './renderSpecificVerticalLines';
-import {renderDataPoints} from './renderDataPoints';
-import {renderSpecificDataPoints} from './renderSpecificDataPoints';
-import {LineInBarChartPropsType} from 'gifted-charts-core';
-import {DataPointProps} from 'gifted-charts-core';
+import React from "react";
+import { View, Animated } from "react-native";
+import Svg, { Path } from "react-native-svg";
+import { renderSpecificVerticalLines } from "./renderSpecificVerticalLines";
+import { renderDataPoints } from "./renderDataPoints";
+import { renderSpecificDataPoints } from "./renderSpecificDataPoints";
+import { LineInBarChartPropsType } from "gifted-charts-core/src";
+import { DataPointProps } from "gifted-charts-core/src";
 
 const RenderLineInBarChart = (props: LineInBarChartPropsType) => {
   const {
@@ -72,14 +72,15 @@ const RenderLineInBarChart = (props: LineInBarChartPropsType) => {
       <Animated.View
         pointerEvents="none"
         style={{
-          position: 'absolute',
+          position: "absolute",
           height: containerHeightIncludingBelowXAxis + labelsExtraHeight,
           left: 6 - yAxisLabelWidth,
           bottom: 50 + xAxisLabelsVerticalShift, //stepHeight * -0.5 + xAxisThickness,
           width: animatedWidth,
           zIndex: lineBehindBars ? -1 : 100000,
           // backgroundColor: 'wheat',
-        }}>
+        }}
+      >
         <Svg>
           <Path
             d={points}
@@ -111,14 +112,15 @@ const RenderLineInBarChart = (props: LineInBarChartPropsType) => {
       <View
         pointerEvents="none"
         style={{
-          position: 'absolute',
+          position: "absolute",
           height: containerHeightIncludingBelowXAxis + labelsExtraHeight,
           left: 6 - yAxisLabelWidth,
           bottom: 50 + xAxisLabelsVerticalShift, //stepHeight * -0.5 + xAxisThickness,
           width: totalWidth,
           zIndex: lineBehindBars ? -1 : 100000,
           // backgroundColor: 'rgba(200,150,150,0.1)'
-        }}>
+        }}
+      >
         <Svg>
           <Path
             d={points}

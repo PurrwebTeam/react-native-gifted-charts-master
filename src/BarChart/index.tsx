@@ -1,12 +1,12 @@
-import {useCallback, useEffect, useMemo, useRef} from 'react';
-import {Animated, Easing, View, ViewStyle} from 'react-native';
-import RenderBars from './RenderBars';
-import RenderStackBars from './RenderStackBars';
-import BarAndLineChartsWrapper from '../Components/BarAndLineChartsWrapper';
-import {BarChartPropsType, useBarChart} from 'gifted-charts-core';
-import {StripAndLabel} from '../Components/common/StripAndLabel';
-import {Pointer} from '../Components/common/Pointer';
-import {screenWidth} from '../utils';
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { Animated, Easing, View, ViewStyle } from "react-native";
+import RenderBars from "./RenderBars";
+import RenderStackBars from "./RenderStackBars";
+import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
+import { BarChartPropsType, useBarChart } from "gifted-charts-core/src";
+import { StripAndLabel } from "../Components/common/StripAndLabel";
+import { Pointer } from "../Components/common/Pointer";
+import { screenWidth } from "../utils";
 
 export const BarChart = (props: BarChartPropsType) => {
   const heightValue = useMemo(() => new Animated.Value(0), []);
@@ -96,7 +96,7 @@ export const BarChart = (props: BarChartPropsType) => {
     parentWidth: props.parentWidth ?? screenWidth,
   });
 
-  const {stackData} = barAndLineChartsWrapperProps;
+  const { stackData } = barAndLineChartsWrapperProps;
 
   const labelsAppear = useCallback(() => {
     opacityValue.setValue(0);
@@ -182,12 +182,12 @@ export const BarChart = (props: BarChartPropsType) => {
   };
 
   const contentContainerStyle: ViewStyle = {
-    position: 'absolute',
+    position: "absolute",
     height: containerHeightIncludingBelowXAxis,
     bottom: 60 + labelsExtraHeight,
     paddingLeft: initialSpacing,
     width: totalWidth,
-    flexDirection: 'row',
+    flexDirection: "row",
   };
 
   const renderChartContent = () => {
@@ -196,7 +196,7 @@ export const BarChart = (props: BarChartPropsType) => {
         <View
           onStartShouldSetResponder={() => !!pointerConfig}
           onMoveShouldSetResponder={() => !!pointerConfig}
-          onResponderGrant={evt => {
+          onResponderGrant={(evt) => {
             if (!pointerConfig) return;
             setResponderStartTime(evt.timeStamp);
             if (activatePointersOnLongPress) {
@@ -224,10 +224,10 @@ export const BarChart = (props: BarChartPropsType) => {
             let item, y;
             item = (stackData ?? data)[factor];
             let stackSum = 0;
-            if ('stacks' in item) {
+            if ("stacks" in item) {
               stackSum = item.stacks.reduce(
                 (acc: number, stack: any) => acc + (stack.value ?? 0),
-                0,
+                0
               );
             }
             y =
@@ -238,7 +238,7 @@ export const BarChart = (props: BarChartPropsType) => {
             setPointerY(y);
             setPointerItem(item);
           }}
-          onResponderMove={evt => {
+          onResponderMove={(evt) => {
             if (!pointerConfig) return;
             if (
               activatePointersOnLongPress &&
@@ -269,10 +269,10 @@ export const BarChart = (props: BarChartPropsType) => {
             setPointerIndex(factor);
             item = (stackData ?? data)[factor];
             let stackSum = 0;
-            if ('stacks' in item) {
+            if ("stacks" in item) {
               item.stacks?.reduce(
                 (acc: number, stack: any) => acc + (stack.value ?? 0),
-                0,
+                0
               );
             }
             y =
@@ -283,40 +283,43 @@ export const BarChart = (props: BarChartPropsType) => {
             setPointerY(y);
             setPointerItem(item);
           }}
-          onResponderEnd={evt => {
+          onResponderEnd={(evt) => {
             setResponderStartTime(0);
             setPointerIndex(-1);
             setResponderActive(false);
             if (!persistPointer)
               setTimeout(() => setPointerX(0), pointerVanishDelay);
           }}
-          onResponderTerminationRequest={evt => false}
-          style={contentContainerStyle}>
+          onResponderTerminationRequest={(evt) => false}
+          style={contentContainerStyle}
+        >
           {pointerX > 0 && stripBehindBars ? (
             <View
-              pointerEvents={pointerEvents ?? 'none'}
+              pointerEvents={pointerEvents ?? "none"}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 height:
                   extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
                 bottom: xAxisLabelsVerticalShift,
                 width: totalWidth,
-              }}>
+              }}
+            >
               {renderStripAndLabel(null)}
             </View>
           ) : null}
           {renderChart()}
           {pointerX > 0 ? (
             <View
-              pointerEvents={pointerEvents ?? 'none'}
+              pointerEvents={pointerEvents ?? "none"}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 height:
                   extendedContainerHeight + noOfSectionsBelowXAxis * stepHeight,
                 bottom: xAxisLabelsVerticalShift,
                 width: totalWidth,
                 zIndex: 20,
-              }}>
+              }}
+            >
               {!stripOverPointer &&
                 !stripBehindBars &&
                 renderStripAndLabel(null)}

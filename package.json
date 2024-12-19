@@ -26,7 +26,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "gifted-charts-core": "0.1.47"
+    "gifted-charts-core": "https://github.com/Danila-Sadykov/my-gifted-charts-core.git"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.8",

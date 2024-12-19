@@ -10,9 +10,9 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Platform, View } from 'react-native';
-import { PieChartMain } from './main';
-import { pieColors, usePieChart } from 'gifted-charts-core';
+import { Platform, View } from "react-native";
+import { PieChartMain } from "./main";
+import { pieColors, usePieChart, } from "gifted-charts-core/src";
 export var PieChart = function (props) {
     var _a = usePieChart(props), radius = _a.radius, extraRadius = _a.extraRadius, selectedIndex = _a.selectedIndex, setSelectedIndex = _a.setSelectedIndex, startAngle = _a.startAngle, total = _a.total, donut = _a.donut, isThreeD = _a.isThreeD, semiCircle = _a.semiCircle, inwardExtraLengthForFocused = _a.inwardExtraLengthForFocused, canvasWidth = _a.canvasWidth, canvasHeight = _a.canvasHeight, innerRadius = _a.innerRadius, innerCircleColor = _a.innerCircleColor, innerCircleBorderWidth = _a.innerCircleBorderWidth, innerCircleBorderColor = _a.innerCircleBorderColor, shiftInnerCenterX = _a.shiftInnerCenterX, shiftInnerCenterY = _a.shiftInnerCenterY, tiltAngle = _a.tiltAngle, isDataShifted = _a.isDataShifted, paddingHorizontal = _a.paddingHorizontal, paddingVertical = _a.paddingVertical;
     var renderInnerCircle = function (innerRadius, innerCircleBorderWidth) {
@@ -22,9 +22,9 @@ export var PieChart = function (props) {
                         height: innerRadius * 2,
                         width: innerRadius * 2,
                         borderRadius: innerRadius,
-                        position: 'absolute',
+                        position: "absolute",
                         // zIndex: 100,
-                        alignSelf: 'center',
+                        alignSelf: "center",
                         backgroundColor: innerCircleColor,
                         left: canvasWidth / 2 -
                             innerRadius +
@@ -38,8 +38,8 @@ export var PieChart = function (props) {
                             paddingVertical / 2,
                         borderWidth: innerCircleBorderWidth,
                         borderColor: innerCircleBorderColor,
-                        justifyContent: 'center',
-                        alignItems: 'center',
+                        justifyContent: "center",
+                        alignItems: "center",
                     },
                     isThreeD && {
                         borderTopWidth: innerCircleBorderWidth * 5,
@@ -69,15 +69,15 @@ export var PieChart = function (props) {
             height: (radius + extraRadius + paddingVertical / 2) *
                 (props.semiCircle ? 1 : 2),
             width: (radius + extraRadius + paddingHorizontal / 2) * 2,
-            overflow: 'hidden',
-        }, children: [_jsx(View, { style: { position: 'absolute' }, children: _jsx(PieChartMain, __assign({}, props, { selectedIndex: selectedIndex, setSelectedIndex: setSelectedIndex, paddingHorizontal: paddingHorizontal, paddingVertical: paddingVertical, extraRadius: extraRadius })) }), renderInnerCircle(innerRadius, innerCircleBorderWidth), props.data.length > 1 &&
+            overflow: "hidden",
+        }, children: [_jsx(View, { style: { position: "absolute" }, children: _jsx(PieChartMain, __assign({}, props, { selectedIndex: selectedIndex, setSelectedIndex: setSelectedIndex, paddingHorizontal: paddingHorizontal, paddingVertical: paddingVertical, extraRadius: extraRadius })) }), renderInnerCircle(innerRadius, innerCircleBorderWidth), props.data.length > 1 &&
                 props.data[selectedIndex] && // don't forget to add this one so there are no errors when the data is empty / updating
                 (props.focusOnPress || props.sectionAutoFocus) &&
                 selectedIndex !== -1 && (_jsx(View, { pointerEvents: "box-none", style: {
-                    position: 'absolute',
+                    position: "absolute",
                     top: -extraRadius,
                     left: -extraRadius,
-                    zIndex: Platform.OS === 'web' ? -1 : 0, // was not getting displayed in web (using Expo)
+                    zIndex: Platform.OS === "web" ? -1 : 0, // was not getting displayed in web (using Expo)
                 }, children: _jsx(PieChartMain, __assign({}, props, { data: [
                         {
                             value: props.data[selectedIndex].value,

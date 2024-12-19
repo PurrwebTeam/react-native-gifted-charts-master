@@ -1,9 +1,9 @@
-import React, {Fragment} from 'react';
-import {styles} from '../../../BarChart/styles';
-import {View} from 'react-native';
-import {getXForLineInBar, getYForLineInBar} from 'gifted-charts-core';
-import {Rect, Text as CanvasText, Circle} from 'react-native-svg';
-import {DataPointProps} from 'gifted-charts-core';
+import React, { Fragment } from "react";
+import { styles } from "../../../BarChart/styles";
+import { View } from "react-native";
+import { getXForLineInBar, getYForLineInBar } from "gifted-charts-core/src";
+import { Rect, Text as CanvasText, Circle } from "react-native-svg";
+import { DataPointProps } from "gifted-charts-core/src";
 
 export const renderDataPoints = (props: DataPointProps) => {
   const {
@@ -60,15 +60,16 @@ export const renderDataPoints = (props: DataPointProps) => {
                 currentBarWidth,
                 yAxisLabelWidth,
                 lineConfig,
-                spacing,
+                spacing
               ),
             },
-          ]}>
+          ]}
+        >
           {customDataPoint(item, index)}
         </View>
       );
     }
-    if (lineConfig.dataPointsShape === 'rectangular') {
+    if (lineConfig.dataPointsShape === "rectangular") {
       return (
         <Fragment key={index}>
           <Rect
@@ -78,7 +79,7 @@ export const renderDataPoints = (props: DataPointProps) => {
               currentBarWidth,
               yAxisLabelWidth,
               lineConfig,
-              spacing,
+              spacing
             )}
             y={
               getYForLineInBar(
@@ -86,7 +87,7 @@ export const renderDataPoints = (props: DataPointProps) => {
                 lineConfig.shiftY,
                 containerHeight,
                 maxValue,
-                yAxisOffset,
+                yAxisOffset
               ) -
               lineConfig.dataPointsHeight / 2
             }
@@ -105,7 +106,7 @@ export const renderDataPoints = (props: DataPointProps) => {
                   currentBarWidth,
                   yAxisLabelWidth,
                   lineConfig,
-                  spacing,
+                  spacing
                 ) + (item.textShiftX || lineConfig.textShiftX || 0)
               }
               y={
@@ -114,11 +115,12 @@ export const renderDataPoints = (props: DataPointProps) => {
                   lineConfig.shiftY,
                   containerHeight,
                   maxValue,
-                  yAxisOffset,
+                  yAxisOffset
                 ) -
                 lineConfig.dataPointsHeight / 2 +
                 (item.textShiftY || lineConfig.textShiftY || 0)
-              }>
+              }
+            >
               {item.dataPointText}
             </CanvasText>
           )}
@@ -134,14 +136,14 @@ export const renderDataPoints = (props: DataPointProps) => {
             currentBarWidth,
             yAxisLabelWidth,
             lineConfig,
-            spacing,
+            spacing
           )}
           cy={getYForLineInBar(
             value,
             lineConfig.shiftY,
             containerHeight,
             maxValue,
-            yAxisOffset,
+            yAxisOffset
           )}
           r={dataPointRadius}
           fill={dataPointColor}
@@ -157,7 +159,7 @@ export const renderDataPoints = (props: DataPointProps) => {
                 currentBarWidth,
                 yAxisLabelWidth,
                 lineConfig,
-                spacing,
+                spacing
               ) + (item.textShiftX || lineConfig.textShiftX || 0)
             }
             y={
@@ -166,11 +168,12 @@ export const renderDataPoints = (props: DataPointProps) => {
                 lineConfig.shiftY,
                 containerHeight,
                 maxValue,
-                yAxisOffset,
+                yAxisOffset
               ) -
               lineConfig.dataPointsHeight / 2 +
               (item.textShiftY || lineConfig.textShiftY || 0)
-            }>
+            }
+          >
             {item.dataPointText}
           </CanvasText>
         )}

@@ -40,7 +40,7 @@ import { View, Animated, Easing, Text, Dimensions, I18nManager, } from "react-na
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
 import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
-import { getSegmentedPathObjects, getRegionPathObjects, RANGE_ENTER, RANGE_EXIT, SEGMENT_END, SEGMENT_START, STOP, useLineChart, adjustToOffset, LineDefaults, pointsWithPaddedRepititions, } from "gifted-charts-core";
+import { getSegmentedPathObjects, getRegionPathObjects, RANGE_ENTER, RANGE_EXIT, SEGMENT_END, SEGMENT_START, STOP, useLineChart, adjustToOffset, LineDefaults, pointsWithPaddedRepititions, } from "gifted-charts-core/src";
 import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
 import { StripAndLabel } from "../Components/common/StripAndLabel";
 import { Pointer } from "../Components/common/Pointer";

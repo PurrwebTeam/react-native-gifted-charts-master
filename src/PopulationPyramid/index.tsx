@@ -1,11 +1,11 @@
-import React, {Fragment} from 'react';
-import {View} from 'react-native';
+import React, { Fragment } from "react";
+import { View } from "react-native";
 import {
   PopulationPyramidPropsType,
   RulesProps,
   ruleTypes,
   usePopulationPyramid,
-} from 'gifted-charts-core';
+} from "gifted-charts-core/src";
 import {
   ClipPath,
   Line,
@@ -13,8 +13,8 @@ import {
   Svg,
   Text as SvgText,
   Use,
-} from 'react-native-svg';
-import {screenWidth} from '../utils';
+} from "react-native-svg";
+import { screenWidth } from "../utils";
 
 export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
   const {
@@ -107,11 +107,11 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
     xAxisLabelsCommonProps,
     getXLabel,
     midAxisLabelWidth,
-  } = usePopulationPyramid({...props, screenWidth});
+  } = usePopulationPyramid({ ...props, screenWidth });
 
   return (
-    <View style={{height: containerHeightWithXaxisLabels, width}}>
-      <Svg fill={'none'}>
+    <View style={{ height: containerHeightWithXaxisLabels, width }}>
+      <Svg fill={"none"}>
         {/**************        Y-Axis         ************/}
         <Line {...yAxisLineProps} />
 
@@ -136,7 +136,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
             delete rulesProps.strokeDasharray;
           }
           return (
-            <Fragment key={'rule' + index}>
+            <Fragment key={"rule" + index}>
               {!hideRules || isLast ? <Line {...rulesProps} /> : null}
               {showYAxisIndices ? (
                 <Line
@@ -158,8 +158,9 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                   fontStyle={yAxisLabelFontStyle}
                   fontWeight={yAxisLabelFontWeight}
                   fontFamily={yAxisLabelFontFamily}
-                  textAnchor="end">
-                  {yAxisLabelTexts[index] ?? ''}
+                  textAnchor="end"
+                >
+                  {yAxisLabelTexts[index] ?? ""}
                 </SvgText>
               ) : null}
             </Fragment>
@@ -174,7 +175,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
             ? formatXAxisLabels(unformattedXLabel)
             : unformattedXLabel;
           return (
-            <Fragment key={'x-axis' + index}>
+            <Fragment key={"x-axis" + index}>
               {showVerticalLines ? (
                 <Line {...verticalLinesCommonProps} x1={x} x2={x} />
               ) : null}
@@ -185,7 +186,8 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                 <SvgText
                   {...xAxisLabelsCommonProps}
                   x={x + xAxisLabelShiftX}
-                  textAnchor="middle">
+                  textAnchor="middle"
+                >
                   {xAxisLabelPrefix + xLabel + xAxisLabelSuffix}
                 </SvgText>
               ) : null}
@@ -205,7 +207,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
             ? formatXAxisLabels(unformattedXLabel)
             : unformattedXLabel;
           return (
-            <Fragment key={'x-axis' + index}>
+            <Fragment key={"x-axis" + index}>
               {showVerticalLines ? (
                 <Line {...verticalLinesCommonProps} x1={x} x2={x} />
               ) : null}
@@ -216,7 +218,8 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                 <SvgText
                   {...xAxisLabelsCommonProps}
                   x={x + xAxisLabelShiftX}
-                  textAnchor="middle">
+                  textAnchor="middle"
+                >
                   {xAxisLabelPrefix + xLabel + xAxisLabelSuffix}
                 </SvgText>
               ) : null}
@@ -252,14 +255,14 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
 
           const unFormattedLeftBarLabel =
             item.leftBarLabel ??
-            (showValuesAsBarLabels ? item.left.toString() : '');
+            (showValuesAsBarLabels ? item.left.toString() : "");
           const leftBarLabel = formatBarLabels
             ? formatBarLabels(unFormattedLeftBarLabel)
             : unFormattedLeftBarLabel;
 
           const unFormattedRightBarLabel =
             item.rightBarLabel ??
-            (showValuesAsBarLabels ? item.right.toString() : '');
+            (showValuesAsBarLabels ? item.right.toString() : "");
           const rightBarLabel = formatBarLabels
             ? formatBarLabels(unFormattedRightBarLabel)
             : unFormattedRightBarLabel;
@@ -301,7 +304,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
             ry: rightRadius,
           };
           return (
-            <Fragment key={'bars' + index}>
+            <Fragment key={"bars" + index}>
               {/**************     Y-Axis Labels      ************/}
               {barsMapToYAxisSections ? (
                 <SvgText
@@ -312,8 +315,9 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                   fontStyle={yAxisLabelFontStyle}
                   fontWeight={yAxisLabelFontWeight}
                   fontFamily={yAxisLabelFontFamily}
-                  textAnchor="end">
-                  {item.yAxisLabel ?? yAxisLabelTexts[index] ?? ''}
+                  textAnchor="end"
+                >
+                  {item.yAxisLabel ?? yAxisLabelTexts[index] ?? ""}
                 </SvgText>
               ) : null}
 
@@ -325,7 +329,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                 strokeWidth={leftBorderWidth}
                 onPress={() => props.onLeftPress?.(item, index)}
               />
-              <ClipPath id={'cp-left' + index}>
+              <ClipPath id={"cp-left" + index}>
                 <Rect {...leftBarCommonProps} />
               </ClipPath>
               {/*********   Hide inner border-radius ********/}
@@ -363,7 +367,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
               ) : null}
 
               {/**************     Left Bar Labels      ************/}
-              {leftBarLabel !== '' ? (
+              {leftBarLabel !== "" ? (
                 <SvgText
                   x={leftLabelX}
                   y={stepHeight * (index + 0.5) + yAxisLabelFontSize / 2 - 2}
@@ -378,7 +382,8 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                   fontFamily={
                     item.leftBarLabelFontFamily ?? leftBarLabelFontFamily
                   }
-                  textAnchor="start">
+                  textAnchor="start"
+                >
                   {leftBarLabelPrefix + leftBarLabel + leftBarLabelSuffix}
                 </SvgText>
               ) : null}
@@ -391,7 +396,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                 strokeWidth={rightBorderWidth}
                 onPress={() => props.onRightPress?.(item, index)}
               />
-              <ClipPath id={'cp-right' + index}>
+              <ClipPath id={"cp-right" + index}>
                 <Rect {...rightBarCommonProps} />
               </ClipPath>
               {/*********   Hide inner border-radius ********/}
@@ -429,7 +434,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
               ) : null}
 
               {/**************     Right Bar Labels      ************/}
-              {rightBarLabel !== '' ? (
+              {rightBarLabel !== "" ? (
                 <SvgText
                   x={rightLabelX}
                   y={stepHeight * (index + 0.5) + yAxisLabelFontSize / 2 - 2}
@@ -444,7 +449,8 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                   fontFamily={
                     item.rightBarLabelFontFamily ?? rightBarLabelFontFamily
                   }
-                  textAnchor="start">
+                  textAnchor="start"
+                >
                   {rightBarLabelPrefix + rightBarLabel + rightBarLabelSuffix}
                 </SvgText>
               ) : null}
@@ -457,7 +463,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
               leftSurplusWidth > 0 ? (
                 <>
                   <Rect
-                    id={'l-spls' + index}
+                    id={"l-spls" + index}
                     x={leftXAfterMid - leftWidth - leftBarBorderWidth / 2}
                     y={y}
                     width={leftSurplusWidth}
@@ -471,14 +477,14 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                   />
                   <Use
                     fill={item.leftSurplusColor ?? leftSurplusColor}
-                    clipPath={'#cp-left' + index}
-                    href={'#l-spls' + index}
+                    clipPath={"#cp-left" + index}
+                    href={"#l-spls" + index}
                   />
                   {/*********      remove inner curve     ********/}
                   {leftSurplusWidth >= leftRadius ? (
                     <>
                       <Rect
-                        id={'hide-in-left' + index}
+                        id={"hide-in-left" + index}
                         x={
                           leftXAfterMid -
                           leftWidth -
@@ -493,7 +499,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                       <Use
                         fill={item.leftSurplusColor ?? leftSurplusColor}
                         clipPath={`url(#cp-left${index})`}
-                        href={'#hide-in-left' + index}
+                        href={"#hide-in-left" + index}
                       />
                     </>
                   ) : null}
@@ -507,7 +513,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
               rightSurplusWidth > 0 ? (
                 <>
                   <Rect
-                    id={'r-spls' + index}
+                    id={"r-spls" + index}
                     x={
                       rightXAfterMid +
                       rightBarBorderWidth / 2 +
@@ -526,14 +532,14 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                   />
                   <Use
                     fill={item.rightSurplusColor ?? rightSurplusColor}
-                    clipPath={'#cp-right' + index}
-                    href={'#r-spls' + index}
+                    clipPath={"#cp-right" + index}
+                    href={"#r-spls" + index}
                   />
                   {/*********       remove inner curve     ********/}
                   {rightSurplusWidth >= rightRadius ? (
                     <>
                       <Rect
-                        id={'hide-in-right' + index}
+                        id={"hide-in-right" + index}
                         x={
                           rightXAfterMid +
                           rightBarBorderWidth / 2 +
@@ -547,7 +553,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                       <Use
                         fill={item.rightSurplusColor ?? rightSurplusColor}
                         clipPath={`url(#cp-right${index})`}
-                        href={'#hide-in-right' + index}
+                        href={"#hide-in-right" + index}
                       />
                     </>
                   ) : null}
@@ -582,7 +588,7 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
               const y = stepHeight * (index + 0.5);
               return (
                 <SvgText
-                  key={'ml' + index}
+                  key={"ml" + index}
                   x={mid}
                   y={y + midAxisLabelFontSize / 2}
                   stroke={item.midAxisLabelColor ?? midAxisLabelColor}
@@ -596,8 +602,9 @@ export const PopulationPyramid = (props: PopulationPyramidPropsType) => {
                   fontFamily={
                     item.midAxisLabelFontFamily ?? midAxisLabelFontFamily
                   }
-                  textAnchor="middle">
-                  {item.midAxisLabel ?? ''}
+                  textAnchor="middle"
+                >
+                  {item.midAxisLabel ?? ""}
                 </SvgText>
               );
             })}

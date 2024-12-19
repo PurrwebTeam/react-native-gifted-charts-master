@@ -24,10 +24,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-import { Text, View } from 'react-native';
-import Rule from '../lineSvg';
-import { styles } from '../../LineChart/styles';
-import { getHorizSectionVals, yAxisSides, chartTypes, } from 'gifted-charts-core';
+import { Text, View } from "react-native";
+import Rule from "../lineSvg";
+import { styles } from "../../LineChart/styles";
+import { getHorizSectionVals, yAxisSides, chartTypes, } from "gifted-charts-core/src";
 export var renderHorizSections = function (props) {
     var _a, _b, _c, _d;
     var chartType = props.chartType, width = props.width, noOfSectionsBelowXAxis = props.noOfSectionsBelowXAxis, totalWidth = props.totalWidth, endSpacing = props.endSpacing, yAxisSide = props.yAxisSide, horizontalRulesStyle = props.horizontalRulesStyle, noOfSections = props.noOfSections, sectionColors = props.sectionColors, stepHeight = props.stepHeight, negativeStepHeight = props.negativeStepHeight, yAxisLabelWidth = props.yAxisLabelWidth, yAxisLabelContainerStyle = props.yAxisLabelContainerStyle, yAxisThickness = props.yAxisThickness, yAxisColor = props.yAxisColor, xAxisThickness = props.xAxisThickness, xAxisColor = props.xAxisColor, xAxisLength = props.xAxisLength, xAxisType = props.xAxisType, dashWidth = props.dashWidth, dashGap = props.dashGap, backgroundColor = props.backgroundColor, hideRules = props.hideRules, rulesLength = props.rulesLength, rulesType = props.rulesType, rulesThickness = props.rulesThickness, rulesColor = props.rulesColor, rulesConfigArray = props.rulesConfigArray, spacing = props.spacing, showYAxisIndices = props.showYAxisIndices, yAxisIndicesHeight = props.yAxisIndicesHeight, yAxisIndicesWidth = props.yAxisIndicesWidth, yAxisIndicesColor = props.yAxisIndicesColor, hideOrigin = props.hideOrigin, hideYAxisText = props.hideYAxisText, yAxisTextNumberOfLines = props.yAxisTextNumberOfLines, yAxisTextStyle = props.yAxisTextStyle, rotateYAxisTexts = props.rotateYAxisTexts, rtl = props.rtl, containerHeight = props.containerHeight, maxValue = props.maxValue, yAxisOffset = props.yAxisOffset, horizontal = props.horizontal, yAxisAtTop = props.yAxisAtTop, secondaryYAxis = props.secondaryYAxis, onlyReferenceLines = props.onlyReferenceLines, renderReferenceLines = props.renderReferenceLines, secondaryXAxis = props.secondaryXAxis;
@@ -43,7 +43,7 @@ export var renderHorizSections = function (props) {
                 index === noOfSections
                     ? styles.lastLeftPart
                     : !index
-                        ? { justifyContent: 'flex-start' }
+                        ? { justifyContent: "flex-start" }
                         : styles.leftPart,
                 {
                     borderColor: yAxisColor,
@@ -70,7 +70,7 @@ export var renderHorizSections = function (props) {
                         dashGap: (_m = (_l = rulesConfigArray[invertedIndex]) === null || _l === void 0 ? void 0 : _l.dashGap) !== null && _m !== void 0 ? _m : dashGap,
                         type: (_p = (_o = rulesConfigArray[invertedIndex]) === null || _o === void 0 ? void 0 : _o.rulesType) !== null && _p !== void 0 ? _p : rulesType,
                     } })), showYAxisIndices && index !== noOfSections ? (_jsx(View, { style: {
-                        position: 'absolute',
+                        position: "absolute",
                         height: yAxisIndicesHeight,
                         width: yAxisIndicesWidth,
                         left: yAxisIndicesWidth / -2 +
@@ -92,7 +92,7 @@ export var renderHorizSections = function (props) {
                 },
                 horizontal &&
                     !yAxisAtTop && {
-                    transform: [{ rotateY: '180deg' }],
+                    transform: [{ rotateY: "180deg" }],
                 },
                 horizontalRulesStyle,
             ], children: [_jsx(View, { style: [
@@ -109,7 +109,7 @@ export var renderHorizSections = function (props) {
                             borderRightColor: yAxisColor,
                             borderTopColor: (_a = secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.color) !== null && _a !== void 0 ? _a : xAxisColor,
                             borderTopWidth: secondaryXAxis
-                                ? ((_b = secondaryXAxis.thickness) !== null && _b !== void 0 ? _b : xAxisThickness)
+                                ? (_b = secondaryXAxis.thickness) !== null && _b !== void 0 ? _b : xAxisThickness
                                 : 0,
                             backgroundColor: backgroundColor,
                             width: (props.width || totalWidth - spacing) + endSpacing,
@@ -124,34 +124,34 @@ export var renderHorizSections = function (props) {
             var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
             var label = getLabelTextsForSecondaryYAxis(sectionItems.value, index);
             if (secondaryYAxisConfig.hideOrigin && index === 0) {
-                label = '';
+                label = "";
             }
             return (_jsxs(View, { style: [
                     styles.horizBar,
                     styles.leftLabel,
                     {
-                        position: 'absolute',
+                        position: "absolute",
                         zIndex: 1,
                         bottom: (index - 0.5) *
                             (isBelow
-                                ? ((_b = (_a = secondaryYAxisConfig.negativeStepHeight) !== null && _a !== void 0 ? _a : secondaryYAxisConfig.stepHeight) !== null && _b !== void 0 ? _b : 0)
-                                : ((_c = secondaryYAxisConfig.stepHeight) !== null && _c !== void 0 ? _c : 0)) +
+                                ? (_b = (_a = secondaryYAxisConfig.negativeStepHeight) !== null && _a !== void 0 ? _a : secondaryYAxisConfig.stepHeight) !== null && _b !== void 0 ? _b : 0
+                                : (_c = secondaryYAxisConfig.stepHeight) !== null && _c !== void 0 ? _c : 0) +
                             (isBelow ? secondaryYAxisExtraHeightAtBottom : 0),
                         width: secondaryYAxisConfig.yAxisLabelWidth,
                         height: isBelow
-                            ? ((_e = (_d = secondaryYAxisConfig.negativeStepHeight) !== null && _d !== void 0 ? _d : secondaryYAxisConfig.stepHeight) !== null && _e !== void 0 ? _e : 0)
-                            : ((_f = secondaryYAxisConfig.stepHeight) !== null && _f !== void 0 ? _f : 0),
+                            ? (_e = (_d = secondaryYAxisConfig.negativeStepHeight) !== null && _d !== void 0 ? _d : secondaryYAxisConfig.stepHeight) !== null && _e !== void 0 ? _e : 0
+                            : (_f = secondaryYAxisConfig.stepHeight) !== null && _f !== void 0 ? _f : 0,
                     },
                     (_g = secondaryYAxisConfig.yAxisLabelContainerStyle) !== null && _g !== void 0 ? _g : yAxisLabelContainerStyle,
                 ], children: [secondaryYAxisConfig.showYAxisIndices && (index !== 0 || isBelow) ? (_jsx(View, { style: {
                             height: secondaryYAxisConfig.yAxisIndicesHeight,
                             width: secondaryYAxisConfig.yAxisIndicesWidth,
-                            position: 'absolute',
+                            position: "absolute",
                             left: ((_h = secondaryYAxisConfig.yAxisIndicesWidth) !== null && _h !== void 0 ? _h : 0) / -2,
                             backgroundColor: secondaryYAxisConfig.yAxisIndicesColor,
-                        } })) : null, _jsx(Text, { numberOfLines: secondaryYAxisConfig.yAxisTextNumberOfLines, ellipsizeMode: 'clip', style: [
+                        } })) : null, _jsx(Text, { numberOfLines: secondaryYAxisConfig.yAxisTextNumberOfLines, ellipsizeMode: "clip", style: [
                             {
-                                textAlign: 'left',
+                                textAlign: "left",
                                 width: (_k = (_j = secondaryYAxisConfig.yAxisLabelContainerStyle) === null || _j === void 0 ? void 0 : _j.width) !== null && _k !== void 0 ? _k : secondaryYAxisConfig.yAxisLabelWidth,
                                 marginLeft: 10,
                             },
@@ -161,7 +161,7 @@ export var renderHorizSections = function (props) {
     };
     var referenceLines = function () {
         return (_jsxs(_Fragment, { children: [showReferenceLine1 ? (_jsxs(View, { style: {
-                        position: 'absolute',
+                        position: "absolute",
                         zIndex: referenceLine1Config.zIndex,
                         bottom: ((referenceLine1Position - (yAxisOffset !== null && yAxisOffset !== void 0 ? yAxisOffset : 0)) *
                             containerHeight) /
@@ -170,10 +170,10 @@ export var renderHorizSections = function (props) {
                             ? 0
                             : yAxisLabelWidth + yAxisThickness,
                     }, children: [_jsx(Rule, { config: referenceLine1Config }), referenceLine1Config.labelText ? (_jsx(Text, { style: [
-                                { position: 'absolute' },
+                                { position: "absolute" },
                                 referenceLine1Config.labelTextStyle,
                             ], children: referenceLine1Config.labelText })) : null] })) : null, showReferenceLine2 ? (_jsxs(View, { style: {
-                        position: 'absolute',
+                        position: "absolute",
                         zIndex: referenceLine2Config.zIndex,
                         bottom: ((referenceLine2Position - (yAxisOffset !== null && yAxisOffset !== void 0 ? yAxisOffset : 0)) *
                             containerHeight) /
@@ -182,10 +182,10 @@ export var renderHorizSections = function (props) {
                             ? 0
                             : yAxisLabelWidth + yAxisThickness,
                     }, children: [_jsx(Rule, { config: referenceLine2Config }), referenceLine2Config.labelText ? (_jsx(Text, { style: [
-                                { position: 'absolute' },
+                                { position: "absolute" },
                                 referenceLine2Config.labelTextStyle,
                             ], children: referenceLine2Config.labelText })) : null] })) : null, showReferenceLine3 ? (_jsxs(View, { style: {
-                        position: 'absolute',
+                        position: "absolute",
                         zIndex: referenceLine3Config.zIndex,
                         bottom: ((referenceLine3Position - (yAxisOffset !== null && yAxisOffset !== void 0 ? yAxisOffset : 0)) *
                             containerHeight) /
@@ -194,7 +194,7 @@ export var renderHorizSections = function (props) {
                             ? 0
                             : yAxisLabelWidth + yAxisThickness,
                     }, children: [_jsx(Rule, { config: referenceLine3Config }), referenceLine3Config.labelText ? (_jsx(Text, { style: [
-                                { position: 'absolute' },
+                                { position: "absolute" },
                                 referenceLine3Config.labelTextStyle,
                             ], children: referenceLine3Config.labelText })) : null] })) : null] }));
     };
@@ -202,7 +202,7 @@ export var renderHorizSections = function (props) {
         var _a;
         // negative sections height will correspond to negative Y-axis config in case there are extra negative horiz sections corresponding to the secondary Y axis
         var localNegativeStepHeight = !showBorder
-            ? ((_a = secondaryYAxisConfig.negativeStepHeight) !== null && _a !== void 0 ? _a : negativeStepHeight)
+            ? (_a = secondaryYAxisConfig.negativeStepHeight) !== null && _a !== void 0 ? _a : negativeStepHeight
             : negativeStepHeight;
         return (_jsxs(View, { style: [
                 styles.horizBar,
@@ -223,7 +223,7 @@ export var renderHorizSections = function (props) {
                         },
                         index === 0 && { marginTop: -localNegativeStepHeight / 2 },
                     ] }), _jsx(View, { style: {
-                        position: 'absolute',
+                        position: "absolute",
                         top: index === 0 ? -localNegativeStepHeight / 2 : 0,
                         left: yAxisSide === yAxisSides.RIGHT
                             ? width
@@ -251,9 +251,9 @@ export var renderHorizSections = function (props) {
         endSpacing -
         (isLineChart ? 70 : 40);
     return (_jsx(_Fragment, { children: onlyReferenceLines ? (_jsx(View, { style: {
-                flexDirection: 'row',
+                flexDirection: "row",
             }, children: _jsx(View, { style: { width: (width !== null && width !== void 0 ? width : totalWidth) + endSpacing }, children: referenceLines() }) })) : (_jsxs(View, { pointerEvents: "none", style: {
-                flexDirection: 'row',
+                flexDirection: "row",
                 marginTop: stepHeight / -2,
             }, children: [_jsxs(View, { style: { width: (width !== null && width !== void 0 ? width : totalWidth) + endSpacing }, children: [yAxisExtraHeightAtTop ? renderExtraHeightOfYAxisAtTop() : null, horizSections.map(function (sectionItems, index) {
                             return (_jsxs(View, { style: [
@@ -263,7 +263,7 @@ export var renderHorizSections = function (props) {
                                     },
                                     horizontal &&
                                         !yAxisAtTop && {
-                                        transform: [{ rotateY: '180deg' }],
+                                        transform: [{ rotateY: "180deg" }],
                                     },
                                     horizontalRulesStyle,
                                 ], children: [_jsx(View, { style: [
@@ -282,13 +282,13 @@ export var renderHorizSections = function (props) {
                             horizSections.map(function (sectionItems, index) {
                                 var label = getLabelTexts(sectionItems.value, index);
                                 if (hideOrigin && index === horizSections.length - 1) {
-                                    label = '';
+                                    label = "";
                                 }
                                 return (_jsx(View, { style: [
                                         styles.horizBar,
                                         styles.leftLabel,
                                         {
-                                            position: 'absolute',
+                                            position: "absolute",
                                             zIndex: 1,
                                             top: stepHeight * index + yAxisExtraHeightAtTop,
                                             width: yAxisLabelWidth,
@@ -308,7 +308,7 @@ export var renderHorizSections = function (props) {
                                             ],
                                         },
                                         yAxisLabelContainerStyle,
-                                    ], children: _jsx(Text, { numberOfLines: yAxisTextNumberOfLines, ellipsizeMode: 'clip', style: [
+                                    ], children: _jsx(Text, { numberOfLines: yAxisTextNumberOfLines, ellipsizeMode: "clip", style: [
                                             yAxisTextStyle,
                                             horizontal && {
                                                 transform: [
@@ -344,7 +344,7 @@ export var renderHorizSections = function (props) {
                                         styles.horizBar,
                                         styles.leftLabel,
                                         {
-                                            position: 'absolute',
+                                            position: "absolute",
                                             zIndex: 1,
                                             top: containerHeight +
                                                 negativeStepHeight * (invertedIndex + 1) +
@@ -361,7 +361,7 @@ export var renderHorizSections = function (props) {
                                                 yAxisLabelWidth,
                                         },
                                         yAxisLabelContainerStyle,
-                                    ], children: _jsx(Text, { numberOfLines: yAxisTextNumberOfLines, ellipsizeMode: 'clip', style: [
+                                    ], children: _jsx(Text, { numberOfLines: yAxisTextNumberOfLines, ellipsizeMode: "clip", style: [
                                             yAxisTextStyle,
                                             index === noOfSectionsBelowXAxis && {
                                                 marginBottom: negativeStepHeight / -2,

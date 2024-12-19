@@ -1,6 +1,6 @@
-import React from 'react';
-import {View} from 'react-native';
-import {BarDefaults} from 'gifted-charts-core';
+import React from "react";
+import { View } from "react-native";
+import { BarDefaults } from "gifted-charts-core/src";
 
 const Cap = (props: any) => {
   const {
@@ -14,8 +14,8 @@ const Cap = (props: any) => {
   return (
     <View
       style={{
-        position: 'absolute',
-        width: '100%',
+        position: "absolute",
+        width: "100%",
         height:
           capThicknessFromItem ??
           capThicknessFromProps ??

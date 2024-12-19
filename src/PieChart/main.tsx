@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   GestureResponderEvent,
   TouchableWithoutFeedback,
   View,
   Text,
   TextStyle,
-} from 'react-native';
+} from "react-native";
 import Svg, {
   Path,
   Circle,
@@ -15,13 +15,13 @@ import Svg, {
   Stop,
   G,
   Line,
-} from 'react-native-svg';
+} from "react-native-svg";
 import {
   getPieChartMainProps,
   PieChartMainProps,
   pieColors,
-} from 'gifted-charts-core';
-import {rnVersion} from '../utils';
+} from "gifted-charts-core/src";
+import { rnVersion } from "../utils";
 
 export const PieChartMain = (props: PieChartMainProps) => {
   const {
@@ -83,7 +83,7 @@ export const PieChartMain = (props: PieChartMainProps) => {
     fontStyle,
   } = getPieChartMainProps(props);
 
-  let prevSide = 'right';
+  let prevSide = "right";
   let prevLabelComponentX = 0;
   let wasFirstItemOnPole = false;
 
@@ -91,7 +91,7 @@ export const PieChartMain = (props: PieChartMainProps) => {
   const [touchY, setTouchY] = useState(0);
 
   const onPressHandler = (e: GestureResponderEvent) => {
-    let {locationX: x, locationY: y} = e.nativeEvent;
+    let { locationX: x, locationY: y } = e.nativeEvent;
     x -= extraRadius;
     y -= extraRadius;
     setTouchX(x);
@@ -102,7 +102,7 @@ export const PieChartMain = (props: PieChartMainProps) => {
 
     for (let index = 0; index < data.length; index++) {
       const angle = coordinates[index];
-      const {sx, sy, ax, ay} = angle;
+      const { sx, sy, ax, ay } = angle;
 
       const startAngle = Math.atan2(sy - cy, sx - cx);
       const endAngle = Math.atan2(ay - cy, ax - cx);
@@ -132,13 +132,16 @@ export const PieChartMain = (props: PieChartMainProps) => {
               ? (canvasHeight + paddingVertical) / 2 + extraRadius
               : canvasHeight + paddingVertical + extraRadius * 2,
             width: canvasWidth + paddingHorizontal + extraRadius * 2,
-            overflow: 'hidden',
+            overflow: "hidden",
           },
-          isThreeD && {transform: [{rotateX: tiltAngle}]},
-        ]}>
+          isThreeD && { transform: [{ rotateX: tiltAngle }] },
+        ]}
+      >
         <Svg
-          pointerEvents={rnVersion >= 720000 ? 'box-none' : 'auto'} // use 'box-none' react-native version 0.72 onwards
-          viewBox={`${strokeWidth / -2 + minShiftX - extraRadius - paddingHorizontal / 2} ${
+          pointerEvents={rnVersion >= 720000 ? "box-none" : "auto"} // use 'box-none' react-native version 0.72 onwards
+          viewBox={`${
+            strokeWidth / -2 + minShiftX - extraRadius - paddingHorizontal / 2
+          } ${
             strokeWidth / -2 + minShiftY - extraRadius - paddingVertical / 2
           } ${
             (radius + extraRadius + strokeWidth) * 2 +
@@ -152,20 +155,22 @@ export const PieChartMain = (props: PieChartMainProps) => {
             (vertAdjustment ? strokeWidth : 0)
           }`}
           height={(radius + extraRadius) * 2 + strokeWidth + paddingVertical}
-          width={(radius + extraRadius) * 2 + strokeWidth + paddingHorizontal}>
+          width={(radius + extraRadius) * 2 + strokeWidth + paddingHorizontal}
+        >
           <Defs>
             {data.map((item, index) => {
               return (
                 <RadialGradient
-                  key={index + ''}
-                  id={'grad' + index}
+                  key={index + ""}
+                  id={"grad" + index}
                   cx="50%"
                   cy="50%"
                   rx="50%"
                   ry="50%"
                   fx="50%"
                   fy="50%"
-                  gradientUnits="userSpaceOnUse">
+                  gradientUnits="userSpaceOnUse"
+                >
                   <Stop
                     offset="0%"
                     stopColor={item.gradientCenterColor || gradientCenterColor}
@@ -202,11 +207,11 @@ export const PieChartMain = (props: PieChartMainProps) => {
             </>
           ) : (
             data.map((item, index) => {
-              const {sx, sy, ax, ay} = coordinates[index];
+              const { sx, sy, ax, ay } = coordinates[index];
               if (isBiggerPie && index) return null;
               return (
                 <Path
-                  key={index + 'a'}
+                  key={index + "a"}
                   d={`M ${cx + (item.shiftX || 0)} ${
                     cy + (item.shiftY || 0)
                   } L ${sx} ${sy} A ${radius} ${radius} 0 ${
@@ -219,15 +224,15 @@ export const PieChartMain = (props: PieChartMainProps) => {
                     props.focusOnPress && props.selectedIndex === index
                       ? 0
                       : item.strokeWidth === 0
-                        ? 0
-                        : item.strokeWidth || strokeWidth
+                      ? 0
+                      : item.strokeWidth || strokeWidth
                   }
                   fill={
                     props.selectedIndex === index || item.peripheral
-                      ? 'none'
+                      ? "none"
                       : showGradient
-                        ? `url(#grad${index})`
-                        : item.color || pieColors[index % 9]
+                      ? `url(#grad${index})`
+                      : item.color || pieColors[index % 9]
                   }
                 />
               );
@@ -253,13 +258,13 @@ export const PieChartMain = (props: PieChartMainProps) => {
 
               const labelPosition = item.labelPosition || labelsPosition;
 
-              if (labelPosition === 'onBorder') {
+              if (labelPosition === "onBorder") {
                 x = mx;
                 y = my;
-              } else if (labelPosition === 'outward') {
+              } else if (labelPosition === "outward") {
                 x = (midx + mx) / 2;
                 y = (midy + my) / 2;
-              } else if (labelPosition === 'inward') {
+              } else if (labelPosition === "inward") {
                 x = (midx + cx) / 2;
                 y = (midy + cy) / 2;
               }
@@ -304,9 +309,9 @@ export const PieChartMain = (props: PieChartMainProps) => {
                 prevSide,
                 prevLabelComponentX,
                 index === data.length - 1, // isLast
-                wasFirstItemOnPole,
+                wasFirstItemOnPole
               );
-              prevSide = isRightHalf ? 'right' : 'left';
+              prevSide = isRightHalf ? "right" : "left";
               prevLabelComponentX = labelComponentX;
               if (index === 0) wasFirstItemOnPole = labelComponentY !== outY;
 
@@ -333,7 +338,8 @@ export const PieChartMain = (props: PieChartMainProps) => {
                       {localExternalLabelComponent ? (
                         <G
                           x={labelComponentX}
-                          y={labelComponentY + labelComponentHeight / 2}>
+                          y={labelComponentY + labelComponentHeight / 2}
+                        >
                           {localExternalLabelComponent?.(item, index) ?? null}
                         </G>
                       ) : null}
@@ -388,7 +394,7 @@ export const PieChartMain = (props: PieChartMainProps) => {
                       fontSize={item.textSize || textSize}
                       fontFamily={item.font || font}
                       fontWeight={item.fontWeight || fontWeight}
-                      fontStyle={item.fontStyle || fontStyle || 'normal'}
+                      fontStyle={item.fontStyle || fontStyle || "normal"}
                       x={
                         x +
                         (item.shiftTextX || 0) -
@@ -416,7 +422,7 @@ export const PieChartMain = (props: PieChartMainProps) => {
                       //   }
                       // }}
                     >
-                      {item.text || (showValuesAsLabels ? item.value + '' : '')}
+                      {item.text || (showValuesAsLabels ? item.value + "" : "")}
                     </SvgText>
                   )}
                   {localPieInnerComponent ? (
@@ -435,7 +441,7 @@ export const PieChartMain = (props: PieChartMainProps) => {
               height: radius * 2,
               backgroundColor: shadowColor,
               borderRadius: radius,
-              position: 'absolute',
+              position: "absolute",
               top: shadowWidth + paddingVertical / 2,
               left: paddingHorizontal / 2,
               zIndex: -1,
@@ -445,7 +451,7 @@ export const PieChartMain = (props: PieChartMainProps) => {
         {showTooltip && tooltipSelectedIndex !== -1 ? (
           <View
             style={{
-              position: 'absolute',
+              position: "absolute",
               left:
                 touchX > (radius + extraRadius) * 1.5
                   ? props.tooltipHorizontalShift
@@ -460,7 +466,8 @@ export const PieChartMain = (props: PieChartMainProps) => {
                     ? touchY - tooltipVerticalShift
                     : touchY
                   : touchY - tooltipVerticalShift,
-            }}>
+            }}
+          >
             {data[tooltipSelectedIndex].tooltipComponent ? (
               data[tooltipSelectedIndex].tooltipComponent?.()
             ) : tooltipComponent ? (
@@ -474,7 +481,8 @@ export const PieChartMain = (props: PieChartMainProps) => {
                   paddingBottom: 8,
                   paddingTop: 4,
                   width: tooltipWidth,
-                }}>
+                }}
+              >
                 <Text
                   numberOfLines={tooltipTextNoOfLines}
                   style={
@@ -482,14 +490,15 @@ export const PieChartMain = (props: PieChartMainProps) => {
                       color:
                         data[tooltipSelectedIndex].textColor ||
                         textColor ||
-                        'white',
-                      textAlign: 'center',
+                        "white",
+                      textAlign: "center",
                       fontSize: textSize,
                       fontFamily: font,
                       fontWeight,
                       fontStyle,
                     } as TextStyle
-                  }>
+                  }
+                >
                   {getTooltipText(tooltipSelectedIndex)}
                 </Text>
               </View>

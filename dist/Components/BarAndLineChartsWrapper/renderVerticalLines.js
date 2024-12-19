@@ -1,7 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { View } from 'react-native';
-import { chartTypes } from 'gifted-charts-core';
-import { Line, Svg } from 'react-native-svg';
+import { View } from "react-native";
+import { chartTypes } from "gifted-charts-core/src";
+import { Line, Svg } from "react-native-svg";
 var RenderVerticalLines = function (props) {
     var verticalLinesAr = props.verticalLinesAr, verticalLinesSpacing = props.verticalLinesSpacing, spacing = props.spacing, initialSpacing = props.initialSpacing, verticalLinesZIndex = props.verticalLinesZIndex, verticalLinesHeight = props.verticalLinesHeight, verticalLinesThickness = props.verticalLinesThickness, verticalLinesColor = props.verticalLinesColor, verticalLinesStrokeDashArray = props.verticalLinesStrokeDashArray, verticalLinesShift = props.verticalLinesShift, verticalLinesUptoDataPoint = props.verticalLinesUptoDataPoint, verticalLinesStrokeLinecap = props.verticalLinesStrokeLinecap, xAxisThickness = props.xAxisThickness, labelsExtraHeight = props.labelsExtraHeight, containerHeight = props.containerHeight, data = props.data, stackData = props.stackData, barWidth = props.barWidth, maxValue = props.maxValue, chartType = props.chartType, containerHeightIncludingBelowXAxis = props.containerHeightIncludingBelowXAxis, totalWidth = props.totalWidth, xAxisLabelsVerticalShift = props.xAxisLabelsVerticalShift;
     var getHeightOfVerticalLine = function (index) {
@@ -20,12 +20,12 @@ var RenderVerticalLines = function (props) {
     };
     var extendedContainerHeight = containerHeight + 10 + labelsExtraHeight;
     var thickness = verticalLinesThickness || 2;
-    var heightAdjustmentDueToStrokeLinecap = verticalLinesStrokeLinecap === 'round' ||
-        verticalLinesStrokeLinecap === 'square'
+    var heightAdjustmentDueToStrokeLinecap = verticalLinesStrokeLinecap === "round" ||
+        verticalLinesStrokeLinecap === "square"
         ? thickness / 2
         : 0;
     return (_jsx(View, { style: {
-            position: 'absolute',
+            position: "absolute",
             height: extendedContainerHeight,
             bottom: 60 + xAxisLabelsVerticalShift, //stepHeight * -0.5 + xAxisThickness,
             left: 0,
@@ -89,7 +89,7 @@ var RenderVerticalLines = function (props) {
                             : index * spacing + (initialSpacing - 2));
                 return (_jsx(Line, { x1: x, y1: extendedContainerHeight -
                         getHeightOfVerticalLine(index) +
-                        heightAdjustmentDueToStrokeLinecap, x2: x, y2: extendedContainerHeight - heightAdjustmentDueToStrokeLinecap, stroke: verticalLinesColor || 'lightgray', strokeWidth: verticalLinesThickness || 2, strokeDasharray: verticalLinesStrokeDashArray !== null && verticalLinesStrokeDashArray !== void 0 ? verticalLinesStrokeDashArray : '', strokeLinecap: verticalLinesStrokeLinecap }, index));
+                        heightAdjustmentDueToStrokeLinecap, x2: x, y2: extendedContainerHeight - heightAdjustmentDueToStrokeLinecap, stroke: verticalLinesColor || "lightgray", strokeWidth: verticalLinesThickness || 2, strokeDasharray: verticalLinesStrokeDashArray !== null && verticalLinesStrokeDashArray !== void 0 ? verticalLinesStrokeDashArray : "", strokeLinecap: verticalLinesStrokeLinecap }, index));
             }) }) }));
 };
 export default RenderVerticalLines;

@@ -10,14 +10,14 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
-import { View, TouchableOpacity, Animated, Text } from 'react-native';
-import AnimatedThreeDBar from '../Components/AnimatedThreeDBar';
-import Animated2DWithGradient from './Animated2DWithGradient';
-import Cap from '../Components/BarSpecificComponents/cap';
-import BarBackgroundPattern from '../Components/BarSpecificComponents/barBackgroundPattern';
-import LinearGradient from '../Components/common/LinearGradient';
-import { getPropsForAnimated2DWithGradient, AxesAndRulesDefaults, } from 'gifted-charts-core';
-import Tooltip from '../Components/BarSpecificComponents/tooltip';
+import { View, TouchableOpacity, Animated, Text } from "react-native";
+import AnimatedThreeDBar from "../Components/AnimatedThreeDBar";
+import Animated2DWithGradient from "./Animated2DWithGradient";
+import Cap from "../Components/BarSpecificComponents/cap";
+import BarBackgroundPattern from "../Components/BarSpecificComponents/barBackgroundPattern";
+import LinearGradient from "../Components/common/LinearGradient";
+import { getPropsForAnimated2DWithGradient, AxesAndRulesDefaults, } from "gifted-charts-core/src";
+import Tooltip from "../Components/BarSpecificComponents/tooltip";
 var RenderBars = function (props) {
     var _a, _b, _c, _d, _e;
     var item = props.item, index = props.index, containerHeight = props.containerHeight, maxValue = props.maxValue, minHeight = props.minHeight, spacing = props.spacing, propSpacing = props.propSpacing, side = props.side, data = props.data, barBorderWidth = props.barBorderWidth, barBorderColor = props.barBorderColor, isThreeD = props.isThreeD, isAnimated = props.isAnimated, rotateLabel = props.rotateLabel, appearingOpacity = props.appearingOpacity, animationDuration = props.animationDuration, autoShiftLabels = props.autoShiftLabels, label = props.label, secondaryLabel = props.secondaryLabel, labelTextStyle = props.labelTextStyle, secondaryLabelTextStyle = props.secondaryLabelTextStyle, xAxisTextNumberOfLines = props.xAxisTextNumberOfLines, xAxisLabelsVerticalShift = props.xAxisLabelsVerticalShift, renderTooltip = props.renderTooltip, leftShiftForTooltip = props.leftShiftForTooltip, leftShiftForLastIndexTooltip = props.leftShiftForLastIndexTooltip, initialSpacing = props.initialSpacing, selectedIndex = props.selectedIndex, setSelectedIndex = props.setSelectedIndex, _f = props.xAxisThickness, xAxisThickness = _f === void 0 ? AxesAndRulesDefaults.xAxisThickness : _f, horizontal = props.horizontal, rtl = props.rtl, intactTopLabel = props.intactTopLabel, showValuesAsTopLabel = props.showValuesAsTopLabel, topLabelContainerStyle = props.topLabelContainerStyle, topLabelTextStyle = props.topLabelTextStyle, pointerConfig = props.pointerConfig, noOfSectionsBelowXAxis = props.noOfSectionsBelowXAxis, yAxisOffset = props.yAxisOffset, barWidth = props.barWidth, _g = props.labelsDistanceFromXaxis, labelsDistanceFromXaxis = _g === void 0 ? 0 : _g, stepHeight = props.stepHeight, stepValue = props.stepValue, negativeStepHeight = props.negativeStepHeight, negativeStepValue = props.negativeStepValue, autoCenterTooltip = props.autoCenterTooltip, secondaryXAxis = props.secondaryXAxis, secondaryStepHeight = props.secondaryStepHeight, secondaryStepValue = props.secondaryStepValue, secondaryNegativeStepHeight = props.secondaryNegativeStepHeight, secondaryNegativeStepValue = props.secondaryNegativeStepValue, secondaryNoOfSectionsBelowXAxis = props.secondaryNoOfSectionsBelowXAxis;
@@ -33,7 +33,7 @@ var RenderBars = function (props) {
     var _h = getPropsForAnimated2DWithGradient(__assign(__assign({}, props), { barHeight: barHeight })), commonStyleForBar = _h.commonStyleForBar, barStyleWithBackground = _h.barStyleWithBackground, commonPropsFor2dAnd3dBars = _h.commonPropsFor2dAnd3dBars, isFocused = _h.isFocused, focusedBarConfig = _h.focusedBarConfig, localFrontColor = _h.localFrontColor;
     var itemOrPropsBarInnerComponent = (_a = item.barInnerComponent) !== null && _a !== void 0 ? _a : props.barInnerComponent;
     var localBarInnerComponent = isFocused
-        ? ((_b = focusedBarConfig === null || focusedBarConfig === void 0 ? void 0 : focusedBarConfig.barInnerComponent) !== null && _b !== void 0 ? _b : itemOrPropsBarInnerComponent)
+        ? (_b = focusedBarConfig === null || focusedBarConfig === void 0 ? void 0 : focusedBarConfig.barInnerComponent) !== null && _b !== void 0 ? _b : itemOrPropsBarInnerComponent
         : itemOrPropsBarInnerComponent;
     var barMarginBottom = item.barMarginBottom === 0
         ? 0
@@ -47,7 +47,7 @@ var RenderBars = function (props) {
                         item.barWidth ||
                         barWidth) + spacing,
                     left: spacing / -2,
-                    position: 'absolute',
+                    position: "absolute",
                     height: (_a = props.xAxisLabelsHeight) !== null && _a !== void 0 ? _a : xAxisTextNumberOfLines * 18,
                     bottom: top
                         ? (containerHeight || 200) +
@@ -66,20 +66,20 @@ var RenderBars = function (props) {
                 },
                 rotateLabel
                     ? horizontal
-                        ? { transform: [{ rotate: '330deg' }] }
+                        ? { transform: [{ rotate: "330deg" }] }
                         : {
                             transform: [
-                                { rotate: value < 0 ? '240deg' : '60deg' },
+                                { rotate: value < 0 ? "240deg" : "60deg" },
                                 { translateX: value < 0 ? 56 : 0 },
                                 { translateY: value < 0 ? 32 : 0 },
                             ],
                         }
                     : horizontal
-                        ? { transform: [{ rotate: '-90deg' }] }
+                        ? { transform: [{ rotate: "-90deg" }] }
                         : value < 0
                             ? {
                                 transform: [
-                                    { rotate: '180deg' },
+                                    { rotate: "180deg" },
                                     {
                                         translateY: autoShiftLabels
                                             ? 0
@@ -89,12 +89,12 @@ var RenderBars = function (props) {
                             }
                             : {},
             ], children: top ? (item.secondaryLabelComponent ? (item.secondaryLabelComponent()) : (_jsx(Text, { style: [
-                    { textAlign: 'center' },
-                    rtl && horizontal && { transform: [{ rotate: '180deg' }] },
+                    { textAlign: "center" },
+                    rtl && horizontal && { transform: [{ rotate: "180deg" }] },
                     labelTextStyle,
                 ], numberOfLines: xAxisTextNumberOfLines, children: label }))) : item.labelComponent ? (item.labelComponent()) : (_jsx(Text, { style: [
-                    { textAlign: 'center' },
-                    rtl && horizontal && { transform: [{ rotate: '180deg' }] },
+                    { textAlign: "center" },
+                    rtl && horizontal && { transform: [{ rotate: "180deg" }] },
                     labelTextStyle,
                 ], numberOfLines: xAxisTextNumberOfLines, children: label })) }));
     };
@@ -107,7 +107,7 @@ var RenderBars = function (props) {
                         item.barWidth ||
                         barWidth) + spacing,
                     left: spacing / -2,
-                    position: 'absolute',
+                    position: "absolute",
                     height: (_a = props.xAxisLabelsHeight) !== null && _a !== void 0 ? _a : xAxisTextNumberOfLines * 18 -
                         (value < 0
                             ? -xAxisLabelsVerticalShift
@@ -122,17 +122,17 @@ var RenderBars = function (props) {
                                 xAxisLabelsVerticalShift) - barMarginBottom,
                     opacity: appearingOpacity,
                 },
-                value < 0 && { transform: [{ rotate: '180deg' }] },
+                value < 0 && { transform: [{ rotate: "180deg" }] },
                 rotateLabel
                     ? horizontal
-                        ? { transform: [{ rotate: '330deg' }] }
-                        : { transform: [{ rotate: '60deg' }] }
+                        ? { transform: [{ rotate: "330deg" }] }
+                        : { transform: [{ rotate: "60deg" }] }
                     : horizontal
-                        ? { transform: [{ rotate: '-90deg' }] }
+                        ? { transform: [{ rotate: "-90deg" }] }
                         : value < 0
                             ? {
                                 transform: [
-                                    { rotate: '180deg' },
+                                    { rotate: "180deg" },
                                     {
                                         translateY: autoShiftLabels
                                             ? 0
@@ -142,12 +142,12 @@ var RenderBars = function (props) {
                             }
                             : {},
             ], children: top ? (item.secondaryLabelComponent ? (item.secondaryLabelComponent()) : (_jsx(Text, { style: [
-                    { textAlign: 'center' },
-                    rtl && horizontal && { transform: [{ rotate: '180deg' }] },
+                    { textAlign: "center" },
+                    rtl && horizontal && { transform: [{ rotate: "180deg" }] },
                     labelTextStyle,
                 ], numberOfLines: xAxisTextNumberOfLines, children: label }))) : item.labelComponent ? (item.labelComponent()) : (_jsx(Text, { style: [
-                    { textAlign: 'center' },
-                    rtl && horizontal && { transform: [{ rotate: '180deg' }] },
+                    { textAlign: "center" },
+                    rtl && horizontal && { transform: [{ rotate: "180deg" }] },
                     labelTextStyle,
                 ], numberOfLines: xAxisTextNumberOfLines, children: label })) }));
     };
@@ -158,28 +158,28 @@ var RenderBars = function (props) {
     }
     var static2DWithGradient = function (item) {
         var _a, _b;
-        var localGradientColor = item.gradientColor || props.gradientColor || 'white';
+        var localGradientColor = item.gradientColor || props.gradientColor || "white";
         return (_jsxs(_Fragment, { children: [_jsx(LinearGradient, { style: commonStyleForBar, start: { x: 0, y: 0 }, end: { x: 0, y: 1 }, colors: [
                         isFocused
-                            ? ((_a = focusedBarConfig === null || focusedBarConfig === void 0 ? void 0 : focusedBarConfig.gradientColor) !== null && _a !== void 0 ? _a : localGradientColor)
+                            ? (_a = focusedBarConfig === null || focusedBarConfig === void 0 ? void 0 : focusedBarConfig.gradientColor) !== null && _a !== void 0 ? _a : localGradientColor
                             : localGradientColor,
                         localFrontColor,
                     ], children: props.cappedBars && item.value ? (_jsx(Cap, { capThicknessFromItem: item.capThickness, capThicknessFromProps: props.capThickness, capColorFromItem: item.capColor, capColorFromProps: props.capColor, capRadiusFromItem: item.capRadius, capRadiusFromProps: props.capRadius })) : null }), (item.barBackgroundPattern || props.barBackgroundPattern) && (_jsx(BarBackgroundPattern, { barBackgroundPatternFromItem: item.barBackgroundPattern, barBackgroundPatternFromProps: props.barBackgroundPattern, patternIdFromItem: item.patternId, patternIdFromProps: props.patternId })), (item.topLabelComponent || showValuesAsTopLabel) && (_jsx(View, { style: [
                         {
-                            position: 'absolute',
+                            position: "absolute",
                             top: (item.barWidth || barWidth) * -1,
                             height: item.barWidth || barWidth,
                             width: item.barWidth || barWidth,
                             justifyContent: (horizontal && !intactTopLabel) || item.value < 0
-                                ? 'center'
-                                : 'flex-end',
-                            alignItems: 'center',
+                                ? "center"
+                                : "flex-end",
+                            alignItems: "center",
                         },
-                        item.value < 0 && { transform: [{ rotate: '180deg' }] },
+                        item.value < 0 && { transform: [{ rotate: "180deg" }] },
                         horizontal &&
-                            !intactTopLabel && { transform: [{ rotate: '270deg' }] },
+                            !intactTopLabel && { transform: [{ rotate: "270deg" }] },
                         topLabelContainerStyle !== null && topLabelContainerStyle !== void 0 ? topLabelContainerStyle : item.topLabelContainerStyle,
-                    ], children: showValuesAsTopLabel ? (_jsx(Text, { style: topLabelTextStyle, children: item.value + yAxisOffset })) : ((_b = item.topLabelComponent) === null || _b === void 0 ? void 0 : _b.call(item)) })), localBarInnerComponent ? (_jsx(View, { style: { height: '100%', width: '100%' }, children: localBarInnerComponent(item, index) })) : null] }));
+                    ], children: showValuesAsTopLabel ? (_jsx(Text, { style: topLabelTextStyle, children: item.value + yAxisOffset })) : ((_b = item.topLabelComponent) === null || _b === void 0 ? void 0 : _b.call(item)) })), localBarInnerComponent ? (_jsx(View, { style: { height: "100%", width: "100%" }, children: localBarInnerComponent(item, index) })) : null] }));
     };
     var barWrapperStyle = [
         {
@@ -194,10 +194,10 @@ var RenderBars = function (props) {
                         (barHeight - 10 + xAxisLabelsVerticalShift) +
                         (item.value < 0 ? Math.abs(item.value) * heightFactor : 0),
                 },
-                { rotateZ: item.value < 0 ? '180deg' : '0deg' },
+                { rotateZ: item.value < 0 ? "180deg" : "0deg" },
             ],
         },
-        side !== 'right' && { zIndex: data.length - index },
+        side !== "right" && { zIndex: data.length - index },
     ];
     var pressDisabled = item.disablePress ||
         props.disablePress ||
@@ -208,7 +208,7 @@ var RenderBars = function (props) {
         var animated2DWithGradient = function (noGradient, noAnimation) { return (_jsx(Animated2DWithGradient, __assign({}, commonPropsFor2dAnd3dBars, { animationDuration: animationDuration || 800, roundedBottom: props.roundedBottom || false, roundedTop: props.roundedTop || false, noGradient: noGradient, noAnimation: noAnimation, containerHeight: containerHeight, maxValue: maxValue, minHeight: minHeight !== null && minHeight !== void 0 ? minHeight : 0, barMarginBottom: barMarginBottom, cappedBars: props.cappedBars, capThickness: props.capThickness, capColor: props.capColor, capRadius: props.capRadius, horizontal: horizontal, barBorderWidth: barBorderWidth, barBorderColor: barBorderColor, commonStyleForBar: commonStyleForBar, barStyleWithBackground: barStyleWithBackground }))); };
         return (_jsxs(_Fragment, { children: [(props.showXAxisIndices || item.showXAxisIndex) && (_jsx(View, { style: {
                         zIndex: 2,
-                        position: 'absolute',
+                        position: "absolute",
                         height: props.xAxisIndicesHeight,
                         width: props.xAxisIndicesWidth,
                         bottom: props.xAxisIndicesHeight / -2,
@@ -216,7 +216,7 @@ var RenderBars = function (props) {
                         backgroundColor: props.xAxisIndicesColor,
                     } })), isBarBelowXaxisAndInvisible ? null : isThreeD ? (_jsx(AnimatedThreeDBar, __assign({}, commonPropsFor2dAnd3dBars, { sideWidth: item.sideWidth ||
                         props.sideWidth ||
-                        (item.barWidth || barWidth) / 2, side: side || 'left', sideColor: item.sideColor || props.sideColor || '', topColor: item.topColor || props.topColor || '', horizontal: horizontal, isAnimated: isAnimated, animationDuration: animationDuration || 800, selectedIndex: selectedIndex }))) : item.showGradient || props.showGradient ? (isAnimated ? (animated2DWithGradient(false, false)) : (static2DWithGradient(item))) : isAnimated ? (animated2DWithGradient(true, false)) : (animated2DWithGradient(true, true)), isAnimated
+                        (item.barWidth || barWidth) / 2, side: side || "left", sideColor: item.sideColor || props.sideColor || "", topColor: item.topColor || props.topColor || "", horizontal: horizontal, isAnimated: isAnimated, animationDuration: animationDuration || 800, selectedIndex: selectedIndex }))) : item.showGradient || props.showGradient ? (isAnimated ? (animated2DWithGradient(false, false)) : (static2DWithGradient(item))) : isAnimated ? (animated2DWithGradient(true, false)) : (animated2DWithGradient(true, true)), isAnimated
                     ? renderAnimatedLabel(false, label, labelTextStyle, item.value)
                     : renderLabel(false, label, labelTextStyle, item.value), secondaryXAxis
                     ? isAnimated

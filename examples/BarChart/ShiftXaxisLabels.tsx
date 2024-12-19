@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import {BarChart} from '../../src/BarChart';
-import {stackDataItem} from 'gifted-charts-core';
-import { Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from "react";
+import { BarChart } from "../../src/BarChart";
+import { stackDataItem } from "gifted-charts-core/src";
+import { Text, TouchableOpacity, View } from "react-native";
 
 const ShiftXaxisLabels = () => {
   const barConfig = {
-    color: 'orange',
+    color: "orange",
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   };
   const lowerarConfig = {
-    color: 'red',
+    color: "red",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
   };
@@ -18,41 +18,41 @@ const ShiftXaxisLabels = () => {
   const stackData: stackDataItem[] = [
     {
       stacks: [
-        {value: 80, ...barConfig},
-        {value: -40, ...lowerarConfig},
+        { value: 80, ...barConfig },
+        { value: -40, ...lowerarConfig },
       ],
-      label: 'April'
+      label: "April",
     },
     {
       stacks: [
-        {value: 184, ...barConfig},
-        {value: -168, ...lowerarConfig},
+        { value: 184, ...barConfig },
+        { value: -168, ...lowerarConfig },
       ],
-      label: 'Mei'
+      label: "Mei",
     },
     {
       stacks: [
-        {value: 210, ...barConfig},
-        {value: -220, ...lowerarConfig},
+        { value: 210, ...barConfig },
+        { value: -220, ...lowerarConfig },
       ],
-      label: 'Juni'
+      label: "Juni",
     },
   ];
-  
+
   return (
     <View>
       <BarChart
         barWidth={20}
         spacing={40}
         xAxisLabelTextStyle={{
-          fontFamily: 'Goga-Bold',
-          color: 'black',
+          fontFamily: "Goga-Bold",
+          color: "black",
           marginBottom: -20,
         }}
         yAxisTextStyle={{
           left: 0,
-          color: '#FF6B00',
-          fontFamily: 'Goga-Bold',
+          color: "#FF6B00",
+          fontFamily: "Goga-Bold",
         }}
         stackData={stackData}
         mostNegativeValue={-220}
@@ -60,7 +60,7 @@ const ShiftXaxisLabels = () => {
         xAxisThickness={1}
         noOfSections={5}
         rulesThickness={0}
-        formatYLabel={label => `€${label}`}
+        formatYLabel={(label) => `€${label}`}
         autoShiftLabelsForNegativeStacks={false}
         labelsDistanceFromXaxis={210}
       />

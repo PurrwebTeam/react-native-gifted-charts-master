@@ -1,9 +1,9 @@
-import {View} from 'react-native';
-import Svg, {Line} from 'react-native-svg';
+import { View } from "react-native";
+import Svg, { Line } from "react-native-svg";
 import {
   StripAndLabelProps,
   getTopAndLeftForStripAndLabel,
-} from 'gifted-charts-core';
+} from "gifted-charts-core/src";
 
 export const StripAndLabel = (props: StripAndLabelProps) => {
   const {
@@ -34,16 +34,17 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
     screenWidth,
   } = props;
 
-  const {top, left} = getTopAndLeftForStripAndLabel(props);
+  const { top, left } = getTopAndLeftForStripAndLabel(props);
 
-  if (isNaN(top) || typeof top !== 'number') return null;
+  if (isNaN(top) || typeof top !== "number") return null;
 
   return (
     <View
       style={{
-        position: 'absolute',
+        position: "absolute",
         top: pointerYLocal,
-      }}>
+      }}
+    >
       {(
         isBarChart
           ? showPointerStrip && !pointerLabelComponent
@@ -51,12 +52,13 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
       ) ? (
         <View
           style={{
-            position: 'absolute',
+            position: "absolute",
             left: -pointerStripWidth / 4,
             top: containsNegative ? 0 : -pointerYLocal + 8 + xAxisThickness,
             width: screenWidth,
             height: containerHeight,
-          }}>
+          }}
+        >
           <Svg>
             <Line
               stroke={pointerStripColor}
@@ -64,7 +66,7 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
               strokeDasharray={
                 pointerConfig?.strokeDashArray
                   ? pointerConfig?.strokeDashArray
-                  : ''
+                  : ""
               }
               x1={
                 pointerX +
@@ -94,10 +96,10 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
                   horizontalStripConfig.thickness ?? pointerStripWidth
                 }
                 strokeDasharray={
-                  (pointerConfig?.horizontalStripConfig?.strokeDashArray ??
-                  pointerConfig?.strokeDashArray)
+                  pointerConfig?.horizontalStripConfig?.strokeDashArray ??
+                  pointerConfig?.strokeDashArray
                     ? pointerConfig?.strokeDashArray
-                    : ''
+                    : ""
                 }
                 x1={0}
                 y1={pointerYLocal - 7}
@@ -112,10 +114,10 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
           </Svg>
           {horizontalStripConfig?.labelComponent ? (
             <View
-              pointerEvents={pointerEvents ?? 'none'}
+              pointerEvents={pointerEvents ?? "none"}
               style={[
                 {
-                  position: 'absolute',
+                  position: "absolute",
                   left: 0,
                   top:
                     pointerYLocal -
@@ -123,13 +125,14 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
                     (horizontalStripConfig.labelComponentHeight ?? 30) / 2,
                   width: pointerLabelWidth,
                 },
-              ]}>
+              ]}
+            >
               {horizontalStripConfig?.labelComponent?.(
                 hasDataSet ? pointerItemsForSet : pointerItemLocal,
                 hasDataSet
                   ? secondaryPointerItemsForSet
                   : [secondaryPointerItem],
-                pointerIndex,
+                pointerIndex
               )}
             </View>
           ) : null}
@@ -138,10 +141,10 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
 
       {pointerLabelComponent ? (
         <View
-          pointerEvents={pointerEvents ?? 'none'}
+          pointerEvents={pointerEvents ?? "none"}
           style={[
             {
-              position: 'absolute',
+              position: "absolute",
               left: left + pointerX,
               top: top,
               marginTop: pointerStripUptoDataPoint
@@ -149,11 +152,12 @@ export const StripAndLabel = (props: StripAndLabelProps) => {
                 : containerHeight - pointerStripHeight,
               width: pointerLabelWidth,
             },
-          ]}>
+          ]}
+        >
           {pointerLabelComponent?.(
             hasDataSet ? pointerItemsForSet : pointerItemLocal,
             hasDataSet ? secondaryPointerItemsForSet : [secondaryPointerItem],
-            pointerIndex,
+            pointerIndex
           )}
         </View>
       ) : null}

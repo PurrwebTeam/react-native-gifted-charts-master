@@ -1,6 +1,6 @@
-import React, {Fragment} from 'react';
-import {getXForLineInBar, getYForLineInBar} from 'gifted-charts-core';
-import {Circle, Rect, Text as CanvasText} from 'react-native-svg';
+import React, { Fragment } from "react";
+import { getXForLineInBar, getYForLineInBar } from "gifted-charts-core/src";
+import { Circle, Rect, Text as CanvasText } from "react-native-svg";
 
 export const renderSpecificDataPoints = (props: any) => {
   const {
@@ -22,17 +22,17 @@ export const renderSpecificDataPoints = (props: any) => {
       currentBarWidth,
       yAxisLabelWidth,
       lineConfig,
-      spacing,
+      spacing
     );
     const y = getYForLineInBar(
       item.value,
       lineConfig.shiftY,
       containerHeight,
       maxValue,
-      yAxisOffset,
+      yAxisOffset
     );
     if (item.showDataPoint) {
-      if (item.dataPointShape === 'rectangular') {
+      if (item.dataPointShape === "rectangular") {
         return (
           <Fragment key={index}>
             <Rect
@@ -40,18 +40,19 @@ export const renderSpecificDataPoints = (props: any) => {
               y={y - item.dataPointsHeight / 2}
               width={item.dataPointWidth || lineConfig.dataPointsWidth}
               height={item.dataPointHeight || 2}
-              fill={item.dataPointColor || 'black'}
+              fill={item.dataPointColor || "black"}
             />
             {item.dataPointText && (
               <CanvasText
-                fill={item.textColor || 'black'}
+                fill={item.textColor || "black"}
                 fontSize={item.textFontSize || 10}
                 x={x + (item.textShiftX || lineConfig.textShiftX || 0)}
                 y={
                   y -
                   (item.dataPointHeight || lineConfig.dataPointsHeight) / 2 +
                   (item.textShiftY || lineConfig.textShiftY || 0)
-                }>
+                }
+              >
                 {item.dataPointText}
               </CanvasText>
             )}
@@ -64,18 +65,19 @@ export const renderSpecificDataPoints = (props: any) => {
               cx={x}
               cy={y}
               r={item.dataPointRadius || 3}
-              fill={item.dataPointColor || 'black'}
+              fill={item.dataPointColor || "black"}
             />
             {item.dataPointText && (
               <CanvasText
-                fill={item.textColor || 'black'}
+                fill={item.textColor || "black"}
                 fontSize={item.textFontSize || 10}
                 x={x + (item.textShiftX || lineConfig.textShiftX || 0)}
                 y={
                   y -
                   (item.dataPointHeight || lineConfig.dataPointsHeight) / 2 +
                   (item.textShiftY || lineConfig.textShiftY || 0)
-                }>
+                }
+              >
                 {item.dataPointText}
               </CanvasText>
             )}

@@ -14,7 +14,7 @@ import {
   LineChartBicolorPropsType,
   bicolorLineDataItem,
   useLineChartBiColor,
-} from 'gifted-charts-core';
+} from 'gifted-charts-core/src';
 import {screenWidth} from '../utils';
 
 export const LineChartBicolor = (props: LineChartBicolorPropsType) => {

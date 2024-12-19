@@ -10,12 +10,12 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { Fragment, useEffect } from 'react';
-import { View, ScrollView, StyleSheet, I18nManager } from 'react-native';
-import { renderHorizSections } from './renderHorizSections';
-import RenderLineInBarChart from './renderLineInBarChart';
-import RenderVerticalLines from './renderVerticalLines';
-import { chartTypes, yAxisSides, useBarAndLineChartsWrapper, } from 'gifted-charts-core';
+import { Fragment, useEffect } from "react";
+import { View, ScrollView, StyleSheet, I18nManager } from "react-native";
+import { renderHorizSections } from "./renderHorizSections";
+import RenderLineInBarChart from "./renderLineInBarChart";
+import RenderVerticalLines from "./renderVerticalLines";
+import { chartTypes, yAxisSides, useBarAndLineChartsWrapper, } from "gifted-charts-core/src";
 var BarAndLineChartsWrapper = function (props) {
     var _a, _b, _c, _d, _e;
     var chartType = props.chartType, containerHeight = props.containerHeight, noOfSectionsBelowXAxis = props.noOfSectionsBelowXAxis, stepHeight = props.stepHeight, labelsExtraHeight = props.labelsExtraHeight, yAxisLabelWidth = props.yAxisLabelWidth, horizontal = props.horizontal, scrollRef = props.scrollRef, initialSpacing = props.initialSpacing, data = props.data, barWidth = props.barWidth, xAxisThickness = props.xAxisThickness, totalWidth = props.totalWidth, disableScroll = props.disableScroll, showScrollIndicator = props.showScrollIndicator, scrollToEnd = props.scrollToEnd, scrollToIndex = props.scrollToIndex, scrollAnimation = props.scrollAnimation, indicatorColor = props.indicatorColor, spacing = props.spacing, showLine = props.showLine, points2 = props.points2, renderChartContent = props.renderChartContent, remainingScrollViewProps = props.remainingScrollViewProps, endSpacing = props.endSpacing, hideAxesAndRules = props.hideAxesAndRules, showXAxisIndices = props.showXAxisIndices, xAxisIndicesHeight = props.xAxisIndicesHeight, xAxisIndicesWidth = props.xAxisIndicesWidth, xAxisIndicesColor = props.xAxisIndicesColor, pointerConfig = props.pointerConfig, getPointerProps = props.getPointerProps, pointerIndex = props.pointerIndex, pointerX = props.pointerX, pointerY = props.pointerY, onEndReached = props.onEndReached, onStartReached = props.onStartReached, onMomentumScrollEnd = props.onMomentumScrollEnd, nestedScrollEnabled = props.nestedScrollEnabled, _f = props.extraWidthDueToDataPoint, extraWidthDueToDataPoint = _f === void 0 ? 0 : _f;
@@ -29,7 +29,7 @@ var BarAndLineChartsWrapper = function (props) {
     /*******************************************************************************************************************************************/
     var styles = StyleSheet.create({
         container: {
-            width: '100%',
+            width: "100%",
             height: containerHeightIncludingBelowXAxis +
                 labelsExtraHeight +
                 xAxisLabelsVerticalShift +
@@ -74,7 +74,7 @@ var BarAndLineChartsWrapper = function (props) {
                             : yAxisSide === yAxisSides.RIGHT
                                 ? 0
                                 : yAxisLabelWidth + yAxisThickness,
-                        position: 'absolute',
+                        position: "absolute",
                         bottom: chartType === chartTypes.LINE_BI_COLOR ? 0 : xAxisThickness,
                     },
                     !!props.width && { width: props.width + extraWidthDueToDataPoint },
@@ -91,7 +91,7 @@ var BarAndLineChartsWrapper = function (props) {
                             extraWidthDueToDataPoint,
                         paddingLeft: initialSpacing,
                         paddingBottom: noOfSectionsBelowXAxis * stepHeight + labelsExtraHeight,
-                        alignItems: 'flex-end',
+                        alignItems: "flex-end",
                     },
                     !props.width && { width: totalWidth },
                 ], scrollEnabled: !disableScroll, showsHorizontalScrollIndicator: showScrollIndicator, indicatorStyle: indicatorColor, onContentSizeChange: function () {
@@ -115,7 +115,7 @@ var BarAndLineChartsWrapper = function (props) {
                         chartType === chartTypes.LINE &&
                             data.map(function (item, index) {
                                 return showXAxisIndices || item.showXAxisIndex ? (_jsx(View, { style: {
-                                        position: 'absolute',
+                                        position: "absolute",
                                         height: xAxisIndicesHeight,
                                         width: xAxisIndicesWidth,
                                         backgroundColor: xAxisIndicesColor,
@@ -123,7 +123,7 @@ var BarAndLineChartsWrapper = function (props) {
                                         left: index * spacing +
                                             (initialSpacing - xAxisIndicesWidth / 2) -
                                             3,
-                                    } }, index + '' + item.value)) : null;
+                                    } }, index + "" + item.value)) : null;
                             }), renderChartContent(containerHeightIncludingBelowXAxis)] }) })), referenceLinesOverChartContent
                 ? renderHorizSections(__assign(__assign({}, horizSectionProps), { onlyReferenceLines: true }))
                 : null] }));

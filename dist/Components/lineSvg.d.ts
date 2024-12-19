@@ -1,4 +1,4 @@
-import { ColorValue } from 'react-native';
+import { ColorValue } from "react-native";
 type ruleProps = {
     thickness: number;
     width: number;

@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 import {
   PieChartPropsType,
   pieColors,
   usePiePro,
-} from 'gifted-charts-core';
+} from "gifted-charts-core/src";
 import {
   Defs,
   Path,
@@ -11,8 +11,8 @@ import {
   Svg,
   Text as SvgText,
   RadialGradient,
-} from 'react-native-svg';
-import {Animated, View} from 'react-native';
+} from "react-native-svg";
+import { Animated, View } from "react-native";
 
 export const PieChartPro = (props: PieChartPropsType) => {
   const {
@@ -45,9 +45,12 @@ export const PieChartPro = (props: PieChartPropsType) => {
     semiCircle,
   } = props;
 
-  let {isAnimated} = props;
+  let { isAnimated } = props;
 
-  if (!props.semiCircle && data.some(dataItem => dataItem.value > total / 2)) {
+  if (
+    !props.semiCircle &&
+    data.some((dataItem) => dataItem.value > total / 2)
+  ) {
     // if we have an obtuse arc, we cant animate
     isAnimated = false;
   }
@@ -55,13 +58,13 @@ export const PieChartPro = (props: PieChartPropsType) => {
   const AnimatedPath = Animated.createAnimatedComponent(Path);
   const AnimatedText = Animated.createAnimatedComponent(SvgText);
 
-  const animatedValues = data.map(i => new Animated.Value(0));
+  const animatedValues = data.map((i) => new Animated.Value(0));
   const animatedOpacityValue = new Animated.Value(0);
   const animatedPaths = data.map((item, index) =>
     animatedValues[index]?.interpolate({
       inputRange: [0, 1],
       outputRange: [dInitial[index], dFinal[index]],
-    }),
+    })
   );
 
   const animatedOpacity = animatedOpacityValue.interpolate({
@@ -76,12 +79,12 @@ export const PieChartPro = (props: PieChartPropsType) => {
       useNativeDriver: true,
       delay: animationDuration,
     }).start();
-    animatedValues.forEach(animatedValue =>
+    animatedValues.forEach((animatedValue) =>
       Animated.timing(animatedValue, {
         toValue: 1,
         duration: animationDuration,
         useNativeDriver: true,
-      }).start(),
+      }).start()
     );
   }, [data]);
 
@@ -91,18 +94,20 @@ export const PieChartPro = (props: PieChartPropsType) => {
   return (
     <View
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
         height: adjustHeight,
         width: height * 2,
-      }}>
+      }}
+    >
       <View
         style={
           semiCircle
-            ? {position: 'absolute', bottom: 0}
-            : {position: 'absolute'}
-        }>
+            ? { position: "absolute", bottom: 0 }
+            : { position: "absolute" }
+        }
+      >
         {centerLabelComponent ? centerLabelComponent() : null}
       </View>
       <Svg
@@ -117,23 +122,31 @@ export const PieChartPro = (props: PieChartPropsType) => {
         transform={
           semiCircle
             ? []
-            : [{scaleY: maxStrokeWidth ? 1 + maxStrokeWidth / (radius * 2) : 1}]
-        }>
+            : [
+                {
+                  scaleY: maxStrokeWidth
+                    ? 1 + maxStrokeWidth / (radius * 2)
+                    : 1,
+                },
+              ]
+        }
+      >
         {total ? (
           <>
             <Defs>
               {data.map((item, index) => {
                 return (
                   <RadialGradient
-                    key={index + ''}
-                    id={'grad' + index}
+                    key={index + ""}
+                    id={"grad" + index}
                     cx="50%"
                     cy="50%"
                     rx="50%"
                     ry="50%"
                     fx="50%"
                     fy="50%"
-                    gradientUnits="userSpaceOnUse">
+                    gradientUnits="userSpaceOnUse"
+                  >
                     <Stop
                       offset="0%"
                       stopColor={item.gradientCenterColor}
@@ -153,7 +166,7 @@ export const PieChartPro = (props: PieChartPropsType) => {
               const borderColor =
                 item.strokeColor ??
                 props.strokeColor ??
-                (borderWidth ? 'black' : 'none');
+                (borderWidth ? "black" : "none");
               const strokeDashArrayLocal =
                 item.strokeDashArray ?? strokeDashArray;
               return (
@@ -163,10 +176,10 @@ export const PieChartPro = (props: PieChartPropsType) => {
                   d={isAnimated ? animatedPaths[index] : dFinal[index]}
                   fill={
                     ring
-                      ? 'none'
+                      ? "none"
                       : showGradient
-                        ? `url(#grad${index})`
-                        : data[index].color || pieColors[index % 9]
+                      ? `url(#grad${index})`
+                      : data[index].color || pieColors[index % 9]
                   }
                   strokeWidth={borderWidth}
                   strokeDasharray={strokeDashArrayLocal}
@@ -223,7 +236,7 @@ export const PieChartPro = (props: PieChartPropsType) => {
               : null}
 
             {data.map((item, index) => {
-              const {x, y} = getTextCoordinates(index, item.labelPosition);
+              const { x, y } = getTextCoordinates(index, item.labelPosition);
 
               return (
                 <AnimatedText
@@ -238,7 +251,7 @@ export const PieChartPro = (props: PieChartPropsType) => {
                   fontSize={item.textSize || props.textSize}
                   fontFamily={item.font || props.font}
                   fontWeight={item.fontWeight || props.fontWeight}
-                  fontStyle={item.fontStyle || props.fontStyle || 'normal'}
+                  fontStyle={item.fontStyle || props.fontStyle || "normal"}
                   x={
                     x +
                     (item.shiftTextX || 0) -
@@ -249,13 +262,14 @@ export const PieChartPro = (props: PieChartPropsType) => {
                     item.onLabelPress
                       ? item.onLabelPress()
                       : props.onLabelPress
-                        ? props.onLabelPress(item, index)
-                        : item.onPress
-                          ? item.onPress()
-                          : props.onPress?.(item, index);
-                  }}>
+                      ? props.onLabelPress(item, index)
+                      : item.onPress
+                      ? item.onPress()
+                      : props.onPress?.(item, index);
+                  }}
+                >
                   {item.text ||
-                    (props.showValuesAsLabels ? item.value + '' : '')}
+                    (props.showValuesAsLabels ? item.value + "" : "")}
                 </AnimatedText>
               );
             })}

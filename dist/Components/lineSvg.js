@@ -10,8 +10,8 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { jsx as _jsx } from "react/jsx-runtime";
-import Svg, { G, Path } from 'react-native-svg';
-import { ruleTypes } from 'gifted-charts-core';
+import Svg, { G, Path } from "react-native-svg";
+import { ruleTypes } from "gifted-charts-core/src";
 function Rule(props) {
     var _a = props.config, thickness = _a.thickness, width = _a.width, color = _a.color, type = _a.type, dashWidth = _a.dashWidth, dashGap = _a.dashGap;
     if (type === ruleTypes.SOLID) {
