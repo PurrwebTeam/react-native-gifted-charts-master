@@ -76,6 +76,7 @@ var BarAndLineChartsWrapper = function (props) {
                                 : yAxisLabelWidth + yAxisThickness,
                         position: "absolute",
                         bottom: chartType === chartTypes.LINE_BI_COLOR ? 0 : xAxisThickness,
+                        paddingLeft: 10,
                     },
                     !!props.width && { width: props.width + extraWidthDueToDataPoint },
                     horizontal && {
