@@ -701,7 +701,7 @@ export const LineChart = (props: LineChartPropsType) => {
         <Fragment key={index}>
           {focusEnabled ? (
             <>
-              {unFocusOnPressOut ? ( // remove strip on onFocus
+              {unFocusOnPressOut ? (
                 <Rect
                   onPressIn={() => onStripPress(item, index)}
                   onPressOut={() =>
@@ -725,7 +725,6 @@ export const LineChart = (props: LineChartPropsType) => {
               )}
             </>
           ) : null}
-          {/* {renderStrips(item, index, key)} // handled with strips coming from geifted-charts-core */}
           {hideDataPoints ? null : (
             <>
               {customDataPoint ? (
@@ -744,56 +743,47 @@ export const LineChart = (props: LineChartPropsType) => {
                 >
                   {customDataPoint(item, index)}
                 </View>
-              ) : null}
-              {dataPointsShape === "rectangular" ? (
-                <Fragment key={index}>
-                  {customDataPoint ? null : (
-                    <Rect
-                      x={getX(spacingArray, index) - dataPointsWidth / 2}
-                      y={getYOrSecondaryY(item.value) - dataPointsHeight / 2}
-                      width={dataPointsWidth}
-                      height={dataPointsHeight}
-                      fill={
-                        showDataPointOnFocus
-                          ? index === selectedIndex
-                            ? dataPointsColor
-                            : "none"
-                          : dataPointsColor
-                      }
-                      onPress={() => {
-                        item.onPress
-                          ? item.onPress(item, index)
-                          : props.onPress
-                          ? props.onPress(item, index)
-                          : null;
-                      }}
-                    />
-                  )}
-                </Fragment>
+              ) : dataPointsShape === "rectangular" ? (
+                <Rect
+                  x={getX(spacingArray, index) - dataPointsWidth / 2}
+                  y={getYOrSecondaryY(item.value) - dataPointsHeight / 2}
+                  width={dataPointsWidth}
+                  height={dataPointsHeight}
+                  fill={
+                    showDataPointOnFocus
+                      ? index === selectedIndex
+                        ? dataPointsColor
+                        : "none"
+                      : dataPointsColor
+                  }
+                  onPress={() => {
+                    item.onPress
+                      ? item.onPress(item, index)
+                      : props.onPress
+                      ? props.onPress(item, index)
+                      : null;
+                  }}
+                />
               ) : (
-                <Fragment key={index}>
-                  {customDataPoint ? null : (
-                    <Circle
-                      cx={getX(spacingArray, index)}
-                      cy={getYOrSecondaryY(item.value)}
-                      r={dataPointsRadius}
-                      fill={
-                        showDataPointOnFocus
-                          ? index === selectedIndex
-                            ? dataPointsColor
-                            : "none"
-                          : dataPointsColor
-                      }
-                      onPress={() => {
-                        item.onPress
-                          ? item.onPress(item, index)
-                          : props.onPress
-                          ? props.onPress(item, index)
-                          : null;
-                      }}
-                    />
-                  )}
-                </Fragment>
+                <Circle
+                  cx={getX(spacingArray, index)}
+                  cy={getYOrSecondaryY(item.value)}
+                  r={dataPointsRadius}
+                  fill={
+                    showDataPointOnFocus
+                      ? index === selectedIndex
+                        ? dataPointsColor
+                        : "none"
+                      : dataPointsColor
+                  }
+                  onPress={() => {
+                    item.onPress
+                      ? item.onPress(item, index)
+                      : props.onPress
+                      ? props.onPress(item, index)
+                      : null;
+                  }}
+                />
               )}
               {dataPointLabelComponent ? (
                 !showTextOnFocus || index === selectedIndex ? (
