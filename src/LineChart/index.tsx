@@ -2386,10 +2386,25 @@ export const LineChart = (props: LineChartPropsType) => {
             )}
           </View>
         ) : null}
-        {(data0 ?? data).map((item: lineDataItem, index: number) => {
+        {Array.from({
+          length: Math.max(
+            (data0 ?? data)?.length || 0,
+            data2?.length || 0,
+            data3?.length || 0,
+            data4?.length || 0,
+            data5?.length || 0
+          ),
+        }).map((_, index) => {
           const getLabel = () => {
-            if (item.label || props.xAxisLabelTexts?.[index]) {
-              return item.label || props.xAxisLabelTexts?.[index] || "";
+            if (
+              (data0 ?? data)?.[index]?.label ||
+              props.xAxisLabelTexts?.[index]
+            ) {
+              return (
+                (data0 ?? data)?.[index]?.label ||
+                props.xAxisLabelTexts?.[index] ||
+                ""
+              );
             }
 
             if (data2?.[index]?.label) {
@@ -2412,6 +2427,7 @@ export const LineChart = (props: LineChartPropsType) => {
           };
 
           const label = getLabel();
+          const item = (data0 ?? data)?.[index] || {};
           const secondaryLabel =
             item.secondaryLabel ?? secondaryXAxis?.labelTexts?.[index] ?? "";
           const secondaryLabelTextStyle =

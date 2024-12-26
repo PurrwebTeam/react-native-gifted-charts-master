@@ -886,7 +886,7 @@ export var LineChart = function (props) {
         return null;
     };
     var renderChartContent = function (containerHeightIncludingBelowXAxis) {
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
+        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
         return (_jsxs(_Fragment, { children: [Object.keys(strips).length > 0 ||
                     (focusEnabled && showStripOnFocus && selectedIndex !== -1) ? ( // render focus strips separately (so that it's rendered below the data points unless specified otherwise)
                 _jsx(View, { pointerEvents: "none", style: [
@@ -967,30 +967,36 @@ export var LineChart = function (props) {
                         zIndex: 20,
                     }, children: [!stripOverPointer && renderStripAndLabel(), dataSet ? (renderPointer(0, true)) : (
                         // dataSet.map((set, index) => renderPointer(index))
-                        _jsxs(_Fragment, { children: [renderPointer(1), points2 ? renderPointer(2) : null, points3 ? renderPointer(3) : null, points4 ? renderPointer(4) : null, points5 ? renderPointer(5) : null, secondaryPoints ? renderPointer(6) : null, stripOverPointer && renderStripAndLabel()] }))] })) : null, (data0 !== null && data0 !== void 0 ? data0 : data).map(function (item, index) {
-                    var _a, _b, _c, _d, _e, _f;
+                        _jsxs(_Fragment, { children: [renderPointer(1), points2 ? renderPointer(2) : null, points3 ? renderPointer(3) : null, points4 ? renderPointer(4) : null, points5 ? renderPointer(5) : null, secondaryPoints ? renderPointer(6) : null, stripOverPointer && renderStripAndLabel()] }))] })) : null, Array.from({
+                    length: Math.max(((_p = (data0 !== null && data0 !== void 0 ? data0 : data)) === null || _p === void 0 ? void 0 : _p.length) || 0, (data2 === null || data2 === void 0 ? void 0 : data2.length) || 0, (data3 === null || data3 === void 0 ? void 0 : data3.length) || 0, (data4 === null || data4 === void 0 ? void 0 : data4.length) || 0, (data5 === null || data5 === void 0 ? void 0 : data5.length) || 0),
+                }).map(function (_, index) {
+                    var _a, _b, _c, _d, _e, _f, _g;
                     var getLabel = function () {
-                        var _a, _b, _c, _d, _e, _f;
-                        if (item.label || ((_a = props.xAxisLabelTexts) === null || _a === void 0 ? void 0 : _a[index])) {
-                            return item.label || ((_b = props.xAxisLabelTexts) === null || _b === void 0 ? void 0 : _b[index]) || "";
+                        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+                        if (((_b = (_a = (data0 !== null && data0 !== void 0 ? data0 : data)) === null || _a === void 0 ? void 0 : _a[index]) === null || _b === void 0 ? void 0 : _b.label) ||
+                            ((_c = props.xAxisLabelTexts) === null || _c === void 0 ? void 0 : _c[index])) {
+                            return (((_e = (_d = (data0 !== null && data0 !== void 0 ? data0 : data)) === null || _d === void 0 ? void 0 : _d[index]) === null || _e === void 0 ? void 0 : _e.label) ||
+                                ((_f = props.xAxisLabelTexts) === null || _f === void 0 ? void 0 : _f[index]) ||
+                                "");
                         }
-                        if ((_c = data2 === null || data2 === void 0 ? void 0 : data2[index]) === null || _c === void 0 ? void 0 : _c.label) {
+                        if ((_g = data2 === null || data2 === void 0 ? void 0 : data2[index]) === null || _g === void 0 ? void 0 : _g.label) {
                             return data2[index].label;
                         }
-                        if ((_d = data3 === null || data3 === void 0 ? void 0 : data3[index]) === null || _d === void 0 ? void 0 : _d.label) {
+                        if ((_h = data3 === null || data3 === void 0 ? void 0 : data3[index]) === null || _h === void 0 ? void 0 : _h.label) {
                             return data3[index].label;
                         }
-                        if ((_e = data4 === null || data4 === void 0 ? void 0 : data4[index]) === null || _e === void 0 ? void 0 : _e.label) {
+                        if ((_j = data4 === null || data4 === void 0 ? void 0 : data4[index]) === null || _j === void 0 ? void 0 : _j.label) {
                             return data4[index].label;
                         }
-                        if ((_f = data5 === null || data5 === void 0 ? void 0 : data5[index]) === null || _f === void 0 ? void 0 : _f.label) {
+                        if ((_k = data5 === null || data5 === void 0 ? void 0 : data5[index]) === null || _k === void 0 ? void 0 : _k.label) {
                             return data5[index].label;
                         }
                         return "";
                     };
                     var label = getLabel();
-                    var secondaryLabel = (_c = (_a = item.secondaryLabel) !== null && _a !== void 0 ? _a : (_b = secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelTexts) === null || _b === void 0 ? void 0 : _b[index]) !== null && _c !== void 0 ? _c : "";
-                    var secondaryLabelTextStyle = (_f = (_e = (_d = item.secondaryLabelTextStyle) !== null && _d !== void 0 ? _d : secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelsTextStyle) !== null && _e !== void 0 ? _e : item.labelTextStyle) !== null && _f !== void 0 ? _f : props.xAxisLabelTextStyle;
+                    var item = ((_a = (data0 !== null && data0 !== void 0 ? data0 : data)) === null || _a === void 0 ? void 0 : _a[index]) || {};
+                    var secondaryLabel = (_d = (_b = item.secondaryLabel) !== null && _b !== void 0 ? _b : (_c = secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelTexts) === null || _c === void 0 ? void 0 : _c[index]) !== null && _d !== void 0 ? _d : "";
+                    var secondaryLabelTextStyle = (_g = (_f = (_e = item.secondaryLabelTextStyle) !== null && _e !== void 0 ? _e : secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelsTextStyle) !== null && _f !== void 0 ? _f : item.labelTextStyle) !== null && _g !== void 0 ? _g : props.xAxisLabelTextStyle;
                     return (_jsxs(View, { children: [isAnimated
                                 ? renderAnimatedLabel(false, index, label, item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent)
                                 : renderLabel(false, index, label, item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent), secondaryXAxis
