@@ -969,17 +969,31 @@ export var LineChart = function (props) {
                         // dataSet.map((set, index) => renderPointer(index))
                         _jsxs(_Fragment, { children: [renderPointer(1), points2 ? renderPointer(2) : null, points3 ? renderPointer(3) : null, points4 ? renderPointer(4) : null, points5 ? renderPointer(5) : null, secondaryPoints ? renderPointer(6) : null, stripOverPointer && renderStripAndLabel()] }))] })) : null, (data0 !== null && data0 !== void 0 ? data0 : data).map(function (item, index) {
                     var _a, _b, _c, _d, _e, _f;
+                    var getLabel = function () {
+                        var _a, _b, _c, _d, _e, _f;
+                        if (item.label || ((_a = props.xAxisLabelTexts) === null || _a === void 0 ? void 0 : _a[index])) {
+                            return item.label || ((_b = props.xAxisLabelTexts) === null || _b === void 0 ? void 0 : _b[index]) || "";
+                        }
+                        if ((_c = data2 === null || data2 === void 0 ? void 0 : data2[index]) === null || _c === void 0 ? void 0 : _c.label) {
+                            return data2[index].label;
+                        }
+                        if ((_d = data3 === null || data3 === void 0 ? void 0 : data3[index]) === null || _d === void 0 ? void 0 : _d.label) {
+                            return data3[index].label;
+                        }
+                        if ((_e = data4 === null || data4 === void 0 ? void 0 : data4[index]) === null || _e === void 0 ? void 0 : _e.label) {
+                            return data4[index].label;
+                        }
+                        if ((_f = data5 === null || data5 === void 0 ? void 0 : data5[index]) === null || _f === void 0 ? void 0 : _f.label) {
+                            return data5[index].label;
+                        }
+                        return "";
+                    };
+                    var label = getLabel();
                     var secondaryLabel = (_c = (_a = item.secondaryLabel) !== null && _a !== void 0 ? _a : (_b = secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelTexts) === null || _b === void 0 ? void 0 : _b[index]) !== null && _c !== void 0 ? _c : "";
                     var secondaryLabelTextStyle = (_f = (_e = (_d = item.secondaryLabelTextStyle) !== null && _d !== void 0 ? _d : secondaryXAxis === null || secondaryXAxis === void 0 ? void 0 : secondaryXAxis.labelsTextStyle) !== null && _e !== void 0 ? _e : item.labelTextStyle) !== null && _f !== void 0 ? _f : props.xAxisLabelTextStyle;
                     return (_jsxs(View, { children: [isAnimated
-                                ? renderAnimatedLabel(false, index, item.label ||
-                                    (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
-                                        ? props.xAxisLabelTexts[index]
-                                        : ""), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent)
-                                : renderLabel(false, index, item.label ||
-                                    (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
-                                        ? props.xAxisLabelTexts[index]
-                                        : ""), item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent), secondaryXAxis
+                                ? renderAnimatedLabel(false, index, label, item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent)
+                                : renderLabel(false, index, label, item.labelTextStyle || props.xAxisLabelTextStyle, item.labelComponent), secondaryXAxis
                                 ? isAnimated
                                     ? renderAnimatedLabel(true, index, secondaryLabel, secondaryLabelTextStyle, item.secondaryLabelComponent)
                                     : renderLabel(true, index, secondaryLabel, secondaryLabelTextStyle, item.secondaryLabelComponent)

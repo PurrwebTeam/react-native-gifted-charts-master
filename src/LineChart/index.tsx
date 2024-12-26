@@ -2387,6 +2387,31 @@ export const LineChart = (props: LineChartPropsType) => {
           </View>
         ) : null}
         {(data0 ?? data).map((item: lineDataItem, index: number) => {
+          const getLabel = () => {
+            if (item.label || props.xAxisLabelTexts?.[index]) {
+              return item.label || props.xAxisLabelTexts?.[index] || "";
+            }
+
+            if (data2?.[index]?.label) {
+              return data2[index].label;
+            }
+
+            if (data3?.[index]?.label) {
+              return data3[index].label;
+            }
+
+            if (data4?.[index]?.label) {
+              return data4[index].label;
+            }
+
+            if (data5?.[index]?.label) {
+              return data5[index].label;
+            }
+
+            return "";
+          };
+
+          const label = getLabel();
           const secondaryLabel =
             item.secondaryLabel ?? secondaryXAxis?.labelTexts?.[index] ?? "";
           const secondaryLabelTextStyle =
@@ -2400,20 +2425,14 @@ export const LineChart = (props: LineChartPropsType) => {
                 ? renderAnimatedLabel(
                     false,
                     index,
-                    item.label ||
-                      (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
-                        ? props.xAxisLabelTexts[index]
-                        : ""),
+                    label,
                     item.labelTextStyle || props.xAxisLabelTextStyle,
                     item.labelComponent
                   )
                 : renderLabel(
                     false,
                     index,
-                    item.label ||
-                      (props.xAxisLabelTexts && props.xAxisLabelTexts[index]
-                        ? props.xAxisLabelTexts[index]
-                        : ""),
+                    label,
                     item.labelTextStyle || props.xAxisLabelTextStyle,
                     item.labelComponent
                   )}
