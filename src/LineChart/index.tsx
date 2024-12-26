@@ -743,47 +743,51 @@ export const LineChart = (props: LineChartPropsType) => {
                 >
                   {customDataPoint(item, index)}
                 </View>
-              ) : dataPointsShape === "rectangular" ? (
-                <Rect
-                  x={getX(spacingArray, index) - dataPointsWidth / 2}
-                  y={getYOrSecondaryY(item.value) - dataPointsHeight / 2}
-                  width={dataPointsWidth}
-                  height={dataPointsHeight}
-                  fill={
-                    showDataPointOnFocus
-                      ? index === selectedIndex
-                        ? dataPointsColor
-                        : "none"
-                      : dataPointsColor
-                  }
-                  onPress={() => {
-                    item.onPress
-                      ? item.onPress(item, index)
-                      : props.onPress
-                      ? props.onPress(item, index)
-                      : null;
-                  }}
-                />
               ) : (
-                <Circle
-                  cx={getX(spacingArray, index)}
-                  cy={getYOrSecondaryY(item.value)}
-                  r={dataPointsRadius}
-                  fill={
-                    showDataPointOnFocus
-                      ? index === selectedIndex
-                        ? dataPointsColor
-                        : "none"
-                      : dataPointsColor
-                  }
-                  onPress={() => {
-                    item.onPress
-                      ? item.onPress(item, index)
-                      : props.onPress
-                      ? props.onPress(item, index)
-                      : null;
-                  }}
-                />
+                <>
+                  {dataPointsShape === "rectangular" ? (
+                    <Rect
+                      x={getX(spacingArray, index) - dataPointsWidth / 2}
+                      y={getYOrSecondaryY(item.value) - dataPointsHeight / 2}
+                      width={dataPointsWidth}
+                      height={dataPointsHeight}
+                      fill={
+                        showDataPointOnFocus
+                          ? index === selectedIndex
+                            ? dataPointsColor
+                            : "none"
+                          : dataPointsColor
+                      }
+                      onPress={() => {
+                        item.onPress
+                          ? item.onPress(item, index)
+                          : props.onPress
+                          ? props.onPress(item, index)
+                          : null;
+                      }}
+                    />
+                  ) : (
+                    <Circle
+                      cx={getX(spacingArray, index)}
+                      cy={getYOrSecondaryY(item.value)}
+                      r={dataPointsRadius}
+                      fill={
+                        showDataPointOnFocus
+                          ? index === selectedIndex
+                            ? dataPointsColor
+                            : "none"
+                          : dataPointsColor
+                      }
+                      onPress={() => {
+                        item.onPress
+                          ? item.onPress(item, index)
+                          : props.onPress
+                          ? props.onPress(item, index)
+                          : null;
+                      }}
+                    />
+                  )}
+                </>
               )}
               {dataPointLabelComponent ? (
                 !showTextOnFocus || index === selectedIndex ? (

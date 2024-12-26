@@ -333,27 +333,27 @@ export var LineChart = function (props) {
                                         _a[position] = initialSpacing - dataPointsWidth + spacing * index,
                                         _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
                                         _a),
-                                ], children: customDataPoint(item, index) })) : dataPointsShape === "rectangular" ? (_jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
-                                    ? index === selectedIndex
-                                        ? dataPointsColor
-                                        : "none"
-                                    : dataPointsColor, onPress: function () {
-                                    item.onPress
-                                        ? item.onPress(item, index)
-                                        : props.onPress
-                                            ? props.onPress(item, index)
-                                            : null;
-                                } })) : (_jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
-                                    ? index === selectedIndex
-                                        ? dataPointsColor
-                                        : "none"
-                                    : dataPointsColor, onPress: function () {
-                                    item.onPress
-                                        ? item.onPress(item, index)
-                                        : props.onPress
-                                            ? props.onPress(item, index)
-                                            : null;
-                                } })), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
+                                ], children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
+                                        ? index === selectedIndex
+                                            ? dataPointsColor
+                                            : "none"
+                                        : dataPointsColor, onPress: function () {
+                                        item.onPress
+                                            ? item.onPress(item, index)
+                                            : props.onPress
+                                                ? props.onPress(item, index)
+                                                : null;
+                                    } })) : (_jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
+                                        ? index === selectedIndex
+                                            ? dataPointsColor
+                                            : "none"
+                                        : dataPointsColor, onPress: function () {
+                                        item.onPress
+                                            ? item.onPress(item, index)
+                                            : props.onPress
+                                                ? props.onPress(item, index)
+                                                : null;
+                                    } })) })), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
                                     styles.customDataPointContainer,
                                     {
                                         zIndex: index === selectedIndex ? 1000 : 0,
