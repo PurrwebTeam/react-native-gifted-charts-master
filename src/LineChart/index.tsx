@@ -735,18 +735,15 @@ export const LineChart = (props: LineChartPropsType) => {
                   style={[
                     styles.customDataPointContainer,
                     {
-                      height: dataPointsHeight,
-                      width: dataPointsWidth,
+                      height: 100,
+                      width: 100,
                       top: getYOrSecondaryY(item.value),
                       [position]:
                         initialSpacing - dataPointsWidth + spacing * index,
                       transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-                      backgroundColor: "red",
                     },
                   ]}
                   onPress={() => {
-                    console.warn("onPress");
-
                     item.onPress
                       ? item.onPress(item, index)
                       : props.onPress
