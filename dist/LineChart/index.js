@@ -323,7 +323,7 @@ export var LineChart = function (props) {
             var position = I18nManager.isRTL ? "right" : "left";
             return (_jsxs(Fragment, { children: [focusEnabled ? (_jsx(_Fragment, { children: unFocusOnPressOut ? (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
                                 return setTimeout(function () { return setSelectedIndex(-1); }, delayBeforeUnFocus);
-                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(View, { style: [
+                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(TouchableWithoutFeedback, { style: [
                                     styles.customDataPointContainer,
                                     (_a = {
                                             height: dataPointsHeight,
@@ -333,7 +333,7 @@ export var LineChart = function (props) {
                                         _a[position] = initialSpacing - dataPointsWidth + spacing * index,
                                         _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
                                         _a),
-                                ], onTouchEnd: function () {
+                                ], onPress: function () {
                                     item.onPress
                                         ? item.onPress(item, index)
                                         : props.onPress

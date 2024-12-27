@@ -729,7 +729,7 @@ export const LineChart = (props: LineChartPropsType) => {
           {hideDataPoints ? null : (
             <>
               {customDataPoint ? (
-                <View
+                <TouchableWithoutFeedback
                   style={[
                     styles.customDataPointContainer,
                     {
@@ -741,7 +741,7 @@ export const LineChart = (props: LineChartPropsType) => {
                       transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
                     },
                   ]}
-                  onTouchEnd={() => {
+                  onPress={() => {
                     item.onPress
                       ? item.onPress(item, index)
                       : props.onPress
@@ -751,7 +751,7 @@ export const LineChart = (props: LineChartPropsType) => {
                   hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
                 >
                   {customDataPoint(item, index)}
-                </View>
+                </TouchableWithoutFeedback>
               ) : (
                 <>
                   {dataPointsShape === "rectangular" ? (
