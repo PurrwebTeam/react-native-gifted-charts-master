@@ -326,8 +326,8 @@ export var LineChart = function (props) {
                             }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(TouchableOpacity, { style: [
                                     styles.customDataPointContainer,
                                     (_a = {
-                                            height: 100,
-                                            width: 100,
+                                            height: dataPointsHeight,
+                                            width: dataPointsWidth,
                                             top: getYOrSecondaryY(item.value)
                                         },
                                         _a[position] = initialSpacing - dataPointsWidth + spacing * index,
@@ -390,7 +390,7 @@ export var LineChart = function (props) {
                                     dataPointsHeight / 2 +
                                     (item.textShiftY || props.textShiftY || 0), children: !showTextOnFocus && !showValuesAsDataPointsText
                                     ? item.dataPointText
-                                    : text })) : null) : null] }))] }, index + new Date().getTime()));
+                                    : text })) : null) : null] }))] }, index));
         });
     };
     var renderSpecificVerticalLines = function (dataForRender, spacingArray) {

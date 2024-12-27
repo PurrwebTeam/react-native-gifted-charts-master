@@ -701,7 +701,7 @@ export const LineChart = (props: LineChartPropsType) => {
       const position = I18nManager.isRTL ? "right" : "left";
 
       return (
-        <Fragment key={index + new Date().getTime()}>
+        <Fragment key={index}>
           {focusEnabled ? (
             <>
               {unFocusOnPressOut ? (
@@ -735,8 +735,8 @@ export const LineChart = (props: LineChartPropsType) => {
                   style={[
                     styles.customDataPointContainer,
                     {
-                      height: 100,
-                      width: 100,
+                      height: dataPointsHeight,
+                      width: dataPointsWidth,
                       top: getYOrSecondaryY(item.value),
                       [position]:
                         initialSpacing - dataPointsWidth + spacing * index,
