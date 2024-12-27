@@ -700,7 +700,7 @@ export const LineChart = (props: LineChartPropsType) => {
       }
       const position = I18nManager.isRTL ? "right" : "left";
       return (
-        <Fragment key={index}>
+        <Fragment key={new Date().getTime()}>
           {focusEnabled ? (
             <>
               {unFocusOnPressOut ? (
@@ -749,7 +749,7 @@ export const LineChart = (props: LineChartPropsType) => {
                       ? props.onPress(item, index)
                       : null;
                   }}
-                  hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
+                  hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                 >
                   {customDataPoint(item, index)}
                 </TouchableOpacity>
@@ -764,7 +764,7 @@ export const LineChart = (props: LineChartPropsType) => {
                           ? props.onPress(item, index)
                           : null;
                       }}
-                      hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
+                      hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                     >
                       <Rect
                         x={getX(spacingArray, index) - dataPointsWidth / 2}
@@ -789,7 +789,7 @@ export const LineChart = (props: LineChartPropsType) => {
                           ? props.onPress(item, index)
                           : null;
                       }}
-                      hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
+                      hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                     >
                       <Circle
                         cx={getX(spacingArray, index)}

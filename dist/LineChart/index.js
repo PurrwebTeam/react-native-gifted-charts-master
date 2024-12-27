@@ -339,13 +339,13 @@ export var LineChart = function (props) {
                                         : props.onPress
                                             ? props.onPress(item, index)
                                             : null;
-                                }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { onPress: function () {
+                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { onPress: function () {
                                         item.onPress
                                             ? item.onPress(item, index)
                                             : props.onPress
                                                 ? props.onPress(item, index)
                                                 : null;
-                                    }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: _jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
+                                    }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: _jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
                                             ? index === selectedIndex
                                                 ? dataPointsColor
                                                 : "none"
@@ -355,7 +355,7 @@ export var LineChart = function (props) {
                                             : props.onPress
                                                 ? props.onPress(item, index)
                                                 : null;
-                                    }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: _jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
+                                    }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: _jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
                                             ? index === selectedIndex
                                                 ? dataPointsColor
                                                 : "none"
@@ -390,7 +390,7 @@ export var LineChart = function (props) {
                                     dataPointsHeight / 2 +
                                     (item.textShiftY || props.textShiftY || 0), children: !showTextOnFocus && !showValuesAsDataPointsText
                                     ? item.dataPointText
-                                    : text })) : null) : null] }))] }, index));
+                                    : text })) : null) : null] }))] }, new Date().getTime()));
         });
     };
     var renderSpecificVerticalLines = function (dataForRender, spacingArray) {
