@@ -36,7 +36,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment, useCallback, useEffect, useMemo, useRef } from "react";
-import { View, Animated, Easing, Text, Dimensions, I18nManager, } from "react-native";
+import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableWithoutFeedback, } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
 import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
@@ -333,27 +333,33 @@ export var LineChart = function (props) {
                                         _a[position] = initialSpacing - dataPointsWidth + spacing * index,
                                         _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
                                         _a),
-                                ], children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
-                                        ? index === selectedIndex
-                                            ? dataPointsColor
-                                            : "none"
-                                        : dataPointsColor, onPress: function () {
+                                ], onTouchEnd: function () {
+                                    item.onPress
+                                        ? item.onPress(item, index)
+                                        : props.onPress
+                                            ? props.onPress(item, index)
+                                            : null;
+                                }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { onPress: function () {
                                         item.onPress
                                             ? item.onPress(item, index)
                                             : props.onPress
                                                 ? props.onPress(item, index)
                                                 : null;
-                                    } })) : (_jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
-                                        ? index === selectedIndex
-                                            ? dataPointsColor
-                                            : "none"
-                                        : dataPointsColor, onPress: function () {
+                                    }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: _jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
+                                            ? index === selectedIndex
+                                                ? dataPointsColor
+                                                : "none"
+                                            : dataPointsColor }) })) : (_jsx(TouchableWithoutFeedback, { onPress: function () {
                                         item.onPress
                                             ? item.onPress(item, index)
                                             : props.onPress
                                                 ? props.onPress(item, index)
                                                 : null;
-                                    } })) })), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
+                                    }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: _jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
+                                            ? index === selectedIndex
+                                                ? dataPointsColor
+                                                : "none"
+                                            : dataPointsColor }) })) })), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
                                     styles.customDataPointContainer,
                                     {
                                         zIndex: index === selectedIndex ? 1000 : 0,

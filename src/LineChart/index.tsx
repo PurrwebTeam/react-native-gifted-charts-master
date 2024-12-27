@@ -8,6 +8,7 @@ import {
   ColorValue,
   I18nManager,
   ViewStyle,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
@@ -740,24 +741,21 @@ export const LineChart = (props: LineChartPropsType) => {
                       transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
                     },
                   ]}
+                  onTouchEnd={() => {
+                    item.onPress
+                      ? item.onPress(item, index)
+                      : props.onPress
+                      ? props.onPress(item, index)
+                      : null;
+                  }}
+                  hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
                 >
                   {customDataPoint(item, index)}
                 </View>
               ) : (
                 <>
                   {dataPointsShape === "rectangular" ? (
-                    <Rect
-                      x={getX(spacingArray, index) - dataPointsWidth / 2}
-                      y={getYOrSecondaryY(item.value) - dataPointsHeight / 2}
-                      width={dataPointsWidth}
-                      height={dataPointsHeight}
-                      fill={
-                        showDataPointOnFocus
-                          ? index === selectedIndex
-                            ? dataPointsColor
-                            : "none"
-                          : dataPointsColor
-                      }
+                    <TouchableWithoutFeedback
                       onPress={() => {
                         item.onPress
                           ? item.onPress(item, index)
@@ -765,19 +763,24 @@ export const LineChart = (props: LineChartPropsType) => {
                           ? props.onPress(item, index)
                           : null;
                       }}
-                    />
+                      hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
+                    >
+                      <Rect
+                        x={getX(spacingArray, index) - dataPointsWidth / 2}
+                        y={getYOrSecondaryY(item.value) - dataPointsHeight / 2}
+                        width={dataPointsWidth}
+                        height={dataPointsHeight}
+                        fill={
+                          showDataPointOnFocus
+                            ? index === selectedIndex
+                              ? dataPointsColor
+                              : "none"
+                            : dataPointsColor
+                        }
+                      />
+                    </TouchableWithoutFeedback>
                   ) : (
-                    <Circle
-                      cx={getX(spacingArray, index)}
-                      cy={getYOrSecondaryY(item.value)}
-                      r={dataPointsRadius}
-                      fill={
-                        showDataPointOnFocus
-                          ? index === selectedIndex
-                            ? dataPointsColor
-                            : "none"
-                          : dataPointsColor
-                      }
+                    <TouchableWithoutFeedback
                       onPress={() => {
                         item.onPress
                           ? item.onPress(item, index)
@@ -785,7 +788,21 @@ export const LineChart = (props: LineChartPropsType) => {
                           ? props.onPress(item, index)
                           : null;
                       }}
-                    />
+                      hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
+                    >
+                      <Circle
+                        cx={getX(spacingArray, index)}
+                        cy={getYOrSecondaryY(item.value)}
+                        r={dataPointsRadius}
+                        fill={
+                          showDataPointOnFocus
+                            ? index === selectedIndex
+                              ? dataPointsColor
+                              : "none"
+                            : dataPointsColor
+                        }
+                      />
+                    </TouchableWithoutFeedback>
                   )}
                 </>
               )}
