@@ -390,7 +390,7 @@ export var LineChart = function (props) {
                                     dataPointsHeight / 2 +
                                     (item.textShiftY || props.textShiftY || 0), children: !showTextOnFocus && !showValuesAsDataPointsText
                                     ? item.dataPointText
-                                    : text })) : null) : null] }))] }, new Date().getTime()));
+                                    : text })) : null) : null] }))] }, index + new Date().getTime()));
         });
     };
     var renderSpecificVerticalLines = function (dataForRender, spacingArray) {

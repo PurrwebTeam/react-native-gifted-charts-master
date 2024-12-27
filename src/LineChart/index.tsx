@@ -699,8 +699,9 @@ export const LineChart = (props: LineChartPropsType) => {
         text = originalDataFromProps[index].value;
       }
       const position = I18nManager.isRTL ? "right" : "left";
+
       return (
-        <Fragment key={new Date().getTime()}>
+        <Fragment key={index + new Date().getTime()}>
           {focusEnabled ? (
             <>
               {unFocusOnPressOut ? (
