@@ -332,8 +332,10 @@ export var LineChart = function (props) {
                                         },
                                         _a[position] = initialSpacing - dataPointsWidth + spacing * index,
                                         _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
+                                        _a.backgroundColor = "red",
                                         _a),
                                 ], onPress: function () {
+                                    console.warn("onPress");
                                     item.onPress
                                         ? item.onPress(item, index)
                                         : props.onPress

@@ -741,9 +741,12 @@ export const LineChart = (props: LineChartPropsType) => {
                       [position]:
                         initialSpacing - dataPointsWidth + spacing * index,
                       transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
+                      backgroundColor: "red",
                     },
                   ]}
                   onPress={() => {
+                    console.warn("onPress");
+
                     item.onPress
                       ? item.onPress(item, index)
                       : props.onPress
