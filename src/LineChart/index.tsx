@@ -9,6 +9,7 @@ import {
   I18nManager,
   ViewStyle,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
@@ -729,18 +730,7 @@ export const LineChart = (props: LineChartPropsType) => {
           {hideDataPoints ? null : (
             <>
               {customDataPoint ? (
-                <TouchableWithoutFeedback
-                  style={[
-                    styles.customDataPointContainer,
-                    {
-                      height: dataPointsHeight,
-                      width: dataPointsWidth,
-                      top: getYOrSecondaryY(item.value),
-                      [position]:
-                        initialSpacing - dataPointsWidth + spacing * index,
-                      transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-                    },
-                  ]}
+                <TouchableOpacity
                   onPress={() => {
                     item.onPress
                       ? item.onPress(item, index)
@@ -750,8 +740,22 @@ export const LineChart = (props: LineChartPropsType) => {
                   }}
                   hitSlop={{ top: 30, bottom: 30, left: 30, right: 30 }}
                 >
-                  {customDataPoint(item, index)}
-                </TouchableWithoutFeedback>
+                  <View
+                    style={[
+                      styles.customDataPointContainer,
+                      {
+                        height: dataPointsHeight,
+                        width: dataPointsWidth,
+                        top: getYOrSecondaryY(item.value),
+                        [position]:
+                          initialSpacing - dataPointsWidth + spacing * index,
+                        transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
+                      },
+                    ]}
+                  >
+                    {customDataPoint(item, index)}
+                  </View>
+                </TouchableOpacity>
               ) : (
                 <>
                   {dataPointsShape === "rectangular" ? (

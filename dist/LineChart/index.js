@@ -36,7 +36,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment, useCallback, useEffect, useMemo, useRef } from "react";
-import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableWithoutFeedback, } from "react-native";
+import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableWithoutFeedback, TouchableOpacity, } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
 import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
@@ -323,23 +323,23 @@ export var LineChart = function (props) {
             var position = I18nManager.isRTL ? "right" : "left";
             return (_jsxs(Fragment, { children: [focusEnabled ? (_jsx(_Fragment, { children: unFocusOnPressOut ? (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
                                 return setTimeout(function () { return setSelectedIndex(-1); }, delayBeforeUnFocus);
-                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(TouchableWithoutFeedback, { style: [
-                                    styles.customDataPointContainer,
-                                    (_a = {
-                                            height: dataPointsHeight,
-                                            width: dataPointsWidth,
-                                            top: getYOrSecondaryY(item.value)
-                                        },
-                                        _a[position] = initialSpacing - dataPointsWidth + spacing * index,
-                                        _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-                                        _a),
-                                ], onPress: function () {
+                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(TouchableOpacity, { onPress: function () {
                                     item.onPress
                                         ? item.onPress(item, index)
                                         : props.onPress
                                             ? props.onPress(item, index)
                                             : null;
-                                }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { onPress: function () {
+                                }, hitSlop: { top: 30, bottom: 30, left: 30, right: 30 }, children: _jsx(View, { style: [
+                                        styles.customDataPointContainer,
+                                        (_a = {
+                                                height: dataPointsHeight,
+                                                width: dataPointsWidth,
+                                                top: getYOrSecondaryY(item.value)
+                                            },
+                                            _a[position] = initialSpacing - dataPointsWidth + spacing * index,
+                                            _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
+                                            _a),
+                                    ], children: customDataPoint(item, index) }) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { onPress: function () {
                                         item.onPress
                                             ? item.onPress(item, index)
                                             : props.onPress
