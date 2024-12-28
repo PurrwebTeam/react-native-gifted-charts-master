@@ -701,7 +701,7 @@ export const LineChart = (props: LineChartPropsType) => {
       const position = I18nManager.isRTL ? "right" : "left";
 
       return (
-        <Fragment key={key}>
+        <Fragment key={index}>
           {focusEnabled ? (
             <>
               {unFocusOnPressOut ? (
