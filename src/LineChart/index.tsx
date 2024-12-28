@@ -735,12 +735,15 @@ export const LineChart = (props: LineChartPropsType) => {
                   style={[
                     styles.customDataPointContainer,
                     {
-                      height: dataPointsHeight,
-                      width: dataPointsWidth,
+                      // height: dataPointsHeight,
+                      // width: dataPointsWidth,
                       top: getYOrSecondaryY(item.value),
                       [position]:
                         initialSpacing - dataPointsWidth + spacing * index,
                       transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
+                      backgroundColor: "red",
+                      height: 100,
+                      width: 100,
                     },
                   ]}
                   onPress={() => {
