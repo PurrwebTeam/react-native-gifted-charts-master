@@ -731,7 +731,8 @@ export const LineChart = (props: LineChartPropsType) => {
           {hideDataPoints ? null : (
             <>
               {customDataPoint ? (
-                <TouchableOpacity
+                <>
+                  {/* <TouchableOpacity
                   style={[
                     styles.customDataPointContainer,
                     {
@@ -753,7 +754,8 @@ export const LineChart = (props: LineChartPropsType) => {
                   hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                 >
                   {customDataPoint(item, index)}
-                </TouchableOpacity>
+                </TouchableOpacity> */}
+                </>
               ) : (
                 <>
                   {/* {dataPointsShape === "rectangular" ? (
