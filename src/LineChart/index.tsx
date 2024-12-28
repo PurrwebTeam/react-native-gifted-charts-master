@@ -741,7 +741,7 @@ export const LineChart = (props: LineChartPropsType) => {
                       [position]:
                         initialSpacing - dataPointsWidth + spacing * index,
                       transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-                      padding: 20,
+                      padding: 5,
                     },
                   ]}
                   onPress={() => {
@@ -757,12 +757,10 @@ export const LineChart = (props: LineChartPropsType) => {
                 </TouchableOpacity>
               ) : (
                 <>
-                  {/* {dataPointsShape === "rectangular" ? (
+                  {dataPointsShape === "rectangular" ? (
                     <TouchableOpacity
                       hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
-                      style={{
-                        backgroundColor: "red",
-                      }}
+                      style={{ padding: 5 }}
                     >
                       <Rect
                         x={getX(spacingArray, index) - dataPointsWidth / 2}
@@ -787,12 +785,8 @@ export const LineChart = (props: LineChartPropsType) => {
                     </TouchableOpacity>
                   ) : (
                     <TouchableWithoutFeedback
-                      style={{
-                        backgroundColor: "green",
-                        height: 100,
-                        width: 100,
-                      }}
                       hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
+                      style={{ padding: 5 }}
                     >
                       <Circle
                         cx={getX(spacingArray, index)}
@@ -814,7 +808,7 @@ export const LineChart = (props: LineChartPropsType) => {
                         }
                       />
                     </TouchableWithoutFeedback>
-                  )} */}
+                  )}
                 </>
               )}
               {dataPointLabelComponent ? (
