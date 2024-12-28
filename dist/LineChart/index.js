@@ -36,7 +36,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment, useCallback, useEffect, useMemo, useRef } from "react";
-import { View, Animated, Easing, Text, Dimensions, I18nManager, } from "react-native";
+import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableOpacity, } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
 import Svg, { Path, LinearGradient, Stop, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
@@ -264,7 +264,8 @@ export var LineChart = function (props) {
     var renderDataPoints = function (hideDataPoints, dataForRender, originalDataFromProps, dataPtsShape, dataPtsWidth, dataPtsHeight, dataPtsColor, dataPtsRadius, textColor, textFontSize, startIndex, endIndex, isSecondary, showValuesAsDataPointsText, spacingArray, key) {
         var getYOrSecondaryY = isSecondary ? getSecondaryY : getY;
         return dataForRender.map(function (item, index) {
-            var _a, _b, _c, _d;
+            var _a;
+            var _b, _c, _d, _e;
             if (index < startIndex || index > endIndex)
                 return null;
             if (item.hideDataPoint) {
@@ -292,7 +293,7 @@ export var LineChart = function (props) {
                         props.focusedDataPointColor ||
                         LineDefaults.focusedDataPointColor;
                 dataPointsRadius =
-                    (_c = (_b = (_a = item.focusedDataPointRadius) !== null && _a !== void 0 ? _a : props.focusedDataPointRadius) !== null && _b !== void 0 ? _b : item.dataPointRadius) !== null && _c !== void 0 ? _c : dataPtsRadius;
+                    (_d = (_c = (_b = item.focusedDataPointRadius) !== null && _b !== void 0 ? _b : props.focusedDataPointRadius) !== null && _c !== void 0 ? _c : item.dataPointRadius) !== null && _d !== void 0 ? _d : dataPtsRadius;
                 if (showTextOnFocus) {
                     text = item.dataPointText;
                 }
@@ -309,7 +310,7 @@ export var LineChart = function (props) {
                 dataPointsWidth = item.dataPointWidth || dataPtsWidth;
                 dataPointsHeight = item.dataPointHeight || dataPtsHeight;
                 dataPointsColor = item.dataPointColor || dataPtsColor;
-                dataPointsRadius = (_d = item.dataPointRadius) !== null && _d !== void 0 ? _d : dataPtsRadius;
+                dataPointsRadius = (_e = item.dataPointRadius) !== null && _e !== void 0 ? _e : dataPtsRadius;
                 if (showTextOnFocus) {
                     text = "";
                 }
@@ -322,7 +323,23 @@ export var LineChart = function (props) {
             var position = I18nManager.isRTL ? "right" : "left";
             return (_jsxs(Fragment, { children: [focusEnabled ? (_jsx(_Fragment, { children: unFocusOnPressOut ? (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, onPressOut: function () {
                                 return setTimeout(function () { return setSelectedIndex(-1); }, delayBeforeUnFocus);
-                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(_Fragment, {})) : (_jsx(_Fragment, {})), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
+                            }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(TouchableOpacity, { style: [
+                                    styles.customDataPointContainer,
+                                    (_a = {
+                                            height: dataPointsHeight,
+                                            width: dataPointsWidth,
+                                            top: getYOrSecondaryY(item.value)
+                                        },
+                                        _a[position] = initialSpacing - dataPointsWidth + spacing * index,
+                                        _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
+                                        _a),
+                                ], onPress: function () {
+                                    item.onPress
+                                        ? item.onPress(item, index)
+                                        : props.onPress
+                                            ? props.onPress(item, index)
+                                            : null;
+                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, {})), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
                                     styles.customDataPointContainer,
                                     {
                                         zIndex: index === selectedIndex ? 1000 : 0,
