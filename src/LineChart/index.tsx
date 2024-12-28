@@ -758,14 +758,10 @@ export const LineChart = (props: LineChartPropsType) => {
                 <>
                   {dataPointsShape === "rectangular" ? (
                     <TouchableWithoutFeedback
-                      onPress={() => {
-                        item.onPress
-                          ? item.onPress(item, index)
-                          : props.onPress
-                          ? props.onPress(item, index)
-                          : null;
-                      }}
                       hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
+                      style={{
+                        backgroundColor: "red",
+                      }}
                     >
                       <Rect
                         x={getX(spacingArray, index) - dataPointsWidth / 2}
@@ -779,16 +775,19 @@ export const LineChart = (props: LineChartPropsType) => {
                               : "none"
                             : dataPointsColor
                         }
+                        onPress={() => {
+                          item.onPress
+                            ? item.onPress(item, index)
+                            : props.onPress
+                            ? props.onPress(item, index)
+                            : null;
+                        }}
                       />
                     </TouchableWithoutFeedback>
                   ) : (
                     <TouchableWithoutFeedback
-                      onPress={() => {
-                        item.onPress
-                          ? item.onPress(item, index)
-                          : props.onPress
-                          ? props.onPress(item, index)
-                          : null;
+                      style={{
+                        backgroundColor: "green",
                       }}
                       hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                     >
@@ -796,6 +795,13 @@ export const LineChart = (props: LineChartPropsType) => {
                         cx={getX(spacingArray, index)}
                         cy={getYOrSecondaryY(item.value)}
                         r={dataPointsRadius}
+                        onPress={() => {
+                          item.onPress
+                            ? item.onPress(item, index)
+                            : props.onPress
+                            ? props.onPress(item, index)
+                            : null;
+                        }}
                         fill={
                           showDataPointOnFocus
                             ? index === selectedIndex

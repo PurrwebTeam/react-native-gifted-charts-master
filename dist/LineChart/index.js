@@ -339,23 +339,27 @@ export var LineChart = function (props) {
                                         : props.onPress
                                             ? props.onPress(item, index)
                                             : null;
-                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { onPress: function () {
-                                        item.onPress
-                                            ? item.onPress(item, index)
-                                            : props.onPress
-                                                ? props.onPress(item, index)
-                                                : null;
-                                    }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: _jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
+                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, style: {
+                                        backgroundColor: "red",
+                                    }, children: _jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
                                             ? index === selectedIndex
                                                 ? dataPointsColor
                                                 : "none"
-                                            : dataPointsColor }) })) : (_jsx(TouchableWithoutFeedback, { onPress: function () {
-                                        item.onPress
-                                            ? item.onPress(item, index)
-                                            : props.onPress
-                                                ? props.onPress(item, index)
-                                                : null;
-                                    }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: _jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, fill: showDataPointOnFocus
+                                            : dataPointsColor, onPress: function () {
+                                            item.onPress
+                                                ? item.onPress(item, index)
+                                                : props.onPress
+                                                    ? props.onPress(item, index)
+                                                    : null;
+                                        } }) })) : (_jsx(TouchableWithoutFeedback, { style: {
+                                        backgroundColor: "green",
+                                    }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: _jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, onPress: function () {
+                                            item.onPress
+                                                ? item.onPress(item, index)
+                                                : props.onPress
+                                                    ? props.onPress(item, index)
+                                                    : null;
+                                        }, fill: showDataPointOnFocus
                                             ? index === selectedIndex
                                                 ? dataPointsColor
                                                 : "none"
