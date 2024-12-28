@@ -339,7 +339,7 @@ export var LineChart = function (props) {
                                         : props.onPress
                                             ? props.onPress(item, index)
                                             : null;
-                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableWithoutFeedback, { hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, style: {
+                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableOpacity, { hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, style: {
                                         backgroundColor: "red",
                                     }, children: _jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
                                             ? index === selectedIndex
@@ -394,7 +394,7 @@ export var LineChart = function (props) {
                                     dataPointsHeight / 2 +
                                     (item.textShiftY || props.textShiftY || 0), children: !showTextOnFocus && !showValuesAsDataPointsText
                                     ? item.dataPointText
-                                    : text })) : null) : null] }))] }, index));
+                                    : text })) : null) : null] }))] }, key));
         });
     };
     var renderSpecificVerticalLines = function (dataForRender, spacingArray) {

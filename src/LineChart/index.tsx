@@ -701,7 +701,7 @@ export const LineChart = (props: LineChartPropsType) => {
       const position = I18nManager.isRTL ? "right" : "left";
 
       return (
-        <Fragment key={index}>
+        <Fragment key={key}>
           {focusEnabled ? (
             <>
               {unFocusOnPressOut ? (
@@ -757,7 +757,7 @@ export const LineChart = (props: LineChartPropsType) => {
               ) : (
                 <>
                   {dataPointsShape === "rectangular" ? (
-                    <TouchableWithoutFeedback
+                    <TouchableOpacity
                       hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                       style={{
                         backgroundColor: "red",
@@ -783,7 +783,7 @@ export const LineChart = (props: LineChartPropsType) => {
                             : null;
                         }}
                       />
-                    </TouchableWithoutFeedback>
+                    </TouchableOpacity>
                   ) : (
                     <TouchableWithoutFeedback
                       style={{
