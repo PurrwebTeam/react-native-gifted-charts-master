@@ -326,15 +326,13 @@ export var LineChart = function (props) {
                             }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight - 0, fill: "none" })) : (_jsx(Rect, { onPressIn: function () { return onStripPress(item, index); }, x: initialSpacing + (spacing * index - spacing / 2), y: 8, width: spacing, height: containerHeight, fill: "none" })) })) : null, hideDataPoints ? null : (_jsxs(_Fragment, { children: [customDataPoint ? (_jsx(TouchableOpacity, { style: [
                                     styles.customDataPointContainer,
                                     (_a = {
-                                            // height: dataPointsHeight,
-                                            // width: dataPointsWidth,
+                                            height: dataPointsHeight,
+                                            width: dataPointsWidth,
                                             top: getYOrSecondaryY(item.value)
                                         },
                                         _a[position] = initialSpacing - dataPointsWidth + spacing * index,
                                         _a.transform = [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-                                        _a.backgroundColor = "red",
-                                        _a.height = 100,
-                                        _a.width = 100,
+                                        _a.padding = 20,
                                         _a),
                                 ], onPress: function () {
                                     item.onPress

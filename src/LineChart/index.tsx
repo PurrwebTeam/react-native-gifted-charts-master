@@ -741,7 +741,6 @@ export const LineChart = (props: LineChartPropsType) => {
                       [position]:
                         initialSpacing - dataPointsWidth + spacing * index,
                       transform: [{ scaleX: I18nManager.isRTL ? -1 : 1 }],
-                      backgroundColor: "red",
                       padding: 20,
                     },
                   ]}
