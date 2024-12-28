@@ -36,10 +36,10 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 import { jsx as _jsx, Fragment as _Fragment, jsxs as _jsxs } from "react/jsx-runtime";
 import { Fragment, useCallback, useEffect, useMemo, useRef } from "react";
-import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableWithoutFeedback, TouchableOpacity, } from "react-native";
+import { View, Animated, Easing, Text, Dimensions, I18nManager, TouchableOpacity, } from "react-native";
 import { styles } from "./styles";
 import { screenWidth, usePrevious } from "../utils";
-import Svg, { Path, LinearGradient, Stop, Circle, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
+import Svg, { Path, LinearGradient, Stop, Rect, Text as CanvasText, Line, ClipPath, Use, } from "react-native-svg";
 import { getSegmentedPathObjects, getRegionPathObjects, RANGE_ENTER, RANGE_EXIT, SEGMENT_END, SEGMENT_START, STOP, useLineChart, adjustToOffset, LineDefaults, pointsWithPaddedRepititions, } from "gifted-charts-core/src";
 import BarAndLineChartsWrapper from "../Components/BarAndLineChartsWrapper";
 import { StripAndLabel } from "../Components/common/StripAndLabel";
@@ -339,31 +339,7 @@ export var LineChart = function (props) {
                                         : props.onPress
                                             ? props.onPress(item, index)
                                             : null;
-                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, { children: dataPointsShape === "rectangular" ? (_jsx(TouchableOpacity, { hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, style: {
-                                        backgroundColor: "red",
-                                    }, children: _jsx(Rect, { x: getX(spacingArray, index) - dataPointsWidth / 2, y: getYOrSecondaryY(item.value) - dataPointsHeight / 2, width: dataPointsWidth, height: dataPointsHeight, fill: showDataPointOnFocus
-                                            ? index === selectedIndex
-                                                ? dataPointsColor
-                                                : "none"
-                                            : dataPointsColor, onPress: function () {
-                                            item.onPress
-                                                ? item.onPress(item, index)
-                                                : props.onPress
-                                                    ? props.onPress(item, index)
-                                                    : null;
-                                        } }) })) : (_jsx(TouchableWithoutFeedback, { style: {
-                                        backgroundColor: "green",
-                                    }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: _jsx(Circle, { cx: getX(spacingArray, index), cy: getYOrSecondaryY(item.value), r: dataPointsRadius, onPress: function () {
-                                            item.onPress
-                                                ? item.onPress(item, index)
-                                                : props.onPress
-                                                    ? props.onPress(item, index)
-                                                    : null;
-                                        }, fill: showDataPointOnFocus
-                                            ? index === selectedIndex
-                                                ? dataPointsColor
-                                                : "none"
-                                            : dataPointsColor }) })) })), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
+                                }, hitSlop: { top: 100, bottom: 100, left: 100, right: 100 }, children: customDataPoint(item, index) })) : (_jsx(_Fragment, {})), dataPointLabelComponent ? (!showTextOnFocus || index === selectedIndex ? (_jsx(View, { style: [
                                     styles.customDataPointContainer,
                                     {
                                         zIndex: index === selectedIndex ? 1000 : 0,
@@ -394,7 +370,7 @@ export var LineChart = function (props) {
                                     dataPointsHeight / 2 +
                                     (item.textShiftY || props.textShiftY || 0), children: !showTextOnFocus && !showValuesAsDataPointsText
                                     ? item.dataPointText
-                                    : text })) : null) : null] }))] }, key));
+                                    : text })) : null) : null] }))] }, index));
         });
     };
     var renderSpecificVerticalLines = function (dataForRender, spacingArray) {

@@ -756,7 +756,7 @@ export const LineChart = (props: LineChartPropsType) => {
                 </TouchableOpacity>
               ) : (
                 <>
-                  {dataPointsShape === "rectangular" ? (
+                  {/* {dataPointsShape === "rectangular" ? (
                     <TouchableOpacity
                       hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                       style={{
@@ -788,6 +788,8 @@ export const LineChart = (props: LineChartPropsType) => {
                     <TouchableWithoutFeedback
                       style={{
                         backgroundColor: "green",
+                        height: 100,
+                        width: 100,
                       }}
                       hitSlop={{ top: 100, bottom: 100, left: 100, right: 100 }}
                     >
@@ -811,7 +813,7 @@ export const LineChart = (props: LineChartPropsType) => {
                         }
                       />
                     </TouchableWithoutFeedback>
-                  )}
+                  )} */}
                 </>
               )}
               {dataPointLabelComponent ? (
